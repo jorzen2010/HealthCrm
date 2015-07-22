@@ -20,6 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\HealthCrm\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -160,6 +162,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -167,7 +170,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\EditorModels.cs" />
+    <Compile Include="Models\DoctorModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\UserModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -401,6 +404,9 @@
     <Content Include="js\jquery.validate.unobtrusive.js" />
     <Content Include="js\jquery.validate.unobtrusive.min.js" />
     <Content Include="js\JSsite.js" />
+    <Content Include="js\laydate.dev.js" />
+    <Content Include="js\laydate.js" />
+    <Content Include="js\need\laydate.css" />
     <Content Include="js\plugins\bootstrap-slider\bootstrap-slider.js" />
     <Content Include="js\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.min.js" />
     <Content Include="js\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.js" />
@@ -696,6 +702,20 @@
     <Content Include="js\plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="js\raphael-min.js" />
     <Content Include="js\responsiveslides.min.js" />
+    <Content Include="js\skins\dahong\icon.png" />
+    <Content Include="js\skins\dahong\laydate.css" />
+    <Content Include="js\skins\danlan\icon.png" />
+    <Content Include="js\skins\danlan\laydate.css" />
+    <Content Include="js\skins\default\icon.png" />
+    <Content Include="js\skins\default\laydate.css" />
+    <Content Include="js\skins\molv\icon.png" />
+    <Content Include="js\skins\molv\laydate.css" />
+    <Content Include="js\skins\qianhuang\icon.png" />
+    <Content Include="js\skins\qianhuang\laydate.css" />
+    <Content Include="js\skins\yahui\icon.png" />
+    <Content Include="js\skins\yahui\laydate.css" />
+    <Content Include="js\skins\yalan\icon.png" />
+    <Content Include="js\skins\yalan\laydate.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ajax\dashboard-boxrefresh-demo.php" />
@@ -787,6 +807,10 @@
     <Content Include="Views\User\UserEdit.cshtml" />
     <Content Include="Views\User\UserIndex.cshtml" />
     <Content Include="Views\Shared\Redirect.cshtml" />
+    <Content Include="Views\Doctor\DoctorAdd.cshtml" />
+    <Content Include="Views\Doctor\DoctorEdit.cshtml" />
+    <Content Include="Views\Doctor\DoctorIndex.cshtml" />
+    <Content Include="Views\User\UserInfoAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -844,6 +868,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
