@@ -1,0 +1,79 @@
+﻿@model CrmWeb.Models.UserAddViewModel
+@{
+    ViewBag.Title = "个人基本信息录入";
+}
+
+
+<script type="text/javascript" src="/js/laydate.js"></script>
+<script type="text/javascript" src="/js/laydate.dev.js"></script>
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Small boxes (Stat box) -->
+        <!-- /.row -->
+        <!-- top row -->
+        <div class="row">
+            <div class="col-xs-12 connectedSortable">
+
+            </div><!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title txt-center">@ViewBag.Title</h3>
+                    </div><!-- /.box-header -->
+                    <!-- form start -->
+                  @using (Html.BeginForm("UserInsert", "User", FormMethod.Post, new { @class="form-inline"}))
+                  {     
+                     
+                       @Html.ValidationSummary(true)
+
+    <div class="box-body">
+
+
+                    
+        <div class="col-xs-12">
+            <div class="input-group">
+                <span class="input-group-addon">医疗费用支付方式 </span>
+                <input tabindex="1" type="checkbox" id="input-1">
+                <input tabindex="1" type="checkbox" id="input-1">
+            </div>
+        </div>
+        <br /><br /><br />           
+                    
+                    
+                    
+                     </div><!-- /.box-body -->
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">立刻保存</button>
+                        </div>
+                  }
+                </div><!-- /.box -->
+
+
+
+            </div><!--/.col (left) -->
+            <!-- right column -->
+            <!--/.col (right) -->
+        </div><!-- /.row (main row) -->
+
+    </section><!-- /.content -->
+</aside>
+@section JsBottom{
+<script type="text/javascript">
+    laydate({
+        elem: '#UserBirthday'
+    });
+
+   
+</script>
+
+}

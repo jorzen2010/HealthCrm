@@ -20,7 +20,7 @@ namespace CrmWeb.Controllers
 
 
             string strwhere = "UserId>0";
-            string table = "JkptUser";
+            string table = "CrmUser";
 
             Pager pager = new Pager();
             pager.PageSize = 20;
@@ -53,7 +53,7 @@ namespace CrmWeb.Controllers
         #region 客户编辑
         public ActionResult UserEdit(int UserId)
         {
-            string table = "JkptUser";
+            string table = "CrmUser";
             string strwhere="UserId="+UserId;
             UserDto userDto = UserBll.GetOneUserDto(table, strwhere);
 
@@ -143,7 +143,7 @@ namespace CrmWeb.Controllers
         [HttpPost]
         public ActionResult UserUpdate(UserEditViewModel model)
         {
-            string table = "JkptUser";
+            string table = "CrmUser";
             string strwhere = "UserId=" + model.UserId;
             UserDto userDto = UserBll.GetOneUserDto(table,strwhere);
             userDto.UserPassword = model.UserPassword;
@@ -190,7 +190,7 @@ namespace CrmWeb.Controllers
         #region 客户删除动作
         public ActionResult UserDelete(int UserId)
         {
-            string table = "JkptUser";
+            string table = "CrmUser";
             string strwhere = "UserId=" + UserId;
             UserBll.DeleteUserDto(table, strwhere);
 

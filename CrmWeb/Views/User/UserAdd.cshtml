@@ -3,6 +3,9 @@
     ViewBag.Title = "个人基本信息录入";
 }
 
+
+<script type="text/javascript" src="/js/laydate.js"></script>
+<script type="text/javascript" src="/js/laydate.dev.js"></script>
 <aside class="right-side">
     <!-- Content Header (Page header) -->
     <!-- Main content -->
@@ -72,6 +75,20 @@
 
         
         <br /><br /><br />
+        <div class="col-xs-3">
+            <div class="input-group">
+                <span class="input-group-addon">所属单位*</span>
+                @Html.DropDownListFor(model => model.UserHuji, ViewData["UserHujiList"] as IEnumerable<SelectListItem>, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserHuji)
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="input-group">
+                <span class="input-group-addon">责任医生*</span>
+                @Html.DropDownListFor(model => model.UserMinzu, ViewData["UserMinzuList"] as IEnumerable<SelectListItem>, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserMinzu)
+            </div>
+        </div>
 
         <div class="col-xs-3">
             <div class="input-group">
@@ -90,6 +107,8 @@
             </div>
         </div>
        
+      
+        <br /><br /><br />
         <div class="col-xs-6">
             <div class="input-group">
                 <span class="input-group-addon">@Html.LabelFor(model => model.UserZhiye) </span>
@@ -97,8 +116,8 @@
                 @Html.ValidationMessageFor(model => model.UserZhiye)
             </div>
         </div>
-        <br /><br /><br />
-        <div class="col-xs-6">
+                    
+       <div class="col-xs-6">
             <div class="input-group">
                 <span class="input-group-addon">@Html.LabelFor(model => model.UserBirthday) </span>
                 @Html.TextBoxFor(model => model.UserBirthday, new { @class = "form-control" })
@@ -107,13 +126,7 @@
         </div>
 
 
-        <div class="col-xs-6">
-            <div class="input-group">
-                <span class="input-group-addon">@Html.LabelFor(model => model.UserJobGroup) </span>
-                @Html.TextBoxFor(model => model.UserJobGroup, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.UserJobGroup)
-            </div>
-        </div>
+        
         <br /><br /><br />
         <div class="col-xs-6">
             <div class="input-group">
@@ -190,8 +203,28 @@
         </div>
         <br /><br /><br />
           
-        
-                          </div><!-- /.box-body -->
+        <div class="col-xs-12">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserJobGroup) </span>
+                @Html.TextBoxFor(model => model.UserJobGroup, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserJobGroup)
+            </div>
+        </div>
+        <br /><br /><br />    
+                    
+                    
+        <div class="col-xs-12">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserBeizhu) </span>
+                @Html.TextAreaFor(model => model.UserBeizhu, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserBeizhu)
+            </div>
+        </div>
+        <br /><br /><br />           
+                    
+                    
+                    
+                     </div><!-- /.box-body -->
 
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">立刻保存</button>
@@ -208,3 +241,13 @@
 
     </section><!-- /.content -->
 </aside>
+@section JsBottom{
+<script type="text/javascript">
+    laydate({
+        elem: '#UserBirthday'
+    });
+
+   
+</script>
+
+}

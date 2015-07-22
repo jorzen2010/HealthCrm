@@ -7,7 +7,7 @@
                 <img src="/img/avatar3.png" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-                <p>Hello, @System.Web.HttpContext.Current.Request.Cookies["Editor"].Value</p>
+                <p>Hello, @System.Web.HttpContext.Current.Request.Cookies["Doctor"].Value</p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
             </div>
@@ -71,7 +71,7 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="@Url.Action("EditorIndex", "Editor")"><i class="fa fa-angle-double-right"></i> 医生设置</a></li>
+                    <li><a href="@Url.Action("DoctorIndex", "Doctor")"><i class="fa fa-angle-double-right"></i> 医生设置</a></li>
                     <li><a href="@Url.Action("ArticleClassIndex", "ArticleClass")"><i class="fa fa-angle-double-right"></i> 监控疾病设置</a></li>
                     <li><a href="@Url.Action("ArticleClassIndex", "ArticleClass")"><i class="fa fa-angle-double-right"></i> 社区（单位）设置</a></li>
                    <!-- 留作备用  

@@ -45,6 +45,7 @@
     <Compile Include="CommonDal.cs" />
     <Compile Include="ArticleClassDal.cs" />
     <Compile Include="ArticleDal.cs" />
+    <Compile Include="DoctorDal.cs" />
     <Compile Include="GuahaoDal.cs" />
     <Compile Include="MokuaiDal.cs" />
     <Compile Include="EditorDal.cs" />

@@ -12,7 +12,7 @@ namespace QxsqDAL
 {
     public class CommonDal
     {
-        public static string ConnectionString = "server=(local);database=QxsqWeb;uid=sa;password=8;min pool size=512;max pool size=512;";
+        public static string ConnectionString = "server=(local);database=HealthCrm;uid=sa;password=8;min pool size=512;max pool size=512;";
 
         #region 删除一个对象
         public static void DeleteObject(string table, string strwhere)

@@ -8,14 +8,11 @@ namespace QxsqDTO
 {
     public class DoctorDto
     {
-        public int DoctorId { get; set; }
-        public string DoctorUserName { get; set; }
-        public string DoctorPassword { get; set; }
-        public string DoctorName { get; set; }
-        public string DoctorSex { get; set; }
-        public string DoctorInfo { get; set; }
-        public string DoctorImg { get; set; }
-        public string DoctorContent { get; set; }
-        public int DoctorGroupId { get; set; }
+        public int DoctorId {get;set;}
+        public string DoctorUserName {get;set;}
+        public string DoctorPassword {get;set;}
+        public string DoctorRealName { get; set; }
+        public DateTime DoctorRegTime {get;set;}
+
     }
 }

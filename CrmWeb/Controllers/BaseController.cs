@@ -44,7 +44,7 @@ namespace CrmWeb.Controllers
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if (filterContext.HttpContext.Request.Cookies["Editor"] == null)
+            if (filterContext.HttpContext.Request.Cookies["Doctor"] == null)
             {
                 if (this.RouteData.Values["Controller"].ToString() != "Login")
                 {

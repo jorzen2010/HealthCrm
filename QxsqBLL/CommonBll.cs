@@ -54,9 +54,9 @@ namespace QxsqBLL
         }
 
 
-        public static void SetSessions(EditorDto editorDto)
+        public static void SetSessions(DoctorDto doctorDto)
         {
-            HttpContext.Current.Session["EditorId"] = editorDto.EditorId;
+            HttpContext.Current.Session["DoctorId"] = doctorDto.DoctorId;
 
         }
 

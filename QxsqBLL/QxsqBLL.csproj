@@ -44,6 +44,7 @@
     <Compile Include="CommonBll.cs" />
     <Compile Include="ArticleClassBll.cs" />
     <Compile Include="ArticleBll.cs" />
+    <Compile Include="DoctorBll.cs" />
     <Compile Include="GuahaoBll.cs" />
     <Compile Include="MokuaiBll.cs" />
     <Compile Include="EditorBll.cs" />
