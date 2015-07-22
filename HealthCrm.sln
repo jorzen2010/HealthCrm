@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthCrm", "HealthCrm\HealthCrm.csproj", "{EB5552B0-B857-4B3C-A1E4-9A6B094F0560}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\20150630QxsqWebOnGitHub\20150630QxsqWebOnGitHub\Common\Common.csproj", "{DB43EFF1-84D8-4976-8978-4BBF10F5D7CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QxsqBLL", "..\20150630QxsqWebOnGitHub\20150630QxsqWebOnGitHub\QxsqBLL\QxsqBLL.csproj", "{6F9D1BFE-C67F-49E4-A565-3D829F123B75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QxsqDTO", "..\20150630QxsqWebOnGitHub\20150630QxsqWebOnGitHub\QxsqDTO\QxsqDTO.csproj", "{ADE947C9-10A5-493D-8A47-B41633488C28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QxsqDAL", "..\20150630QxsqWebOnGitHub\20150630QxsqWebOnGitHub\QxsqDAL\QxsqDAL.csproj", "{9CC94BF5-29BF-44DC-923D-428A7157D940}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrmWeb", "..\20150630QxsqWebOnGitHub\20150630QxsqWebOnGitHub\CrmWeb\CrmWeb.csproj", "{0422059E-1011-42B3-A25B-76637D1F5FA8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB5552B0-B857-4B3C-A1E4-9A6B094F0560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB5552B0-B857-4B3C-A1E4-9A6B094F0560}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB5552B0-B857-4B3C-A1E4-9A6B094F0560}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB5552B0-B857-4B3C-A1E4-9A6B094F0560}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB43EFF1-84D8-4976-8978-4BBF10F5D7CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB43EFF1-84D8-4976-8978-4BBF10F5D7CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB43EFF1-84D8-4976-8978-4BBF10F5D7CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB43EFF1-84D8-4976-8978-4BBF10F5D7CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F9D1BFE-C67F-49E4-A565-3D829F123B75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F9D1BFE-C67F-49E4-A565-3D829F123B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F9D1BFE-C67F-49E4-A565-3D829F123B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F9D1BFE-C67F-49E4-A565-3D829F123B75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADE947C9-10A5-493D-8A47-B41633488C28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADE947C9-10A5-493D-8A47-B41633488C28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADE947C9-10A5-493D-8A47-B41633488C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADE947C9-10A5-493D-8A47-B41633488C28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CC94BF5-29BF-44DC-923D-428A7157D940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CC94BF5-29BF-44DC-923D-428A7157D940}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CC94BF5-29BF-44DC-923D-428A7157D940}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CC94BF5-29BF-44DC-923D-428A7157D940}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0422059E-1011-42B3-A25B-76637D1F5FA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0422059E-1011-42B3-A25B-76637D1F5FA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0422059E-1011-42B3-A25B-76637D1F5FA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0422059E-1011-42B3-A25B-76637D1F5FA8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

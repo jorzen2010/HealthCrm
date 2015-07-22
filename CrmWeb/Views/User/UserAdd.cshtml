@@ -1,0 +1,210 @@
+﻿@model CrmWeb.Models.UserAddViewModel
+@{
+    ViewBag.Title = "个人基本信息录入";
+}
+
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Small boxes (Stat box) -->
+        <!-- /.row -->
+        <!-- top row -->
+        <div class="row">
+            <div class="col-xs-12 connectedSortable">
+
+            </div><!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title txt-center">@ViewBag.Title</h3>
+                    </div><!-- /.box-header -->
+                    <!-- form start -->
+                  @using (Html.BeginForm("UserInsert", "User", FormMethod.Post, new { @class="form-inline"}))
+                  {     
+                     
+                       @Html.ValidationSummary(true)
+
+    <div class="box-body">
+        @Html.HiddenFor(model => model.UserDoctor, new { value = "1" })
+        @Html.HiddenFor(model => model.UserGroup, new { @value = "1" })
+
+            <div class="col-xs-3">
+                <div class="input-group">
+                    <span class="input-group-addon">@Html.LabelFor(model => model.UserName) </span>
+                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserName)
+                </div>
+            </div>
+
+        <div class="col-xs-3">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserSex) </span>
+                @Html.DropDownListFor(model => model.UserSex, ViewData["UserSexList"] as IEnumerable<SelectListItem>, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserSex)
+            </div>
+        </div>
+
+        <div class="col-xs-3">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserHuji) </span>
+                @Html.DropDownListFor(model => model.UserHuji, ViewData["UserHujiList"] as IEnumerable<SelectListItem>, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserHuji)
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserMinzu) </span>
+                @Html.DropDownListFor(model => model.UserMinzu, ViewData["UserMinzuList"] as IEnumerable<SelectListItem>, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserMinzu)
+            </div>
+        </div>
+            
+
+       
+
+        
+        <br /><br /><br />
+
+        <div class="col-xs-3">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserHunyin) </span>
+                @Html.DropDownListFor(model => model.UserHunyin, ViewData["UserHunyinList"] as IEnumerable<SelectListItem>, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserHunyin)
+            </div>
+        </div>
+
+
+        <div class="col-xs-3">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserWenhua) </span>
+                @Html.DropDownListFor(model => model.UserWenhua, ViewData["UserWenhuaList"] as IEnumerable<SelectListItem>, new { @class = "form-control" })
+   @Html.ValidationMessageFor(model => model.UserWenhua)
+            </div>
+        </div>
+       
+        <div class="col-xs-6">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserZhiye) </span>
+                @Html.DropDownListFor(model => model.UserZhiye, ViewData["UserZhiyeList"] as IEnumerable<SelectListItem>, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserZhiye)
+            </div>
+        </div>
+        <br /><br /><br />
+        <div class="col-xs-6">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserBirthday) </span>
+                @Html.TextBoxFor(model => model.UserBirthday, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserBirthday)
+            </div>
+        </div>
+
+
+        <div class="col-xs-6">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserJobGroup) </span>
+                @Html.TextBoxFor(model => model.UserJobGroup, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserJobGroup)
+            </div>
+        </div>
+        <br /><br /><br />
+        <div class="col-xs-6">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserNumber) </span>
+                @Html.TextBoxFor(model => model.UserNumber, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserNumber)
+            </div>
+        </div>
+
+
+        <div class="col-xs-6">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserTel) </span>
+                @Html.TextBoxFor(model => model.UserTel, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserTel)
+            </div>
+        </div>
+
+
+        <br /><br /><br />
+
+        <div class="col-xs-6">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserFirstPerson) </span>
+                @Html.TextBoxFor(model => model.UserFirstPerson, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserFirstPerson)
+            </div>
+        </div>
+
+
+        <div class="col-xs-6">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserFirstPersonTel) </span>
+                @Html.TextBoxFor(model => model.UserFirstPersonTel, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserFirstPersonTel)
+            </div>
+        </div>
+
+        <br /><br /><br />
+
+        <div class="col-xs-6">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserNowAddress) </span>
+                @Html.TextBoxFor(model => model.UserNowAddress, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserNowAddress)
+            </div>
+        </div>
+
+
+        <div class="col-xs-6">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserOldAddress) </span>
+                @Html.TextBoxFor(model => model.UserOldAddress, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserOldAddress)
+            </div>
+        </div>
+        <br /><br /><br />
+
+        <div class="col-xs-6">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserJiedaoName) </span>
+                @Html.TextBoxFor(model => model.UserJiedaoName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserJiedaoName)
+            </div>
+        </div>
+
+
+        <div class="col-xs-6">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserJuweihuiName) </span>
+                @Html.TextBoxFor(model => model.UserJuweihuiName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserJuweihuiName)
+            </div>
+        </div>
+        <br /><br /><br />
+          
+        
+                          </div><!-- /.box-body -->
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">立刻保存</button>
+                        </div>
+                  }
+                </div><!-- /.box -->
+
+
+
+            </div><!--/.col (left) -->
+            <!-- right column -->
+            <!--/.col (right) -->
+        </div><!-- /.row (main row) -->
+
+    </section><!-- /.content -->
+</aside>

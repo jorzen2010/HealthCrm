@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "跳转页面";
+}
+
+
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            跳转页面
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>          
+            <li class="active">跳转页面</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="error-page">
+           
+            <div class="error-content">
+                <h3><span style="color:red; font-weight:bold;"> @ViewBag.Message </span></h3>
+                程序将会在<span id="tid" style="color:red;padding:0 10px; font-weight:bold;">5</span>秒后自动跳转。
+                如果您的浏览器没有为您跳转，<a title="点击直接跳转！" href="@ViewBag.Url" class="btn btn-primary">请点击这里</a>
+                
+            </div><!-- /.error-content -->
+        </div><!-- /.error-page -->
+
+    </section><!-- /.content -->
+</aside>
+
+<script type="text/javascript">
+    var interval = setInterval(function () {
+        var sec = $('#tid').text() - 1;
+        if (sec <= 0) {
+            clearInterval(interval);
+            window.location = "@ViewBag.Url";
+        }
+        else {
+            $('#tid').text(sec);
+        }
+    }, 1000);
+</script>
