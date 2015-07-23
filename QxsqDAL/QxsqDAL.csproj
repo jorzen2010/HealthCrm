@@ -52,6 +52,7 @@
     <Compile Include="MokuaiDal.cs" />
     <Compile Include="EditorDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="HealthDal.cs" />
     <Compile Include="UserDal.cs" />
   </ItemGroup>
   <ItemGroup>
