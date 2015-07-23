@@ -23,7 +23,7 @@ namespace CrmWeb.Controllers
             string table = "CrmDoctor";
 
             Pager pager = new Pager();
-            pager.PageSize = 2;
+            pager.PageSize = 20;
             pager.PageNo = p ?? 1;
 
             pager = DoctorBll.GetDoctorPager(pager, strwhere, table);

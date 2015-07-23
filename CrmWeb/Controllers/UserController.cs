@@ -45,6 +45,8 @@ namespace CrmWeb.Controllers
             ViewData["UserZhiyeList"] = UserCommonBll.GetUserInfoForSelect("UserZhiye");
             ViewData["UserHunyinList"] = UserCommonBll.GetUserInfoForSelect("UserHunyin");
             ViewData["UserWenhuaList"] = UserCommonBll.GetUserInfoForSelect("UserWenhua");
+            ViewData["UserGroup"] = GroupBll.GetGroupForSelect();
+            ViewData["UserDoctor"] = DoctorBll.GetDoctorForSelect(int.Parse(System.Web.HttpContext.Current.Request.Cookies["DoctorId"].Value));
             return View();
 
         }

@@ -1,0 +1,66 @@
+﻿@model CrmWeb.Models.UserClassEditViewModel
+@{
+    ViewBag.Title = "更新归档名称";
+}
+
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Small boxes (Stat box) -->
+        <!-- /.row -->
+        <!-- top row -->
+        <div class="row">
+            <div class="col-xs-12 connectedSortable">
+
+            </div><!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title">@ViewBag.Title</h3>
+                    </div><!-- /.box-header -->
+                    <!-- form start -->
+                  @using (Html.BeginForm("UserClassUpdate", "UserClass", FormMethod.Post))
+    {     
+                      @Html.HiddenFor(model=>model.UserClassId)
+                     
+                       @Html.ValidationSummary(true)
+                      <div class="box-body">
+                            <div class="form-group">
+
+                                @Html.LabelFor(model => model.UserClassName)  @Html.ValidationMessageFor(model => model.UserClassName)
+                                @Html.TextBoxFor(model => model.UserClassName, new { @class = "form-control" })
+                              
+                               
+                            </div>
+
+
+
+                           
+
+
+                           
+                        </div><!-- /.box-body -->
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">保存</button>
+                        </div>
+                  }
+                </div><!-- /.box -->
+
+
+
+            </div><!--/.col (left) -->
+            <!-- right column -->
+            <!--/.col (right) -->
+        </div><!-- /.row (main row) -->
+
+    </section><!-- /.content -->
+</aside>

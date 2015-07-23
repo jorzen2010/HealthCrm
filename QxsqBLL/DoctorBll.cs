@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using QxsqDTO;
 using QxsqDAL;
 using Common;
@@ -11,12 +12,39 @@ namespace QxsqBLL
 {
     public class DoctorBll
     {
-         
 
-
-        public static List<DoctorDto> GetDoctorDtoList(string strwhere)
+        #region   医生以下拉框显示
+        public static List<SelectListItem> GetDoctorForSelect(int? DoctorId = 0)
         {
-            return DoctorDal.GetDoctorList(strwhere);
+            string strwhere = "";
+            if (DoctorId == 0)
+            {
+                strwhere = "1=1";
+            }
+            else
+            {
+                strwhere = "DoctorId=" + DoctorId.ToString();
+            
+            }
+            List<DoctorDto> DoctorDtoList = DoctorDal.GetDoctorList("CrmDoctor", strwhere);
+
+            List<SelectListItem> items = new List<SelectListItem>();
+
+
+
+            foreach (DoctorDto doctorDto in DoctorDtoList)
+            {
+
+                items.Add(new SelectListItem { Text = doctorDto.DoctorRealName, Value = doctorDto.DoctorId.ToString() });
+            }
+
+            return items;
+        }
+        #endregion
+
+        public static List<DoctorDto> GetDoctorDtoList(string table,string strwhere)
+        {
+            return DoctorDal.GetDoctorList(table,strwhere);
         }
 
 

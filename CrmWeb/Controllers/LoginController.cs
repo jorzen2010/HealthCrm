@@ -67,6 +67,10 @@ namespace CrmWeb.Controllers
                     cookie.Value = username;
                     System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
 
+                    HttpCookie DoctorId = new HttpCookie("DoctorId");
+                    DoctorId.Value = doctorDto.DoctorId.ToString();
+                    System.Web.HttpContext.Current.Response.Cookies.Add(DoctorId);
+
                    // HttpCookie cookieRealName = new HttpCookie("DoctorRealName");
                    // cookieRealName.Value = doctorDto.DoctorRealName;
                   //  System.Web.HttpContext.Current.Response.Cookies.Add(cookieRealName);

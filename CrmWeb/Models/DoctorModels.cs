@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CrmWeb.Models
 {
-    #region 网站管理员登陆模型
+    #region 医生登陆模型
     public class DoctorLoginViewModel
     {
         [Required]
@@ -22,7 +22,7 @@ namespace CrmWeb.Models
     }
     #endregion
 
-    #region 网站管理员添加模型
+    #region 医生添加模型
     public class DoctorAddViewModel
     {
         [Required]
@@ -47,7 +47,7 @@ namespace CrmWeb.Models
     }
     #endregion
 
-    #region 网站管理员更新模型
+    #region 医生更新模型
     public class DoctorEditViewModel
     {
         [Required]

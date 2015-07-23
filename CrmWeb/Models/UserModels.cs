@@ -53,9 +53,9 @@ namespace CrmWeb.Models
         [Display(Name = "婚姻状况*")]
         public string UserHunyin { get; set; }
         
-        [Display(Name = "责任医生")]
+        [Display(Name = "责任医生*")]
         public int UserDoctor { get; set; }
-        [Display(Name = "所属组织")]
+        [Display(Name = "所属组织*")]
         public int UserGroup { get; set; }
         [Required]
         [Display(Name = "用户归档")]

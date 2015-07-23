@@ -42,6 +42,7 @@
     <Compile Include="ArticleClassDto.cs" />
     <Compile Include="ArticleDto.cs" />
     <Compile Include="DoctorDto.cs" />
+    <Compile Include="UserClassDto.cs" />
     <Compile Include="GroupDto.cs" />
     <Compile Include="GuahaoDto.cs" />
     <Compile Include="MokuaiDto.cs" />

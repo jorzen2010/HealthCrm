@@ -34,12 +34,12 @@
             </li>
             <li>
                 <a href="@Url.Action("UserIndex","User")">
-                    <i class="fa fa-th"></i> <span>居民信息</span>
+                    <i class="fa fa-th"></i> <span>客户信息</span>
                 </a>
             </li>
             <li>
                 <a href="@Url.Action("UserIndex","User")">
-                    <i class="fa fa-th"></i> <span>居民分配</span>
+                    <i class="fa fa-th"></i> <span>客户分配</span>
                 </a>
             </li>
            
@@ -72,12 +72,9 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="@Url.Action("DoctorIndex", "Doctor")"><i class="fa fa-angle-double-right"></i> 医生设置</a></li>
-                    <li><a href="@Url.Action("ArticleClassIndex", "ArticleClass")"><i class="fa fa-angle-double-right"></i> 监控疾病设置</a></li>
-                    <li><a href="@Url.Action("ArticleClassIndex", "ArticleClass")"><i class="fa fa-angle-double-right"></i> 社区（单位）设置</a></li>
-                   <!-- 留作备用  
-                    <li><a href="@Url.Action("NewsList","Home")"><i class="fa fa-angle-double-right"></i>  全科医生设置</a></li>
-                    <li><a href="@Url.Action("NewsList","Home")"><i class="fa fa-angle-double-right"></i>  健康档案类别设置</a></li>
-                   --> 
+                    <li><a href="@Url.Action("UserClassIndex", "UserClass")"><i class="fa fa-angle-double-right"></i> 用户归档（疾病类别）</a></li>
+                    <li><a href="@Url.Action("GroupIndex", "Group")"><i class="fa fa-angle-double-right"></i> 社区（单位）设置</a></li>
+                    
                 </ul>
             </li>
 

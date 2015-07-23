@@ -77,16 +77,16 @@
         <br /><br /><br />
         <div class="col-xs-3">
             <div class="input-group">
-                <span class="input-group-addon">所属单位*</span>
-                @Html.DropDownListFor(model => model.UserHuji, ViewData["UserHujiList"] as IEnumerable<SelectListItem>, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.UserHuji)
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserGroup)</span>
+                @Html.DropDownListFor(model => model.UserHuji, ViewData["UserGroup"] as IEnumerable<SelectListItem>, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserGroup)
             </div>
         </div>
         <div class="col-xs-3">
             <div class="input-group">
-                <span class="input-group-addon">责任医生*</span>
-                @Html.DropDownListFor(model => model.UserMinzu, ViewData["UserMinzuList"] as IEnumerable<SelectListItem>, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.UserMinzu)
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserDoctor)</span>
+                @Html.DropDownListFor(model => model.UserMinzu, ViewData["UserDoctor"] as IEnumerable<SelectListItem>, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserDoctor)
             </div>
         </div>
 

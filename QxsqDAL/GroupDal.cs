@@ -11,26 +11,26 @@ using Common;
 
 namespace QxsqDAL
 {
-    public class DoctorDal
+    public class GroupDal
     {
 
        #region 医生添加
 
-        public static void AddDoctor(DoctorDto doctorDto)
+        public static void AddGroup(GroupDto groupDto)
         {
 
-            SqlParameter[] arParames = DoctorDal.getParameters(doctorDto);
+            SqlParameter[] arParames = GroupDal.getParameters(groupDto);
 
-            SqlHelper.ExecuteNonQuery(CommonDal.ConnectionString, CommandType.StoredProcedure, "CreateDoctor", arParames);
+            SqlHelper.ExecuteNonQuery(CommonDal.ConnectionString, CommandType.StoredProcedure, "CreateGroup", arParames);
 
         }
         #endregion
 
         #region 获取一个医生DTO
 
-        public static DoctorDto GetOneDoctor(string table,string strwhere)
+        public static GroupDto GetOneGroup(string table,string strwhere)
         {
-            DoctorDto doctorDto = new DoctorDto();
+            GroupDto groupDto = new GroupDto();
 
             SqlParameter[] arParames = new SqlParameter[2];
             arParames[0] = new SqlParameter("@table ", SqlDbType.VarChar, 200);
@@ -46,27 +46,27 @@ namespace QxsqDAL
             foreach (DataRow dr in dt.Rows)
             {
 
-                doctorDto = DoctorDal.getDataRowToDoctorDto(dr);
+                groupDto = GroupDal.getDataRowToGroupDto(dr);
 
             }
 
 
-            return doctorDto;
+            return groupDto;
 
 
 
         }
         #endregion
         #region 获取医生List数据
-        public static List<DoctorDto> GetDoctorList(string table,string strwhere)
+        public static List<GroupDto> GetGroupList(string tabel,string strwhere)
         {
-            List<DoctorDto> doctorlist = new List<DoctorDto>();
+            List<GroupDto> grouplist = new List<GroupDto>();
 
 
 
             SqlParameter[] arParames = new SqlParameter[2];
             arParames[0] = new SqlParameter("@table ", SqlDbType.VarChar, 200);
-            arParames[0].Value = table;
+            arParames[0].Value = tabel;
 
             arParames[1] = new SqlParameter("@Where ", SqlDbType.VarChar, 8000);
             arParames[1].Value = strwhere;
@@ -76,40 +76,35 @@ namespace QxsqDAL
             dt = ds.Tables[0];
             foreach (DataRow dr in dt.Rows)
             {
-                DoctorDto doctorDto = new DoctorDto();
+                GroupDto groupDto = new GroupDto();
 
-                doctorDto = DoctorDal.getDataRowToDoctorDto(dr);
+                groupDto = GroupDal.getDataRowToGroupDto(dr);
 
 
-                doctorlist.Add(doctorDto);
+                grouplist.Add(groupDto);
 
             }
 
-            return doctorlist;
+            return grouplist;
 
         }
         #endregion
 
         #region 将DTO映射成数据库参数
-        private static SqlParameter[] getParameters(DoctorDto doctorDto)
+        private static SqlParameter[] getParameters(GroupDto groupDto)
         {
-            SqlParameter[] arParames = new SqlParameter[5];
+            SqlParameter[] arParames = new SqlParameter[3];
 
 
-            arParames[0] = new SqlParameter("@DoctorId", SqlDbType.Int);
-            arParames[0].Value = doctorDto.DoctorId;
+            arParames[0] = new SqlParameter("@GroupId", SqlDbType.Int);
+            arParames[0].Value = groupDto.GroupId;
 
-            arParames[1] = new SqlParameter("@DoctorUserName", SqlDbType.VarChar, 50);
-            arParames[1].Value = doctorDto.DoctorUserName;
+            arParames[1] = new SqlParameter("@GroupName", SqlDbType.VarChar, 50);
+            arParames[1].Value = groupDto.GroupName;
 
-            arParames[2] = new SqlParameter("@DoctorPassword", SqlDbType.VarChar, 50);
-            arParames[2].Value = doctorDto.DoctorPassword;
+            arParames[2] = new SqlParameter("@GroupInfo", SqlDbType.Text);
+            arParames[2].Value = groupDto.GroupInfo;
 
-            arParames[3] = new SqlParameter("@DoctorRealName", SqlDbType.VarChar, 50);
-            arParames[3].Value = doctorDto.DoctorRealName;
-
-            arParames[4] = new SqlParameter("@DoctorRegTime", SqlDbType.DateTime);
-            arParames[4].Value = doctorDto.DoctorRegTime;
 
 
             return arParames;
@@ -118,43 +113,34 @@ namespace QxsqDAL
         #endregion
 
         #region 将数据集映射成DTO
-        private static DoctorDto getDataRowToDoctorDto(DataRow dr)
+        private static GroupDto getDataRowToGroupDto(DataRow dr)
         {
-            DoctorDto doctorDto = new DoctorDto();
+            GroupDto groupDto = new GroupDto();
 
-            doctorDto.DoctorId = int.Parse(dr["DoctorId"].ToString());
-            doctorDto.DoctorUserName = dr["DoctorUserName"].ToString();
-            doctorDto.DoctorRealName = dr["DoctorRealName"].ToString();
+            groupDto.GroupId = int.Parse(dr["GroupId"].ToString());
+            groupDto.GroupName = dr["GroupName"].ToString();
+            groupDto.GroupInfo = dr["GroupInfo"].ToString();
 
-            doctorDto.DoctorPassword = dr["DoctorPassword"].ToString();
 
-            doctorDto.DoctorRegTime = DateTime.Parse(dr["DoctorRegTime"].ToString());
-
-            return doctorDto;
+            return groupDto;
         }
 
         #endregion
 
         #region 将数据集映射成DTO
-        private static DoctorDto getDataReaderToDoctorDto(SqlDataReader dr)
+        private static GroupDto getDataReaderToGroupDto(SqlDataReader dr)
         {
-            DoctorDto doctorDto = new DoctorDto();
-
-
-            doctorDto.DoctorId = int.Parse(dr["DoctorId"].ToString());
-            doctorDto.DoctorUserName = dr["DoctorUserName"].ToString();
-            doctorDto.DoctorRealName = dr["DoctorRealName"].ToString();
-
-            doctorDto.DoctorPassword = dr["DoctorPassword"].ToString();
-
-            doctorDto.DoctorRegTime = DateTime.Parse(dr["DoctorRegTime"].ToString());
-            return doctorDto;
+            GroupDto groupDto = new GroupDto();
+            groupDto.GroupId = int.Parse(dr["GroupId"].ToString());
+            groupDto.GroupName = dr["GroupName"].ToString();
+            groupDto.GroupInfo = dr["GroupInfo"].ToString();
+            return groupDto;
         }
 
         #endregion
 
-        #region 删除一个Doctor对象DTO
-        public static void DeleteDoctorDto(string table, string strwhere)
+        #region 删除一个Group对象DTO
+        public static void DeleteGroupDto(string table, string strwhere)
         {
 
 
@@ -173,13 +159,13 @@ namespace QxsqDAL
         #endregion
 
 
-        #region 更新一个Doctor
-        public static void UpdateDoctor(DoctorDto doctorDto)
+        #region 更新一个Group
+        public static void UpdateGroup(GroupDto groupDto)
         {
 
-            SqlParameter[] arParames = DoctorDal.getParameters(doctorDto);
+            SqlParameter[] arParames = GroupDal.getParameters(groupDto);
 
-            SqlHelper.ExecuteNonQuery(CommonDal.ConnectionString, CommandType.StoredProcedure, "UpdateDoctor", arParames);
+            SqlHelper.ExecuteNonQuery(CommonDal.ConnectionString, CommandType.StoredProcedure, "UpdateGroup", arParames);
 
 
         }
@@ -188,7 +174,7 @@ namespace QxsqDAL
 
 
         #region 取得单表的查询并进行分页数据
-        public static Pager GetDoctorPage(Pager pager, string strwhere, string table)
+        public static Pager GetGroupPage(Pager pager, string strwhere, string table)
         {
             SqlParameter[] arParms = new SqlParameter[9];
             //@tbname   --要分页显示的表名
@@ -197,7 +183,7 @@ namespace QxsqDAL
 
             // @FieldKey --用于定位记录的主键(惟一键)字段,可以是逗号分隔的多个字段
             arParms[1] = new SqlParameter("@FieldKey", SqlDbType.NVarChar, 40);
-            arParms[1].Value = "DoctorId";
+            arParms[1].Value = "GroupId";
 
             //@PageCurrent --要显示的页码
             arParms[2] = new SqlParameter("@PageCurrent", SqlDbType.Int);
@@ -214,7 +200,7 @@ namespace QxsqDAL
             //@FieldOrder --以逗号分隔的排序字段列表,可以指定在字段后面指定DESC/ASC用于指定排序顺序
 
             arParms[5] = new SqlParameter("@FieldOrder", SqlDbType.NVarChar, 500);
-            arParms[5].Value = "DoctorId desc";
+            arParms[5].Value = "GroupId desc";
 
             //@Where   --查询条件
             arParms[6] = new SqlParameter("@Where", SqlDbType.VarChar, 8000);
@@ -228,15 +214,15 @@ namespace QxsqDAL
             arParms[8] = new SqlParameter("@RecordCount", SqlDbType.Int);
             arParms[8].Direction = ParameterDirection.Output;
 
-            DoctorDto doctorDto = null;
-            List<DoctorDto> list = new List<DoctorDto>();
+            GroupDto groupDto = null;
+            List<GroupDto> list = new List<GroupDto>();
             DataTable dt = null;
             DataSet ds = SqlHelper.ExecuteDataset(CommonDal.ConnectionString, CommandType.StoredProcedure, "sp_AspNetPageView", arParms);
             dt = ds.Tables[0];
             foreach (DataRow dr in dt.Rows)
             {
-                doctorDto = DoctorDal.getDataRowToDoctorDto(dr);
-                list.Add(doctorDto);
+                groupDto = GroupDal.getDataRowToGroupDto(dr);
+                list.Add(groupDto);
             }
 
             var totalItems = (int)arParms[8].Value;
