@@ -32,5 +32,26 @@ namespace QxsqBLL
             return items;
         }
         #endregion
+
+        #region 用户属性以下拉框显示
+        public static List<SelectListItem> GetHealthInfoForSelect(string healthInfoName)
+        {
+
+
+            List<string> healthInfoList = UserInfoCommon.HealthInfoList(healthInfoName);
+
+            List<SelectListItem> items = new List<SelectListItem>();
+
+
+
+            foreach (string healthInfo in healthInfoList)
+            {
+
+                items.Add(new SelectListItem { Text = healthInfo, Value = healthInfo });
+            }
+
+            return items;
+        }
+        #endregion
     }
 }

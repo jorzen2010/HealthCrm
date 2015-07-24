@@ -39,14 +39,8 @@ namespace CrmWeb.Controllers
         #region 客户添加
         public ActionResult HealthAdd()
         {
-            ViewData["HealthSexList"] = UserInfoCommonBll.GetHealthInfoForSelect("HealthSex");
-            ViewData["HealthHujiList"] = HealthCommonBll.GetHealthInfoForSelect("HealthHuji");
-            ViewData["HealthMinzuList"] = HealthCommonBll.GetHealthInfoForSelect("HealthMinzu");
-            ViewData["HealthZhiyeList"] = HealthCommonBll.GetHealthInfoForSelect("HealthZhiye");
-            ViewData["HealthHunyinList"] = HealthCommonBll.GetHealthInfoForSelect("HealthHunyin");
-            ViewData["HealthWenhuaList"] = HealthCommonBll.GetHealthInfoForSelect("HealthWenhua");
-            ViewData["HealthGroup"] = GroupBll.GetGroupForSelect();
-            ViewData["HealthDoctor"] = DoctorBll.GetDoctorForSelect(int.Parse(System.Web.HttpContext.Current.Request.Cookies["DoctorId"].Value));
+            ViewData["HealthXuexingList"] = UserCommonBll.GetHealthInfoForSelect("HealthXuexing");
+            ViewData["HealthRHList"] = UserCommonBll.GetHealthInfoForSelect("HealthRH");
             return View();
 
         }

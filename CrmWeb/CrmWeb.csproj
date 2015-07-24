@@ -333,6 +333,7 @@
     <Content Include="css\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="css\images\ui-icons_d8e7f3_256x240.png" />
     <Content Include="css\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="css\index.css" />
     <Content Include="css\ionicons.css" />
     <Content Include="css\ionicons.min.css" />
     <Content Include="css\ionslider\ion.rangeSlider.css" />
@@ -356,6 +357,7 @@
     <Content Include="css\jQueryUI\jquery-ui-1.10.3.custom.css" />
     <Content Include="css\jQueryUI\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="css\jvectormap\jquery-jvectormap-1.2.2.css" />
+    <Content Include="css\labelauty.css" />
     <Content Include="css\morris\morris.css" />
     <Content Include="css\page.css" />
     <Content Include="css\timepicker\bootstrap-timepicker.css" />
@@ -366,6 +368,8 @@
     <Content Include="fonts\ionicons.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\input-checked.png" />
+    <Content Include="images\input-unchecked.png" />
     <Content Include="img\ajax-loader.gif" />
     <Content Include="img\ajax-loader1.gif" />
     <Content Include="img\avatar.png" />
@@ -399,6 +403,7 @@
     <Content Include="js\ajaxfileupload.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\jquery-1.11.2.min.js" />
     <Content Include="js\jquery-confirm.js" />
     <Content Include="js\jquery-ui-1.10.3.js" />
     <Content Include="js\jquery-ui-1.10.3.min.js" />
@@ -410,6 +415,7 @@
     <Content Include="js\jquery.validate.unobtrusive.js" />
     <Content Include="js\jquery.validate.unobtrusive.min.js" />
     <Content Include="js\JSsite.js" />
+    <Content Include="js\labelauty.js" />
     <Content Include="js\laydate.dev.js" />
     <Content Include="js\laydate.js" />
     <Content Include="js\need\laydate.css" />

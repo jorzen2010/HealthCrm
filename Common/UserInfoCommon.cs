@@ -73,19 +73,21 @@ namespace Common
         {
             List<string> healthInfoList = new List<string>();
             if (HealthInfo == "HealthXuexing")
-            {
+            {   
+                healthInfoList.Add("5 不详");
                 healthInfoList.Add("1 A型");
                 healthInfoList.Add("2 B型");
                 healthInfoList.Add("3 O型");
                 healthInfoList.Add("4 AB型");
-                healthInfoList.Add("5 不详");
+                
 
             }
             if (HealthInfo == "HealthRH")
             {
+                healthInfoList.Add("3 不详");
                 healthInfoList.Add("1 否");
                 healthInfoList.Add("2 是");
-                healthInfoList.Add("3 不详");
+                
             }
             if (HealthInfo == "HealthFeiyong")
             {
