@@ -74,62 +74,60 @@ namespace Common
             List<string> healthInfoList = new List<string>();
             if (HealthInfo == "HealthXuexing")
             {   
-                healthInfoList.Add("5 不详");
-                healthInfoList.Add("1 A型");
-                healthInfoList.Add("2 B型");
-                healthInfoList.Add("3 O型");
-                healthInfoList.Add("4 AB型");
+                
+                healthInfoList.Add("A型");
+                healthInfoList.Add("B型");
+                healthInfoList.Add("O型");
+                healthInfoList.Add("AB型");
+                healthInfoList.Add("不详");
                 
 
             }
             if (HealthInfo == "HealthRH")
             {
-                healthInfoList.Add("3 不详");
-                healthInfoList.Add("1 否");
-                healthInfoList.Add("2 是");
+               
+                healthInfoList.Add("否");
+                healthInfoList.Add("是");
+                healthInfoList.Add("不详");
                 
             }
             if (HealthInfo == "HealthFeiyong")
             {
-                healthInfoList.Add("1 城镇职工基本医疗保险");
-                healthInfoList.Add("2 城镇居民基本医疗保险");
-                healthInfoList.Add("3 新型农村合作医疗");
-                healthInfoList.Add("4 贫困救助");
-                healthInfoList.Add("5 商业医疗保险");
-                healthInfoList.Add("6 全公费");
-                healthInfoList.Add("7 全自费");
-                healthInfoList.Add("8 其他");
+                healthInfoList.Add("城镇职工基本医疗保险");
+                healthInfoList.Add("城镇居民基本医疗保险");
+                healthInfoList.Add("新型农村合作医疗");
+                healthInfoList.Add("贫困救助");
+                healthInfoList.Add("商业医疗保险");
+                healthInfoList.Add("全公费");
+                healthInfoList.Add("全自费");
             }
             if (HealthInfo == "HealthGuomin")
             {
-                healthInfoList.Add("1 无");
-                healthInfoList.Add("2 青霉素");
-                healthInfoList.Add("3 磺胺");
-                healthInfoList.Add("4 链霉素");
-                healthInfoList.Add("5 其他");
+                healthInfoList.Add("青霉素");
+                healthInfoList.Add("磺胺");
+                healthInfoList.Add("链霉素");
+                healthInfoList.Add("其他");
             }
             if (HealthInfo == "HealthBaolou")
             {
-                healthInfoList.Add("1 无");
-                healthInfoList.Add("2 化学品");
-                healthInfoList.Add("3 毒物");
-                healthInfoList.Add("4 射线");
+                healthInfoList.Add("化学品");
+                healthInfoList.Add("毒物");
+                healthInfoList.Add("射线");
             }
             if (HealthInfo == "HealthJibing")
             {
-                healthInfoList.Add("1 无");
-                healthInfoList.Add("2 高血压");
-                healthInfoList.Add("3 糖尿病");
-                healthInfoList.Add("4 冠心病");
-                healthInfoList.Add("5 慢性阻塞性肺疾病");
-                healthInfoList.Add("6 恶性肿瘤");
-                healthInfoList.Add("7 脑卒中");
-                healthInfoList.Add("8 重性精神疾病");
-                healthInfoList.Add("9 结核病");
-                healthInfoList.Add("10 肝炎");
-                healthInfoList.Add("11 其他法定传染病");
-                healthInfoList.Add("12 职业病");
-                healthInfoList.Add("13 其他");
+                healthInfoList.Add("高血压");
+                healthInfoList.Add("糖尿病");
+                healthInfoList.Add("冠心病");
+                healthInfoList.Add("慢性阻塞性肺疾病");
+                healthInfoList.Add("恶性肿瘤");
+                healthInfoList.Add("脑卒中");
+                healthInfoList.Add("重性精神疾病");
+                healthInfoList.Add("结核病");
+                healthInfoList.Add("肝炎");
+                healthInfoList.Add("其他法定传染病");
+                healthInfoList.Add("职业病");
+                healthInfoList.Add("其他");
             }
 
             if (HealthInfo == "HealthJiazuDady")

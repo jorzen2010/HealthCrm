@@ -39,8 +39,9 @@ namespace CrmWeb.Controllers
         #region 客户添加
         public ActionResult HealthAdd()
         {
-            ViewData["HealthXuexingList"] = UserCommonBll.GetHealthInfoForSelect("HealthXuexing");
-            ViewData["HealthRHList"] = UserCommonBll.GetHealthInfoForSelect("HealthRH");
+            ViewData["HealthXuexingList"] = UserInfoCommon.HealthInfoList("HealthXuexing");
+            ViewData["HealthRHList"] = UserInfoCommon.HealthInfoList("HealthRH");
+            ViewData["HealthFeiyongList"] = UserInfoCommon.HealthInfoList("HealthFeiyong");
             return View();
 
         }
@@ -89,7 +90,7 @@ namespace CrmWeb.Controllers
 
         #region 客户新增动作
         [HttpPost]
-        public ActionResult HealthInsert(HealthAddViewModel model)
+        public ActionResult HealthInsert2(HealthAddViewModel model)
         {
             HealthDto healthDto = new HealthDto();
 
@@ -119,6 +120,23 @@ namespace CrmWeb.Controllers
 
            return RedirectTo("/Health/HealthIndex", "客户添加成功了");
            //return RedirectToAction("HealthIndex");
+
+
+        }
+        #endregion
+
+        #region 客户新增动作
+        [HttpPost]
+        public ActionResult HealthInsert()
+        {
+
+            string content = Request.Form["healthXuexing"].ToString();
+            string content2 = Request.Form["healthFeiyong"].ToString();
+
+
+
+            return Content(content2);
+            //return RedirectToAction("HealthIndex");
 
 
         }
