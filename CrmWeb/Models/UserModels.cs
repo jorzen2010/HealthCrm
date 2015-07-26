@@ -25,9 +25,12 @@ namespace CrmWeb.Models
         [Display(Name = "出生日期*")]
         public DateTime UserBirthday { get; set; }
         [Required]
+        [System.Web.Mvc.Remote("ValidateIDCardNo", "AjaxValidation", ErrorMessage = "身份证号未经过校验")]
+        [RegularExpression("[0-9z]{15,18}", ErrorMessage = "身份证号格式错误应该为15或18位")]
         [Display(Name = "身份证号码*")]
         public string UserNumber { get; set; }
         [Required]
+        [RegularExpression("^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$", ErrorMessage = "手机号码格式不正确")]
         [Display(Name = "本人电话*")]
         public string UserTel { get; set; }
         [RegularExpression("^[\u4E00-\u9FA5]{2,4}$", ErrorMessage = "姓名必须是2-4个汉字")]
@@ -36,6 +39,7 @@ namespace CrmWeb.Models
         [Display(Name = "联系人姓名*")]
         public string UserFirstPerson { get; set; }
         [Required]
+        [RegularExpression("^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$", ErrorMessage = "手机号码格式不正确")]
         [Display(Name = "联系人电话*")]
         public string UserFirstPersonTel { get; set; }
         [Display(Name = "乡镇（街道）名称")]

@@ -106,7 +106,7 @@ namespace Common
                 healthInfoList.Add("青霉素");
                 healthInfoList.Add("磺胺");
                 healthInfoList.Add("链霉素");
-                healthInfoList.Add("其他");
+
             }
             if (HealthInfo == "HealthBaolou")
             {
@@ -116,23 +116,23 @@ namespace Common
             }
             if (HealthInfo == "HealthJibing")
             {
-                healthInfoList.Add("高血压");
-                healthInfoList.Add("糖尿病");
-                healthInfoList.Add("冠心病");
-                healthInfoList.Add("慢性阻塞性肺疾病");
-                healthInfoList.Add("恶性肿瘤");
-                healthInfoList.Add("脑卒中");
-                healthInfoList.Add("重性精神疾病");
-                healthInfoList.Add("结核病");
-                healthInfoList.Add("肝炎");
-                healthInfoList.Add("其他法定传染病");
-                healthInfoList.Add("职业病");
-                healthInfoList.Add("其他");
+                healthInfoList.Add("2 高血压");
+                healthInfoList.Add("3 糖尿病");
+                healthInfoList.Add("4 冠心病");
+                healthInfoList.Add("5 慢性阻塞性肺疾病");
+                healthInfoList.Add("6 恶性肿瘤");
+                healthInfoList.Add("7 脑卒中");
+                healthInfoList.Add("8 重性精神疾病");
+                healthInfoList.Add("9 结核病");
+                healthInfoList.Add("10 肝炎");
+                healthInfoList.Add("11 其他法定传染病");
+                healthInfoList.Add("12 职业病");
+                healthInfoList.Add("13 其他");
             }
 
-            if (HealthInfo == "HealthJiazuDady")
+            if (HealthInfo == "HealthJiazu")
             {
-                healthInfoList.Add("1 无");
+
                 healthInfoList.Add("2 高血压");
                 healthInfoList.Add("3 糖尿病");
                 healthInfoList.Add("4 冠心病");
@@ -143,18 +143,17 @@ namespace Common
                 healthInfoList.Add("9 结核病");
                 healthInfoList.Add("10 肝炎");
                 healthInfoList.Add("11 先天畸形");
-                healthInfoList.Add("12 其他");
+
             }
             if (HealthInfo == "HealthCanji")
             {
-                healthInfoList.Add("1 无残疾");
+ 
                 healthInfoList.Add("2 视力残疾");
                 healthInfoList.Add("3 听力残疾");
                 healthInfoList.Add("4 言语残疾");
                 healthInfoList.Add("5 肢体残疾");
                 healthInfoList.Add("6 智力残疾");
                 healthInfoList.Add("7 精神残疾");
-                healthInfoList.Add("8 其他残疾");
 
             }
 
@@ -194,7 +193,7 @@ namespace Common
                 healthInfoList.Add("5 简易棚厕");
 
             }
-            if (HealthInfo == "HealthQingchulan")
+            if (HealthInfo == "HealthQichulan")
             {
                 healthInfoList.Add("1 单设");
                 healthInfoList.Add("2 室内");

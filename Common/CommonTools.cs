@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using Microsoft.International.Converters.PinYinConverter;
+using System.Text.RegularExpressions;
 
 
 namespace Common
@@ -179,7 +180,29 @@ namespace Common
             charList.Add('Z');
             return charList;
         }
-
+        public static bool Verify(string input)
+        {
+            var result = false;
+            if (Regex.IsMatch(input, @"\d{17}(\d|x|X)"))
+            {
+                input = input.ToLower();
+                int[] weight = { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };    //十七位数字本体码权重
+                char[] validate = { '1', '0', 'x', '9', '8', '7', '6', '5', '4', '3', '2' };
+                int sum = 0;
+                int mode = 0;
+                for (int i = 0; i < 17; i++)
+                {
+                    sum = sum + ((int)(input[i] - '0')) * weight[i];
+                }
+                mode = sum % 11;
+                result = (validate[mode] == input[17]);
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
+        }
 
     }
 }

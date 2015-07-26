@@ -37,9 +37,9 @@ namespace CrmWeb.Controllers
         {
             string table = "CrmDoctor";
             string strwhere = "DoctorUsername='" + username + "' and DoctorPassword='" + CommonTools.ToMd5(password) + "'";
-
-           
-                DoctorDto doctorDto = DoctorBll.GetOneDoctorDto(table, strwhere);
+            DoctorDto  doctorDto = DoctorBll.GetOneDoctorDto(table, strwhere); 
+         
+                
 
                 if (String.IsNullOrEmpty(doctorDto.DoctorUserName))
                 {

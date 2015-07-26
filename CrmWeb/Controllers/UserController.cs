@@ -45,8 +45,8 @@ namespace CrmWeb.Controllers
             ViewData["UserZhiyeList"] = UserCommonBll.GetUserInfoForSelect("UserZhiye");
             ViewData["UserHunyinList"] = UserCommonBll.GetUserInfoForSelect("UserHunyin");
             ViewData["UserWenhuaList"] = UserCommonBll.GetUserInfoForSelect("UserWenhua");
-            ViewData["UserGroup"] = GroupBll.GetGroupForSelect();
-            ViewData["UserDoctor"] = DoctorBll.GetDoctorForSelect(int.Parse(System.Web.HttpContext.Current.Request.Cookies["DoctorId"].Value));
+            ViewData["UserGroupList"] = GroupBll.GetGroupForSelect();
+            ViewData["UserDoctorList"] = DoctorBll.GetDoctorForSelect(int.Parse(System.Web.HttpContext.Current.Request.Cookies["DoctorId"].Value));
             return View();
 
         }
@@ -55,6 +55,7 @@ namespace CrmWeb.Controllers
         #region 客户编辑
         public ActionResult UserEdit(int UserId)
         {
+
             string table = "CrmUser";
             string strwhere="UserId="+UserId;
             UserDto userDto = UserBll.GetOneUserDto(table, strwhere);
@@ -90,6 +91,16 @@ namespace CrmWeb.Controllers
             model.UserDiy5 = userDto.UserDiy5;
             model.UserDiy6 = userDto.UserDiy6;
             model.UserBeizhu = userDto.UserBeizhu;
+
+            ViewData["UserSexList"] = UserCommonBll.GetUserInfoForSelect("UserSex");
+            ViewData["UserHujiList"] = UserCommonBll.GetUserInfoForSelect("UserHuji");
+            ViewData["UserMinzuList"] = UserCommonBll.GetUserInfoForSelect("UserMinzu");
+            ViewData["UserZhiyeList"] = UserCommonBll.GetUserInfoForSelect("UserZhiye");
+            ViewData["UserHunyinList"] = UserCommonBll.GetUserInfoForSelect("UserHunyin");
+            ViewData["UserWenhuaList"] = UserCommonBll.GetUserInfoForSelect("UserWenhua");
+            ViewData["UserGroupList"] = GroupBll.GetGroupForSelect();
+            ViewData["UserDoctorList"] = DoctorBll.GetDoctorForSelect(int.Parse(System.Web.HttpContext.Current.Request.Cookies["DoctorId"].Value));
+
 
             return View(model);
 
@@ -132,10 +143,10 @@ namespace CrmWeb.Controllers
             userDto.UserDiy6 = model.UserDiy6;
             userDto.UserBeizhu = model.UserBeizhu;
 
-            UserBll.AddUser(userDto);
+           UserBll.AddUser(userDto);
 
-           return RedirectTo("/User/UserIndex", "客户添加成功了");
-           //return RedirectToAction("UserIndex");
+          return RedirectTo("/User/UserIndex", "客户添加成功了");
+          //  return Content();
 
 
         }

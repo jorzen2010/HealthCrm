@@ -14,7 +14,7 @@ namespace QxsqBLL
     {
 
         #region   用户归档以下拉框显示
-        public static List<SelectListItem> GetGroupForSelect(int? GroupId = 0)
+        public static List<SelectListItem> GetGroupForSelect()
         {
             List<GroupDto> GroupDtoList = GroupDal.GetGroupList("CrmGroup","1=1");
 

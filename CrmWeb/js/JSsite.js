@@ -9,3 +9,4 @@
     resourceurl: "..\Resource\photo"
 
 };
+

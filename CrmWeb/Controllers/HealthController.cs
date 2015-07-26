@@ -42,6 +42,20 @@ namespace CrmWeb.Controllers
             ViewData["HealthXuexingList"] = UserInfoCommon.HealthInfoList("HealthXuexing");
             ViewData["HealthRHList"] = UserInfoCommon.HealthInfoList("HealthRH");
             ViewData["HealthFeiyongList"] = UserInfoCommon.HealthInfoList("HealthFeiyong");
+            ViewData["HealthGuominList"] = UserInfoCommon.HealthInfoList("HealthGuomin");
+            ViewData["HealthBaolouList"] = UserInfoCommon.HealthInfoList("HealthBaolou");
+
+            ViewData["HealthJibingList"] = UserInfoCommon.HealthInfoList("HealthJibing");
+
+            ViewData["HealthCanjiList"] = UserInfoCommon.HealthInfoList("HealthCanji");
+            ViewData["HealthJiazuList"] = UserInfoCommon.HealthInfoList("HealthJiazu");
+
+
+            ViewData["HealthChufangList"] = UserInfoCommon.HealthInfoList("HealthChufang");
+            ViewData["HealthRanliaoList"] = UserInfoCommon.HealthInfoList("HealthRanliao");
+            ViewData["HealthYinshuiList"] = UserInfoCommon.HealthInfoList("HealthYinshui");
+            ViewData["HealthCesuoList"] = UserInfoCommon.HealthInfoList("HealthCesuo");
+            ViewData["HealthQichulanList"] = UserInfoCommon.HealthInfoList("HealthQichulan");
             return View();
 
         }
@@ -130,12 +144,13 @@ namespace CrmWeb.Controllers
         public ActionResult HealthInsert()
         {
 
-            string content = Request.Form["healthXuexing"].ToString();
-            string content2 = Request.Form["healthFeiyong"].ToString();
+          //  string content = Request.Form["healthXuexing"].ToString();
+          //  string content2 = Request.Form["healthFeiyong"].ToString();
+            string content3 = Request.Form["healthJiazuDady"].ToString();
 
 
 
-            return Content(content2);
+            return Content(content3);
             //return RedirectToAction("HealthIndex");
 
 
@@ -192,6 +207,48 @@ namespace CrmWeb.Controllers
             HealthBll.DeleteHealthDto(table, strwhere);
 
             return RedirectToAction("HealthIndex");
+
+        }
+        #endregion
+
+
+        #region 新增动作疾病详情
+        [HttpPost]
+        public void AjaxJibingInsert()
+        {
+
+            //  string content = Request.Form["healthXuexing"].ToString();
+            //  string content2 = Request.Form["healthFeiyong"].ToString();
+           // string content3 = Request.Form["healthJiazuDady"].ToString();
+
+            int JiwangshiUserId = 0;
+            string JiwangshiName = "";
+            string JiwangshiClass = "既往史";
+            DateTime JiwangshiTime = System.DateTime.Now;
+            string JiwangshiJibingClass = "";
+
+            JiwangshiUserId = int.Parse(Request.Form["JiwangshiUserId"].ToString());
+            JiwangshiClass = Request.Form["JiwangshiClass"].ToString();
+            JiwangshiName = Request.Form["JiwangshiName"].ToString();
+            JiwangshiJibingClass = Request.Form["JiwangshiJibingClass"].ToString();
+            JiwangshiTime =DateTime.Parse(Request.Form["JiwangshiTime"].ToString());
+
+
+            JiwangshiDto jiwangshiDto = new JiwangshiDto();
+
+            jiwangshiDto.JiwangshiUserId = JiwangshiUserId;
+            jiwangshiDto.JiwangshiClass = JiwangshiClass;
+            jiwangshiDto.JiwangshiName = JiwangshiName;
+            jiwangshiDto.JiwangshiJibingClass = JiwangshiJibingClass;
+            jiwangshiDto.JiwangshiTime = JiwangshiTime;
+
+            JiwangshiBll.AddJiwangshi(jiwangshiDto);
+
+
+
+            return ;
+            //return RedirectToAction("HealthIndex");
+
 
         }
         #endregion

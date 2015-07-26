@@ -32,44 +32,202 @@
                         <h2 class="box-title txt-center">@ViewBag.Title</h2>
                     </div><!-- /.box-header -->
                     <!-- form start -->
-                
+
                     <form action="/Health/HealthInsert" method="post">
                         <div class="box-body">
 
                             <table class="table table-bordered">
                                 <tr>
-                                    <th class="h3 text-center col-xs-2">血型</th>
+                                    <th class="text-center col-xs-2" colspan="2">血型</th>
                                     <td class=" col-xs-10">
                                         <div class="rdo">
 
                                             @foreach (string healthInfo in ViewData["HealthXuexingList"] as IEnumerable<string>)
-                                           {
-                                               <input type="radio" name="HealthXuexing" class="rdolist" value="@healthInfo" />
+                                            {
+                                            <input type="radio" name="HealthXuexing" class="rdolist" value="@healthInfo" />
 
-                                                <label class="rdobox">
+                                            <label class="rdobox">
 
                                                 <span class="check-image"></span>
 
                                                 <span class="radiobox-content">@healthInfo</span>
 
                                             </label>
-                                           
+
                                             }
 
-                                           </div>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th class="h3 text-center">RH阴性</th>
+                                    <th class="text-center" colspan="2">RH阴性</th>
                                     <td>
                                         <div class="rdo">
 
                                             @foreach (string healthInfo in ViewData["HealthRHList"] as IEnumerable<string>)
                                             {
-                                                <input type="radio" name="HealthRH" class="rdolist" value="@healthInfo" />
+                                            <input type="radio" name="HealthRH" class="rdolist" value="@healthInfo" />
 
-                                                <label class="rdobox">
+                                            <label class="rdobox">
 
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">@healthInfo</span>
+
+                                            </label>
+
+                                            }
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="h3 text-center" colspan="2">医疗费用<br />支付方式</th>
+                                    <td>
+                                        <div class="fuxuan">
+
+                                            @foreach (string healthInfo in ViewData["HealthFeiyongList"] as IEnumerable<string>)
+                                            {
+
+
+
+                                            <input type="checkbox" name="HealthFeiyong" class="chklist" value="@healthInfo" />
+
+
+
+                                            <label class="chkbox">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">@healthInfo</span>
+
+                                            </label>
+
+                                            }
+                                            <input type="checkbox" name="HealthFeiyong" id="HealthFeiyong8" class="chklist" value="8 其他" />
+
+
+
+                                            <label class="chkbox">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">其他</span>
+
+                                            </label>
+                                            <input type="text" id="HealthFeiiyongQita" class="input-sm" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">药物过敏史</td>
+                                    <td>
+                                        <div class="fuxuan">
+
+                                            <input type="checkbox" name="HealthGuominWu" class="chklist HealthGuominWu" value="无" />
+
+
+
+                                            <label class="chkbox HealthGuominWu">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">无</span>
+
+                                            </label>
+
+                                            @foreach (string healthInfo in ViewData["HealthGuominList"] as IEnumerable<string>)
+                                            {
+
+
+
+                                            <input type="checkbox" name="HealthGuomin" class="chklist" value="@healthInfo" />
+
+                                            <label class="chkbox HealthGuomin">
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">@healthInfo</span>
+
+                                            </label>
+
+                                            }
+                                            <input type="checkbox" name="HealthGuomin" id="HealthGuomin5" class="chklist" value="8 其他" />
+
+
+
+                                            <label class="chkbox HealthGuomin">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">其他</span>
+
+                                            </label>
+                                            <input type="text" id="HealthGuominQita" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">暴露史</td>
+                                    <td>
+                                        <div class="fuxuan">
+                                            <input type="checkbox" name="HealthBaolouWu" class="chklist HealthBaolouWu" value="无" />
+
+
+
+                                            <label class="chkbox HealthBaolouWu">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">无</span>
+
+                                            </label>
+
+                                            @foreach (string healthInfo in ViewData["HealthBaolouList"] as IEnumerable<string>)
+                                            {
+
+
+
+                                            <input type="checkbox" name="HealthBaolou" class="chklist HealthBaolou" value="@healthInfo" />
+
+                                            <label class="chkbox HealthBaolou">
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">@healthInfo</span>
+
+                                            </label>
+
+                                            }
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="4" style="vertical-align:central;">既往史</td>
+                                    <td class="col-xs-1">疾病</td>
+                                    <td class="col-xs-1">
+
+                                        <div class="fuxuan">
+
+                                            <input type="checkbox" name="HealthJibingWu" id="HealthJibingWu"  class="chklist HealthJibingWu" value="1 无" />
+
+
+
+                                            <label class="chkbox HealthJibingWu">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">1 无</span>
+
+                                            </label>
+
+                                            @foreach (string healthInfo in ViewData["HealthJibingList"] as IEnumerable<string>)
+                                            {
+
+
+
+                                                <input type="checkbox" name="HealthJibing" class="chklist" value="@healthInfo" />
+
+                                                <label class="chkbox HealthJibing">
                                                     <span class="check-image"></span>
 
                                                     <span class="radiobox-content">@healthInfo</span>
@@ -79,23 +237,463 @@
                                             }
 
                                         </div>
+
+                                        <div id="JibingAddForm">
+                                            <table class="table table-bordered">
+                                                <tr>
+
+                                                    <th>
+                                                        <input type="hidden" name="JiwangshiClass" id="JiwangshiClass" value="疾病" />
+                                                        <input type="hidden" name="JiwangshiUserId" id="JiwangshiUserId" value="1" />
+                                                        <input type="hidden" name="JiwangshiJibingClass" id="JiwangshiJibingClass" />
+                                                        疾病名称:
+                                                    </th>
+                                                    <th><input type="text" name="JiwangshiName" id="JiwangshiName" /></th>
+                                                    <th>确诊时间</th>
+                                                    <th><input type="text" name="JiwangshiTime" id="JiwangshiTime" /></th>
+                                                    <th><button type="button" id="JiwangshiJibing">确定新增</button></th>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        
+                                            <table class="table table-bordered" id="JiwangshiJibingShow">
+                                                <tr>
+                                                    <th>疾病类别</th>
+                                                    <th>疾病名称</th>
+                                                    <th>确诊时间</th>
+                                                    <th>修改</th>
+                                                    <th>删除</th>
+                                                </tr>
+                                            </table>
+                                        
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th class="h3 text-center">医疗费用<br />支付方式</th>
+                                    <td>手术</td>
+                                    <td>
+                                        <div class="rdo">
+
+
+                                            <input type="radio" name="HealthShoushu" class="rdolist" value="1 无" />
+
+                                            <label class="rdobox">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">1 无</span>
+
+                                            </label>
+
+                                            <input type="radio" name="HealthShoushu" id="HealthShoushuYou" class="rdolist" value="2 有" />
+
+                                            <label class="rdobox HealthShoushu">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">2 有</span>
+
+                                            </label>
+
+
+
+                                        </div>
+
+                                        <div id="ShoushuAddForm">
+                                            <table class="table table-bordered">
+                                                <tr>
+
+                                                    <th>
+                                                        <input type="hidden" name="ShoushuJiwangshiClass" id="ShoushuJiwangshiClass" value="手术" />
+                                                        <input type="hidden" name="ShoushuJiwangshiUserId" id="ShoushuJiwangshiUserId" value="1" />
+                                                        <input type="hidden" name="ShoushuJiwangshiJibingClass" id="ShoushuJiwangshiJibingClass" value="手术" />
+                                                        手术名称:
+                                                    </th>
+                                                    <th><input type="text" name="ShoushuJiwangshiName" id="ShoushuJiwangshiName" /></th>
+                                                    <th>手术时间</th>
+                                                    <th><input type="text" name="ShoushuJiwangshiTime" id="ShoushuJiwangshiTime" /></th>
+                                                    <th><button type="button" id="ShoushuJiwangshiJibing">确定添加</button></th>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                        <table class="table table-bordered" id="ShoushuJiwangshiJibingShow">
+                                            <tr>
+                                                <th>手术类别</th>
+                                                <th>手术名称</th>
+                                                <th>手术时间</th>
+                                                <th>修改</th>
+                                                <th>删除</th>
+                                            </tr>
+                                        </table>
+                                        </td>
+                                </tr>
+                                <tr>
+                                    <td>外伤</td>
+                                    <td>
+                                        <div class="rdo">
+
+
+                                            <input type="radio" name="HealthWaishang" class="rdolist" value="1 无" />
+
+                                            <label class="rdobox">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">1 无</span>
+
+                                            </label>
+
+                                            <input type="radio" name="HealthWaishang" id="HealthWaishangYou" class="rdolist" value="2 有" />
+
+                                            <label class="rdobox HealthWaishang">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">2 有</span>
+
+                                            </label>
+
+
+
+                                        </div>
+                                       
+                                        <div id="WaishangAddForm">
+                                            <table class="table table-bordered">
+                                                <tr>
+
+                                                    <th>
+                                                        <input type="hidden" name="WaishangJiwangshiClass" id="WaishangJiwangshiClass" value="外伤" />
+                                                        <input type="hidden" name="WaishangJiwangshiUserId" id="WaishangJiwangshiUserId" value="1" />
+                                                        <input type="hidden" name="WaishangJiwangshiJibingClass" id="WaishangJiwangshiJibingClass" value="外伤" />
+                                                        外伤名称:
+                                                    </th>
+                                                    <th><input type="text" name="WaishangJiwangshiName" id="WaishangJiwangshiName" /></th>
+                                                    <th>外伤时间</th>
+                                                    <th><input type="text" name="WaishangJiwangshiTime" id="WaishangJiwangshiTime" /></th>
+                                                    <th><button type="button" id="WaishangJiwangshiJibing">确定添加</button></th>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                        <table class="table table-bordered" id="WaishangJiwangshiJibingShow">
+                                            <tr>
+                                                <th>外伤类别</th>
+                                                <th>外伤名称</th>
+                                                <th>外伤时间</th>
+                                                <th>修改</th>
+                                                <th>删除</th>
+                                            </tr>
+                                        </table>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>输血</td>
+                                    <td>
+                                        <div class="rdo">
+
+
+                                            <input type="radio" name="HealthShuxue" class="rdolist" value="1 无" />
+
+                                            <label class="rdobox HealthShuxue">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">1 无</span>
+
+                                            </label>
+
+                                            <input type="radio" name="HealthShuxue" id="HealthShuxue" class="rdolist" value="2 有" />
+
+                                            <label class="rdobox HealthShuxue">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">2 有</span>
+
+                                            </label>
+
+
+
+                                        </div>
+                                        <div id="ShuxueAddForm">
+                                            <table class="table table-bordered">
+                                                <tr>
+
+                                                    <th>
+                                                        <input type="hidden" name="ShuxueJiwangshiClass" id="ShuxueJiwangshiClass" value="输血" />
+                                                        <input type="hidden" name="ShuxueJiwangshiUserId" id="ShuxueJiwangshiUserId" value="1" />
+                                                        <input type="hidden" name="ShuxueJiwangshiJibingClass" id="ShuxueJiwangshiJibingClass" value="输血" />
+                                                        输血原因:
+                                                    </th>
+                                                    <th><input type="text" name="ShuxueJiwangshiName" id="ShuxueJiwangshiName" /></th>
+                                                    <th>输血时间</th>
+                                                    <th><input type="text" name="ShuxueJiwangshiTime" id="ShuxueJiwangshiTime" /></th>
+                                                    <th><button type="button" id="ShuxueJiwangshiJibing">确定添加</button></th>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                        <table class="table table-bordered" id="ShuxueJiwangshiJibingShow">
+                                            <tr>
+                                                <th>输血类别</th>
+                                                <th>输血原因</th>
+                                                <th>输血时间</th>
+                                                <th>修改</th>
+                                                <th>删除</th>
+                                            </tr>
+                                        </table>
+
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td rowspan="4" style="vertical-align:central;">家族史</td>
+                                    <td class="col-xs-1">父亲</td>
+                                    <td class="col-xs-1">
+                                        <div class="fuxuan">
+                                            <input type="checkbox" name="HealthJiazuDadyWu" class="chklist HealthJiazuDadyWu" value="1 无" />
+
+
+
+                                            <label class="chkbox HealthJiazuDadyWu">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">1 无</span>
+
+                                            </label>
+
+                                            @foreach (string healthInfo in ViewData["HealthJiazuList"] as IEnumerable<string>)
+                                            {
+
+
+
+                                            <input type="checkbox" name="HealthJiazuDady" class="chklist HealthJiazuDady" value="@healthInfo" />
+
+                                            <label class="chkbox HealthJiazuDady">
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">@healthInfo</span>
+
+                                            </label>
+
+                                            }
+                                            <input type="checkbox" name="HealthJiazuDady" id="HealthJiazuDady12" class="chklist" value="12 其他" />
+
+
+
+                                            <label class="chkbox HealthJiazuDady">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">12 其他</span>
+
+                                            </label>
+                                            <input type="text" id="HealthJiazuDadyQita" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>母亲</td>
                                     <td>
                                         <div class="fuxuan">
-
-                                            @foreach (string healthInfo in ViewData["HealthFeiyongList"] as IEnumerable<string>)
-{
-   
+                                            <input type="checkbox" name="HealthJiazuMamaWu" class="chklist HealthJiazuMamaWu" value="1 无" />
 
 
-                 <input type="checkbox" name="HealthFeiyong" class="chklist"  value="@healthInfo" />
 
-                                                                                     
+                                            <label class="chkbox HealthJiazuMamaWu">
 
-                                            <label class="chkbox">
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">1 无</span>
+
+                                            </label>
+
+                                            @foreach (string healthInfo in ViewData["HealthJiazuList"] as IEnumerable<string>)
+                                            {
+
+
+
+                                            <input type="checkbox" name="HealthJiazuMama" class="chklist HealthJiazuMama" value="@healthInfo" />
+
+                                            <label class="chkbox HealthJiazuMama">
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">@healthInfo</span>
+
+                                            </label>
+
+                                            }
+                                            <input type="checkbox" name="HealthJiazuMama" id="HealthJiazuMama12" class="chklist" value="12 其他" />
+
+
+
+                                            <label class="chkbox HealthJiazuMama">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">12 其他</span>
+
+                                            </label>
+                                            <input type="text" id="HealthJiazuMamaQita" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>兄弟姐妹</td>
+                                    <td>
+                                        <div class="fuxuan">
+                                            <input type="checkbox" name="HealthJiazuXiongdiWu" class="chklist HealthJiazuXiongdiWu" value="1 无" />
+
+
+
+                                            <label class="chkbox HealthJiazuXiongdiWu">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">1 无</span>
+
+                                            </label>
+
+                                            @foreach (string healthInfo in ViewData["HealthJiazuList"] as IEnumerable<string>)
+                                            {
+
+
+
+                                            <input type="checkbox" name="HealthJiazuXiongdi" class="chklist HealthJiazuXiongdi" value="@healthInfo" />
+
+                                            <label class="chkbox HealthJiazuXiongdi">
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">@healthInfo</span>
+
+                                            </label>
+
+                                            }
+                                            <input type="checkbox" name="HealthJiazuXiongdi" id="HealthJiazuXiongdi12" class="chklist" value="12 其他" />
+
+
+
+                                            <label class="chkbox HealthJiazuXiongdi">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">12 其他</span>
+
+                                            </label>
+                                            <input type="text" id="HealthJiazuXiongdiQita" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>子女</td>
+                                    <td>
+                                        <div class="fuxuan">
+                                            <input type="checkbox" name="HealthJiazuZinvWu" class="chklist HealthJiazuZinvWu" value="1 无" />
+
+
+
+                                            <label class="chkbox HealthJiazuZinvWu">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">1 无</span>
+
+                                            </label>
+
+                                            @foreach (string healthInfo in ViewData["HealthJiazuList"] as IEnumerable<string>)
+                                            {
+
+
+
+                                            <input type="checkbox" name="HealthJiazuZinv" class="chklist HealthJiazuZinv" value="@healthInfo" />
+
+                                            <label class="chkbox HealthJiazuZinv">
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">@healthInfo</span>
+
+                                            </label>
+
+                                            }
+                                            <input type="checkbox" name="HealthJiazuZinv" id="HealthJiazuZinv12" class="chklist" value="12 其他" />
+
+
+
+                                            <label class="chkbox HealthJiazuZinv">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">12 其他</span>
+
+                                            </label>
+                                            <input type="text" id="HealthJiazuZinvQita" />
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td colspan="2">遗传病史</td>
+                                    <td>
+
+                                        <div class="rdo">
+
+
+                                            <input type="radio" name="HealthYichuan" class="rdolist" value="1 无" />
+
+                                            <label class="rdobox">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">1 无</span>
+
+                                            </label>
+
+                                            <input type="radio" name="HealthYichuan" id="HealthYichuanYou" class="rdolist" value="2 有" />
+
+                                            <label class="rdobox HealthYichuan">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">2 有</span>
+
+                                            </label>
+                                            <input type="text" id="HealthYichuanQita" />
+
+
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">残疾情况</td>
+                                    <td>
+                                        <div class="fuxuan">
+                                            <input type="checkbox" name="HealthCanjiWu" class="chklist HealthCanjiWu" value="1  无" checked="checked" />
+
+
+
+                                            <label class="chkbox HealthCanjiWu">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">1  无</span>
+
+                                            </label>
+
+                                            @foreach (string healthInfo in ViewData["HealthCanjiList"] as IEnumerable<string>)
+                                            {
+
+
+
+                                            <input type="checkbox" name="HealthCanji" class="chklist" value="@healthInfo" />
+
+
+
+                                            <label class="chkbox HealthCanji">
 
                                                 <span class="check-image"></span>
 
@@ -103,19 +701,131 @@
 
                                             </label>
 
-}
-                                            <input type="checkbox" name="HealthFeiyong" id="HealthFeiyong8"  class="chklist" value="8 其他" />
+                                            }<br />
+                                            <input type="checkbox" name="HealthCanji" id="HealthCanji8" class="chklist HealthCanji" value="8 其他残疾" />
 
 
 
-                                            <label class="chkbox">
+                                            <label class="chkbox HealthCanji">
 
                                                 <span class="check-image"></span>
 
-                                                <span class="radiobox-content">8 其他</span>
+                                                <span class="radiobox-content">8 其他残疾</span>
 
-                                            </label>                                
-<input type="text" id="HealthFeiiyongQita" />
+                                            </label>
+                                            <input type="text" id="HealthCanjiQita" />
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td rowspan="5" style="vertical-align:central;">生活环境</td>
+                                    <td class="col-xs-1">厨房排风设施</td>
+                                    <td class="col-xs-1">
+                                        <div class="rdo">
+
+                                            @foreach (string healthInfo in ViewData["HealthChufangList"] as IEnumerable<string>)
+                                            {
+                                            <input type="radio" name="HealthChufang" class="rdolist" value="@healthInfo" />
+
+                                            <label class="rdobox">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">@healthInfo</span>
+
+                                            </label>
+
+                                            }
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>燃料类型</td>
+                                    <td>
+                                        <div class="rdo">
+
+                                            @foreach (string healthInfo in ViewData["HealthRanliaoList"] as IEnumerable<string>)
+                                            {
+                                            <input type="radio" name="HealthRanliao" class="rdolist" value="@healthInfo" />
+
+                                            <label class="rdobox">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">@healthInfo</span>
+
+                                            </label>
+
+                                            }
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>饮水</td>
+                                    <td>
+                                        <div class="rdo">
+
+                                            @foreach (string healthInfo in ViewData["HealthYinshuiList"] as IEnumerable<string>)
+                                            {
+                                            <input type="radio" name="HealthYinshui" class="rdolist" value="@healthInfo" />
+
+                                            <label class="rdobox">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">@healthInfo</span>
+
+                                            </label>
+
+                                            }
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>厕所</td>
+                                    <td>
+                                        <div class="rdo">
+
+                                            @foreach (string healthInfo in ViewData["HealthCesuoList"] as IEnumerable<string>)
+                                            {
+                                            <input type="radio" name="HealthCesuo" class="rdolist" value="@healthInfo" />
+
+                                            <label class="rdobox">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">@healthInfo</span>
+
+                                            </label>
+
+                                            }
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>禽畜栏</td>
+                                    <td>
+                                        <div class="rdo">
+
+                                            @foreach (string healthInfo in ViewData["HealthQichulanList"] as IEnumerable<string>)
+                                            {
+                                            <input type="radio" name="HealthQinchulan" class="rdolist" value="@healthInfo" />
+
+                                            <label class="rdobox">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">@healthInfo</span>
+
+                                            </label>
+
+                                            }
+
                                         </div>
                                     </td>
                                 </tr>
@@ -129,7 +839,7 @@
                         </div>
 
                     </form>
-</div>
+                </div>
 
 
             </div><!--/.col (left) -->
@@ -140,29 +850,209 @@
     </section><!-- /.content -->
 </aside>
 @section JsBottom{
-<script src="/js/jquery-1.11.2.min.js"></script>
-<script src="/js/labelauty.js"></script>
+    <script src="/js/jquery-1.11.2.min.js"></script>
+    <script src="/js/labelauty.js"></script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
-    $(document).ready(function () {
+        $(document).ready(function () {
 
-        //参数{input类名，选择类型(单选or多选)}
+            //参数{input类名，选择类型(单选or多选)}
 
-        $(".rdolist").labelauty("rdolist", "rdo");
+            $(".rdolist").labelauty("rdolist", "rdo");
 
-        $(".chklist").labelauty("chklist", "check");
+            $(".chklist").labelauty("chklist", "check");
 
-    });
-    $("#HealthFeiiyongQita").mouseleave(function () {
-        var content = "8 其他：" + $("#HealthFeiiyongQita").val();
-        $("#HealthFeiyong8").val(content);
+            $("#JibingAddForm").hide();
+
+        });
+        $("#HealthFeiiyongQita").keyup(function () {
+            var content = "其他：" + $("#HealthFeiiyongQita").val();
+            $("#HealthFeiyong8").val(content);
+
+
+        });
+
+        $("#HealthCanjiQita").keyup(function () {
+            var content = "其他残疾：" + $("#HealthCanjiQita").val();
+            $("#HealthCanji8").val(content);
+
+        });
+
+        $("#HealthJiazuDadyQita").keyup(function () {
+            var content = "12 其他：" + $("#HealthJiazuDadyQita").val();
+            $("#HealthJiazuDady12").val(content);
+
+        });
+        $("#HealthJiazuMamaQita").keyup(function () {
+            var content = "12 其他：" + $("#HealthJiazuMamaQita").val();
+            $("#HealthJiazuMama12").val(content);
+
+        });
+        $("#HealthJiazuXiongdiQita").keyup(function () {
+            var content = "12 其他：" + $("#HealthJiazuXiongdiQita").val();
+            $("#HealthJiazuXiongdi12").val(content);
+
+        });
+
+        $("#HealthJiazuZinvQita").keyup(function () {
+            var content = "12 其他：" + $("#HealthYichuanQita").val();
+            $("#HealthJiazuZinv12").val(content);
+
+        });
+
+        $("#HealthYichuanQita").keyup(function () {
+            var content = "2 有：" + $("#HealthJiazuZinvQita").val();
+            $("#HealthYichuanYou").val(content);
+
+        });
+
+
+        //ajax提交既往史疾病部分
+        $("#JiwangshiJibing").click(function () {
+            var data = {
+                JiwangshiName: $("#JiwangshiName").val(),
+                JiwangshiTime: $("#JiwangshiTime").val(),
+                JiwangshiClass: $("#JiwangshiClass").val(),
+                JiwangshiUserId: $("#JiwangshiUserId").val(),
+                JiwangshiJibingClass: $("#JiwangshiJibingClass").val()
+            };
+            var url = '/Health/AjaxJibingInsert';
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data,
+                success: function () {
+                    $("#JibingAddForm").hide();
+                    $("#JiwangshiJibingShow").append("<tr><td>" + data.JiwangshiJibingClass + "</td><td>" + data.JiwangshiName + "</td><td>" + data.JiwangshiTime + "</td><td>修改</td><td>删除</td></tr>");
+                    
+                }
+            });
+
+        });
+
+        //ajax提交既往史手术部分
+        $("#ShoushuJiwangshiJibing").click(function () {
+
+            if ($("#ShoushuJiwangshiName").val() == "" || $("#ShoushuJiwangshiTime").val() == "")
+            {
+                alert("请填写手术名称及时间");
+                return false;
+            }
+            else{
+            var data = {
+                JiwangshiName: $("#ShoushuJiwangshiName").val(),
+                JiwangshiTime: $("#ShoushuJiwangshiTime").val(),
+                JiwangshiClass: $("#ShoushuJiwangshiClass").val(),
+                JiwangshiUserId: $("#ShoushuJiwangshiUserId").val(),
+                JiwangshiJibingClass: $("#ShoushuJiwangshiJibingClass").val()
+            };
+            var url = '/Health/AjaxJibingInsert';
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data,
+                success: function () {
+                   // $("#ShoushuJibingAddForm").hide();
+                    $("#ShoushuJiwangshiJibingShow").append("<tr><td>" + data.JiwangshiJibingClass + "</td><td>" + data.JiwangshiName + "</td><td>" + data.JiwangshiTime + "</td><td>修改</td><td>删除</td></tr>");
+                    $("#ShoushuJiwangshiName").val("");
+                    $("#ShoushuJiwangshiTime").val('');
+                }
+            });
+
+            }
+
+        });
+
+
+        //ajax提交既往史外伤部分
+        $("#WaishangJiwangshiJibing").click(function () {
+
+            if ($("#WaishangJiwangshiName").val() == "" || $("#WaishangJiwangshiTime").val() == "") {
+                alert("请填写手术名称及时间");
+                return false;
+            }
+            else {
+                var data = {
+                    JiwangshiName: $("#WaishangJiwangshiName").val(),
+                    JiwangshiTime: $("#WaishangJiwangshiTime").val(),
+                    JiwangshiClass: $("#WaishangJiwangshiClass").val(),
+                    JiwangshiUserId: $("#WaishangJiwangshiUserId").val(),
+                    JiwangshiJibingClass: $("#WaishangJiwangshiJibingClass").val()
+                };
+                var url = '/Health/AjaxJibingInsert';
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: data,
+                    success: function () {
+                        // $("#WaishangJibingAddForm").hide();
+                        $("#WaishangJiwangshiJibingShow").append("<tr><td>" + data.JiwangshiJibingClass + "</td><td>" + data.JiwangshiName + "</td><td>" + data.JiwangshiTime + "</td><td>修改</td><td>删除</td></tr>");
+                        $("#WaishangJiwangshiName").val("");
+                        $("#WaishangJiwangshiTime").val('');
+                    }
+                });
+
+            }
+
+        });
+
+        //ajax提交既往史输血部分
+        $("#ShuxueJiwangshiJibing").click(function () {
+
+            if ($("#ShuxueJiwangshiName").val() == "" || $("#ShuxueJiwangshiTime").val() == "") {
+                alert("请填写输血名称及时间");
+                return false;
+            }
+            else {
+                var data = {
+                    JiwangshiName: $("#ShuxueJiwangshiName").val(),
+                    JiwangshiTime: $("#ShuxueJiwangshiTime").val(),
+                    JiwangshiClass: $("#ShuxueJiwangshiClass").val(),
+                    JiwangshiUserId: $("#ShuxueJiwangshiUserId").val(),
+                    JiwangshiJibingClass: $("#ShuxueJiwangshiJibingClass").val()
+                };
+                var url = '/Health/AjaxJibingInsert';
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: data,
+                    success: function () {
+                        // $("#ShuxueJibingAddForm").hide();
+                        $("#ShuxueJiwangshiJibingShow").append("<tr><td>" + data.JiwangshiJibingClass + "</td><td>" + data.JiwangshiName + "</td><td>" + data.JiwangshiTime + "</td><td>修改</td><td>删除</td></tr>");
+                        $("#ShuxueJiwangshiName").val("");
+                        $("#ShuxueJiwangshiTime").val('');
+                    }
+                });
+
+            }
+
+        });
+
+        laydate({
+            elem: '#JiwangshiTime'
+        
+        });
+        laydate({
+            elem: '#ShoushuJiwangshiTime'
+
+        });
+
+        laydate({
+            elem: '#WaishangJiwangshiTime'
+
+        });
+
+        laydate({
+            elem: '#ShuxueJiwangshiTime'
+
+        });
+
+
+      
+
 
         
-    });
-</script>
 
-
-
-
+    </script>
 }
