@@ -13,58 +13,61 @@ namespace Common
             List<string> userInfoList = new List<string>();
             if (userInfo == "UserSex")
             {
-                userInfoList.Add("未知的性别");
-                userInfoList.Add("男");
-                userInfoList.Add("女");
+                userInfoList.Add("0 未知的性别");
+                userInfoList.Add("1 男");
+                userInfoList.Add("2 女");
+                userInfoList.Add("9 未说明的性别");
             
             }
             if (userInfo == "UserHuji")
             {
-                userInfoList.Add("户籍");
-                userInfoList.Add("非户籍");
+                userInfoList.Add("1 户籍");
+                userInfoList.Add("2 非户籍");
             }
             if (userInfo == "UserMinzu")
             {
-                userInfoList.Add("汉族");
-                userInfoList.Add("满族");
-                userInfoList.Add("朝鲜族");
-                userInfoList.Add("蒙古族");
-                userInfoList.Add("回族");
-                userInfoList.Add("壮族");
-                userInfoList.Add("维吾尔族");
-                userInfoList.Add("其他民族");
+                userInfoList.Add("1 汉族");
+                userInfoList.Add("2 满族");
+                userInfoList.Add("3 朝鲜族");
+                userInfoList.Add("4 蒙古族");
+                userInfoList.Add("5 回族");
+                userInfoList.Add("6 壮族");
+                userInfoList.Add("7 维吾尔族");
+                userInfoList.Add("8 其他民族");
             }
 
             if (userInfo == "UserWenhua")
             {
-                userInfoList.Add("小学");
-                userInfoList.Add("初中");
-                userInfoList.Add("高中/技校/中专");
-                userInfoList.Add("大学专科");
-                userInfoList.Add("大学本科");
-                userInfoList.Add("大学研究生");
-                userInfoList.Add("大学博士及以上");
-                userInfoList.Add("文盲及半文盲");
-                userInfoList.Add("不详");
+                userInfoList.Add("1 文盲及半文盲");  
+                userInfoList.Add("2 小学");
+                userInfoList.Add("3 初中");
+                userInfoList.Add("4 高中/技校/中专");
+                userInfoList.Add("5 大学专科");
+                userInfoList.Add("6 不详");
+                userInfoList.Add("7 大学本科");
+                userInfoList.Add("8 大学研究生");
+                userInfoList.Add("9 大学博士及以上");
+
+  
             }
             if (userInfo == "UserHunyin")
             {
-                userInfoList.Add("未婚");
-                userInfoList.Add("已婚");
-                userInfoList.Add("丧偶");
-                userInfoList.Add("离婚");
-                userInfoList.Add("未说明的婚姻状况");
+                userInfoList.Add("1 未婚");
+                userInfoList.Add("2 已婚");
+                userInfoList.Add("3 丧偶");
+                userInfoList.Add("4 离婚");
+                userInfoList.Add("5 未说明的婚姻状况");
             }
             if (userInfo == "UserZhiye")
             {
-                userInfoList.Add("国家机关、党群组织、企业、事业单位负责人");
-                userInfoList.Add("专业技术人员");
-                userInfoList.Add("办事人员和有关人员");
-                userInfoList.Add("商业、服务人员");
-                userInfoList.Add("农、林、牧、渔、水利业生产人员");
-                userInfoList.Add("生产、运输设备操作人员及有关人员");
-                userInfoList.Add("军人");
-                userInfoList.Add("不便分类的其他从业人员");
+                userInfoList.Add("1 国家机关、党群组织、企业、事业单位负责人");
+                userInfoList.Add("2 专业技术人员");
+                userInfoList.Add("3 办事人员和有关人员");
+                userInfoList.Add("4 商业、服务人员");
+                userInfoList.Add("5 农、林、牧、渔、水利业生产人员");
+                userInfoList.Add("6 生产、运输设备操作人员及有关人员");
+                userInfoList.Add("7 军人");
+                userInfoList.Add("8 不便分类的其他从业人员");
             }
             return userInfoList;
         }
@@ -75,44 +78,42 @@ namespace Common
             if (HealthInfo == "HealthXuexing")
             {   
                 
-                healthInfoList.Add("A型");
-                healthInfoList.Add("B型");
-                healthInfoList.Add("O型");
-                healthInfoList.Add("AB型");
-                healthInfoList.Add("不详");
+                healthInfoList.Add("1 A型");
+                healthInfoList.Add("2 B型");
+                healthInfoList.Add("3 O型");
+                healthInfoList.Add("4 AB型");
                 
 
             }
             if (HealthInfo == "HealthRH")
             {
                
-                healthInfoList.Add("否");
-                healthInfoList.Add("是");
-                healthInfoList.Add("不详");
+                healthInfoList.Add("1 否");
+                healthInfoList.Add("2 是");
                 
             }
             if (HealthInfo == "HealthFeiyong")
             {
-                healthInfoList.Add("城镇职工基本医疗保险");
-                healthInfoList.Add("城镇居民基本医疗保险");
-                healthInfoList.Add("新型农村合作医疗");
-                healthInfoList.Add("贫困救助");
-                healthInfoList.Add("商业医疗保险");
-                healthInfoList.Add("全公费");
-                healthInfoList.Add("全自费");
+                healthInfoList.Add("1 城镇职工基本医疗保险");
+                healthInfoList.Add("2 城镇居民基本医疗保险");
+                healthInfoList.Add("3 新型农村合作医疗");
+                healthInfoList.Add("4 贫困救助");
+                healthInfoList.Add("5 商业医疗保险");
+                healthInfoList.Add("6 全公费");
+                healthInfoList.Add("7 全自费");
             }
             if (HealthInfo == "HealthGuomin")
             {
-                healthInfoList.Add("青霉素");
-                healthInfoList.Add("磺胺");
-                healthInfoList.Add("链霉素");
+                healthInfoList.Add("2 青霉素");
+                healthInfoList.Add("3 磺胺");
+                healthInfoList.Add("4 链霉素");
 
             }
             if (HealthInfo == "HealthBaolou")
             {
-                healthInfoList.Add("化学品");
-                healthInfoList.Add("毒物");
-                healthInfoList.Add("射线");
+                healthInfoList.Add("2 化学品");
+                healthInfoList.Add("3 毒物");
+                healthInfoList.Add("4 射线");
             }
             if (HealthInfo == "HealthJibing")
             {

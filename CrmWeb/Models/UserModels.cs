@@ -108,6 +108,7 @@ namespace CrmWeb.Models
         public string UserSex { get; set; }
         [Required]
         [Display(Name = "出生日期")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]    
         public DateTime UserBirthday { get; set; }
         [Required]
         [Display(Name = "身份证号码")]

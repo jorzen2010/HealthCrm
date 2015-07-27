@@ -66,7 +66,7 @@ namespace CrmWeb.Controllers
             model.UserPassword = userDto.UserPassword;
             model.UserName = userDto.UserName;
             model.UserSex = userDto.UserSex;
-            model.UserBirthday = userDto.UserBirthday;
+            model.UserBirthday = DateTime.Parse(userDto.UserBirthday.ToString());
             model.UserNumber = userDto.UserNumber;
             model.UserTel = userDto.UserTel;
             model.UserFirstPerson = userDto.UserFirstPerson;

@@ -63,23 +63,23 @@
 @foreach (var item in Model)
             {
                             <tr>
-                                <td>@item.UserId</td>
-                                <td>@item.UserName</td>
-                                <td>@item.UserTel</td>
+                                <td>@item.HealthXuexing</td>
+                                <td>@item.HealthXuexing</td>
+                                <td>@item.HealthXuexing</td>
                            
-                                <td>@item.UserSex </td>
+                                <td>@item.HealthXuexing </td>
 
                               
-                                <td>@item.UserFirstPerson</td>
-                                <td>@item.UserFirstPersonTel</td>
+                                <td>@item.HealthXuexing</td>
+                                <td>@item.HealthXuexing</td>
                                
                                 <td>
 
-                                    <a href="@Url.Action("UserEdit", "User", new { UserId = @item.UserId })">
+                                    <a href="@Url.Action("UserEdit", "User", new { UserId = @item.HealthXuexing })">
                                         <button class="btn btn-sm btn-success"><i class="fa fa fa-edit"></i>  编辑基本信息</button>
                                     </a>
 
-                                    <a href="@Url.Action("UserEdit", "User", new { UserId = @item.UserId })">
+                                    <a href="@Url.Action("UserEdit", "User", new { UserId = @item.HealthXuexing })">
                                         <button class="btn btn-sm btn-warning"><i class="fa fa fa-edit"></i>  编辑身体指标信息</button>
                                     </a>
 

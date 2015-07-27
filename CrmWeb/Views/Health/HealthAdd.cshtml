@@ -1,6 +1,6 @@
 ﻿@model CrmWeb.Models.HealthAddViewModel
 @{
-    ViewBag.Title = "个人基本信息录入";
+    ViewBag.Title = "健康信息录入";
 }
 
 <link href="/css/index.css" rel="stylesheet" />
@@ -35,7 +35,7 @@
 
                     <form action="/Health/HealthInsert" method="post">
                         <div class="box-body">
-
+                        <input type="hidden" value="1" name="HealthUserId" id="HealthUserId">
                             <table class="table table-bordered">
                                 <tr>
                                     <th class="text-center col-xs-2" colspan="2">血型</th>
@@ -55,7 +55,15 @@
                                             </label>
 
                                             }
+                                            <input type="radio" name="HealthXuexing" class="rdolist" value="不详" checked="checked" />
 
+                                            <label class="rdobox">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">不详</span>
+
+                                            </label>
                                         </div>
                                     </td>
                                 </tr>
@@ -77,6 +85,15 @@
                                             </label>
 
                                             }
+                                            <input type="radio" name="HealthRH" class="rdolist" value="不详" checked="checked" />
+
+                                            <label class="rdobox">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">不详</span>
+
+                                            </label>
 
                                         </div>
                                     </td>
@@ -104,7 +121,7 @@
                                             </label>
 
                                             }
-                                            <input type="checkbox" name="HealthFeiyong" id="HealthFeiyong8" class="chklist" value="8 其他" />
+                                            <input type="checkbox" name="HealthFeiyong" id="HealthFeiyong8" class="chklist" value="8 其他" checked="checked" />
 
 
 
@@ -124,7 +141,7 @@
                                     <td>
                                         <div class="fuxuan">
 
-                                            <input type="checkbox" name="HealthGuominWu" class="chklist HealthGuominWu" value="无" />
+                                            <input type="checkbox" name="HealthGuominWu" class="chklist HealthGuominWu" value="1 无" checked="checked" />
 
 
 
@@ -132,7 +149,7 @@
 
                                                 <span class="check-image"></span>
 
-                                                <span class="radiobox-content">无</span>
+                                                <span class="radiobox-content">1 无</span>
 
                                             </label>
 
@@ -159,7 +176,7 @@
 
                                                 <span class="check-image"></span>
 
-                                                <span class="radiobox-content">其他</span>
+                                                <span class="radiobox-content">8 其他</span>
 
                                             </label>
                                             <input type="text" id="HealthGuominQita" />
@@ -170,7 +187,7 @@
                                     <td colspan="2">暴露史</td>
                                     <td>
                                         <div class="fuxuan">
-                                            <input type="checkbox" name="HealthBaolouWu" class="chklist HealthBaolouWu" value="无" />
+                                            <input type="checkbox" name="HealthBaolouWu" class="chklist HealthBaolouWu" value="1 无" checked="checked" />
 
 
 
@@ -178,7 +195,7 @@
 
                                                 <span class="check-image"></span>
 
-                                                <span class="radiobox-content">无</span>
+                                                <span class="radiobox-content">1 无</span>
 
                                             </label>
 
@@ -208,7 +225,7 @@
 
                                         <div class="fuxuan">
 
-                                            <input type="checkbox" name="HealthJibingWu" id="HealthJibingWu"  class="chklist HealthJibingWu" value="1 无" />
+                                            <input type="checkbox" name="HealthJibingWu" id="HealthJibingWu" class="chklist HealthJibingWu" value="1 无" checked="checked" />
 
 
 
@@ -274,7 +291,7 @@
                                         <div class="rdo">
 
 
-                                            <input type="radio" name="HealthShoushu" class="rdolist" value="1 无" />
+                                            <input type="radio" name="HealthShoushu" class="rdolist" value="1 无" checked="checked" />
 
                                             <label class="rdobox">
 
@@ -333,7 +350,7 @@
                                         <div class="rdo">
 
 
-                                            <input type="radio" name="HealthWaishang" class="rdolist" value="1 无" />
+                                            <input type="radio" name="HealthWaishang" class="rdolist" value="1 无" checked="checked" />
 
                                             <label class="rdobox">
 
@@ -393,7 +410,7 @@
                                         <div class="rdo">
 
 
-                                            <input type="radio" name="HealthShuxue" class="rdolist" value="1 无" />
+                                            <input type="radio" name="HealthShuxue" class="rdolist" value="1 无" checked="checked" />
 
                                             <label class="rdobox HealthShuxue">
 
@@ -453,7 +470,7 @@
                                     <td class="col-xs-1">父亲</td>
                                     <td class="col-xs-1">
                                         <div class="fuxuan">
-                                            <input type="checkbox" name="HealthJiazuDadyWu" class="chklist HealthJiazuDadyWu" value="1 无" />
+                                            <input type="checkbox" name="HealthJiazuDadyWu" class="chklist HealthJiazuDadyWu" value="1 无" checked="checked" />
 
 
 
@@ -499,7 +516,7 @@
                                     <td>母亲</td>
                                     <td>
                                         <div class="fuxuan">
-                                            <input type="checkbox" name="HealthJiazuMamaWu" class="chklist HealthJiazuMamaWu" value="1 无" />
+                                            <input type="checkbox" name="HealthJiazuMamaWu" class="chklist HealthJiazuMamaWu" value="1 无" checked="checked" />
 
 
 
@@ -545,7 +562,7 @@
                                     <td>兄弟姐妹</td>
                                     <td>
                                         <div class="fuxuan">
-                                            <input type="checkbox" name="HealthJiazuXiongdiWu" class="chklist HealthJiazuXiongdiWu" value="1 无" />
+                                            <input type="checkbox" name="HealthJiazuXiongdiWu" class="chklist HealthJiazuXiongdiWu" value="1 无" checked="checked" />
 
 
 
@@ -591,7 +608,7 @@
                                     <td>子女</td>
                                     <td>
                                         <div class="fuxuan">
-                                            <input type="checkbox" name="HealthJiazuZinvWu" class="chklist HealthJiazuZinvWu" value="1 无" />
+                                            <input type="checkbox" name="HealthJiazuZinvWu" class="chklist HealthJiazuZinvWu" value="1 无" checked="checked" />
 
 
 
@@ -642,7 +659,7 @@
                                         <div class="rdo">
 
 
-                                            <input type="radio" name="HealthYichuan" class="rdolist" value="1 无" />
+                                            <input type="radio" name="HealthYichuan" class="rdolist" value="1 无" checked="checked" />
 
                                             <label class="rdobox">
 
@@ -724,6 +741,15 @@
                                     <td class="col-xs-1">
                                         <div class="rdo">
 
+                                            <input type="radio" name="HealthChufang" class="rdolist" value="1 无" checked="checked" />
+
+                                            <label class="rdobox">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">1 无</span>
+
+                                            </label>
                                             @foreach (string healthInfo in ViewData["HealthChufangList"] as IEnumerable<string>)
                                             {
                                             <input type="radio" name="HealthChufang" class="rdolist" value="@healthInfo" />
@@ -746,6 +772,15 @@
                                     <td>
                                         <div class="rdo">
 
+                                            <input type="radio" name="HealthRanliao" class="rdolist" value="0 不详" checked="checked" />
+
+                                            <label class="rdobox">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">0 不详</span>
+
+                                            </label>
                                             @foreach (string healthInfo in ViewData["HealthRanliaoList"] as IEnumerable<string>)
                                             {
                                             <input type="radio" name="HealthRanliao" class="rdolist" value="@healthInfo" />
@@ -767,7 +802,15 @@
                                     <td>饮水</td>
                                     <td>
                                         <div class="rdo">
+                                            <input type="radio" name="HealthYinshui" class="rdolist" value="0 不详" checked="checked" />
 
+                                            <label class="rdobox">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">0 不详</span>
+
+                                            </label>
                                             @foreach (string healthInfo in ViewData["HealthYinshuiList"] as IEnumerable<string>)
                                             {
                                             <input type="radio" name="HealthYinshui" class="rdolist" value="@healthInfo" />
@@ -790,6 +833,15 @@
                                     <td>
                                         <div class="rdo">
 
+                                            <input type="radio" name="HealthCesuo" class="rdolist" value="0 不详"  checked="checked"/>
+
+                                            <label class="rdobox">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">0 不详</span>
+
+                                            </label>
                                             @foreach (string healthInfo in ViewData["HealthCesuoList"] as IEnumerable<string>)
                                             {
                                             <input type="radio" name="HealthCesuo" class="rdolist" value="@healthInfo" />
@@ -811,10 +863,18 @@
                                     <td>禽畜栏</td>
                                     <td>
                                         <div class="rdo">
+                                            <input type="radio" name="HealthQichulan" class="rdolist" value="0 不详"  checked="checked"/>
 
+                                            <label class="rdobox">
+
+                                                <span class="check-image"></span>
+
+                                                <span class="radiobox-content">0 不详</span>
+
+                                            </label>
                                             @foreach (string healthInfo in ViewData["HealthQichulanList"] as IEnumerable<string>)
                                             {
-                                            <input type="radio" name="HealthQinchulan" class="rdolist" value="@healthInfo" />
+                                            <input type="radio" name="HealthQichulan" class="rdolist" value="@healthInfo" />
 
                                             <label class="rdobox">
 
@@ -867,14 +927,14 @@
 
         });
         $("#HealthFeiiyongQita").keyup(function () {
-            var content = "其他：" + $("#HealthFeiiyongQita").val();
+            var content = "8 其他：" + $("#HealthFeiiyongQita").val();
             $("#HealthFeiyong8").val(content);
 
 
         });
 
         $("#HealthCanjiQita").keyup(function () {
-            var content = "其他残疾：" + $("#HealthCanjiQita").val();
+            var content = "8 其他残疾：" + $("#HealthCanjiQita").val();
             $("#HealthCanji8").val(content);
 
         });
