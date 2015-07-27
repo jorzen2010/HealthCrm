@@ -27,7 +27,7 @@
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">@ViewBag.Title <small>共 @ViewBag.RecordCount 条记录</small></h3>
-                    
+
                         <div class="box-tools pull-right">
 
 
@@ -35,71 +35,64 @@
 
 
                         </div>
-                       
+
                     </div><!-- /.box-header -->
-                   
-                    <h4>
-                        状态类型：
-                      
-                        <a href="/Guahao/GuahaoIndex?status=0"> <button class="btn btn-sm btn-primary">全部</button></a>
-                        <a href="/Guahao/GuahaoIndex?status=1">  <button class="btn btn-sm btn-warning">孕妇</button></a>
-                        <a href="/Guahao/GuahaoIndex?status=2">  <button class="btn btn-sm btn-info">儿童</button></a>
-                        <a href="/Guahao/GuahaoIndex?status=3">  <button class="btn btn-sm btn-danger">高血压</button></a>
-                        <a href="/Guahao/GuahaoIndex?status=3">  <button class="btn btn-sm btn-danger">糖尿病</button></a>
-                    </h4> <div class="box-body table-responsive no-padding">
-   <table class="table table-hover">
+
+                    
+                 <div class="box-body">
+                     <h4>
+                         状态类型：
+
+                         <a href="/Guahao/GuahaoIndex?status=0"> <button class="btn btn-sm btn-primary">全部</button></a>
+                         <a href="/Guahao/GuahaoIndex?status=1">  <button class="btn btn-sm btn-warning">孕妇</button></a>
+                         <a href="/Guahao/GuahaoIndex?status=2">  <button class="btn btn-sm btn-info">儿童</button></a>
+                         <a href="/Guahao/GuahaoIndex?status=3">  <button class="btn btn-sm btn-danger">高血压</button></a>
+                         <a href="/Guahao/GuahaoIndex?status=3">  <button class="btn btn-sm btn-danger">糖尿病</button></a>
+                     </h4> <table class="table table-hover table-bordered">
                             <tr>
-                                <th>序号</th>
-                                <th>患者姓名</th>   
-                                <th>患者手机</th>                             
-                                <th>患者性别</th>
-                               
-                                <th>联系人</th>
-                                <th>联系人电话</th>
-                               
-                                <th>操作</th>
+                                <th class="col-xs-1">序号</th>
+                                <th class="col-xs-1">患者姓名</th>
+                                <th class="col-xs-4">患者医保情况</th>
+
+                                <th class="col-xs-3">患者疾病</th>
+
+
+                                <th class="col-xs-3">操作</th>
                             </tr>
 
-@foreach (var item in Model)
-            {
-                            <tr>
-                                <td>@item.HealthXuexing</td>
-                                <td>@item.HealthXuexing</td>
-                                <td>@item.HealthXuexing</td>
-                           
-                                <td>@item.HealthXuexing </td>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.HealthId</td>
+                                <td>@item.HealthUserId</td>
+                                <td>@item.HealthFeiyong</td>
 
-                              
-                                <td>@item.HealthXuexing</td>
-                                <td>@item.HealthXuexing</td>
-                               
+                                <td>@item.HealthJibing </td>
+
+
                                 <td>
 
-                                    <a href="@Url.Action("UserEdit", "User", new { UserId = @item.HealthXuexing })">
+                                    <a href="@Url.Action("HealthEdit", "Health", new { HealthId = @item.HealthId })">
                                         <button class="btn btn-sm btn-success"><i class="fa fa fa-edit"></i>  编辑基本信息</button>
-                                    </a>
-
-                                    <a href="@Url.Action("UserEdit", "User", new { UserId = @item.HealthXuexing })">
-                                        <button class="btn btn-sm btn-warning"><i class="fa fa fa-edit"></i>  编辑身体指标信息</button>
                                     </a>
 
 
                                 </td>
-                              
-                            </tr>
-}
 
-                           
+                            </tr>
+                            }
+
+
                         </table>
                     </div><!-- /.box-body -->
-                    
+
                     <div class="box-footer clearfix">
                         <!-- Pagging -->
                         共 @ViewBag.RecordCount 条记录 <div class="SkyPager"></div>
                         <!-- EndPagging -->
                     </div>
-                        
-                    
+
+
                 </div><!-- /.box -->
             </div>
         </div><!-- /.row (main row) -->

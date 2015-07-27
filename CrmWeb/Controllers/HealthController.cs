@@ -125,67 +125,99 @@ namespace CrmWeb.Controllers
         {
             HealthDto healthDto = new HealthDto();
 
-            healthDto.HealthUserId = model.HealthUserId;
-            healthDto.HealthXuexing = model.HealthXuexing;
-            healthDto.HealthRH = model.HealthRH;
-            healthDto.HealthFeiyong = model.HealthFeiyong;
-            if (String.IsNullOrEmpty(model.HealthGuomin))
+            healthDto.HealthUserId = int.Parse(Request.Form["HealthUserId"].ToString());
+            healthDto.HealthXuexing = Request.Form["HealthXuexing"].ToString();
+            healthDto.HealthRH = Request.Form["HealthRH"].ToString();
+            healthDto.HealthFeiyong = Request.Form["HealthFeiyong"].ToString();
+            if (String.IsNullOrEmpty(Request.Form["HealthGuomin"]))
             {
-                model.HealthGuomin = "1 无";
+                healthDto.HealthGuomin = "1 无";
+
+            }
+            else
+            { 
+            healthDto.HealthGuomin = Request.Form["HealthGuomin"].ToString();
+            }
+            if (String.IsNullOrEmpty(Request.Form["HealthBaolou"]))
+            {
+                healthDto.HealthBaolou = "1 无";
+
+            }
             
-            }
-            healthDto.HealthGuomin = model.HealthGuomin;
-            if (String.IsNullOrEmpty(model.HealthBaolou))
+            else
             {
-                model.HealthBaolou = "1 无";
+            healthDto.HealthBaolou = Request.Form["HealthBaolou"].ToString();
+            }
+            if (String.IsNullOrEmpty(Request.Form["HealthJibing"]))
+            {
+                healthDto.HealthJibing = "1 无";
 
             }
-            healthDto.HealthBaolou = model.HealthBaolou;
-            if (String.IsNullOrEmpty(model.HealthJibing))
-            {
-                model.HealthJibing = "1 无";
+            else
+            { 
+             healthDto.HealthJibing = Request.Form["HealthJibing"].ToString();
 
             }
-            healthDto.HealthJibing = model.HealthJibing;
-            healthDto.HealthShoushu = model.HealthShoushu;
-            healthDto.HealthWaishang = model.HealthWaishang;
-            healthDto.HealthShuxue = model.HealthShuxue;
-            if (String.IsNullOrEmpty(model.HealthJiazuDady))
+            healthDto.HealthShoushu = Request.Form["HealthShoushu"].ToString();
+            healthDto.HealthWaishang = Request.Form["HealthWaishang"].ToString();
+            healthDto.HealthShuxue = Request.Form["HealthShuxue"].ToString();
+            if (String.IsNullOrEmpty(Request.Form["HealthJiazuDady"]))
             {
-                model.HealthJiazuDady = "1 无";
+
+                healthDto.HealthJiazuDady = "1 无";
+            }
+            else
+            { 
+              Request.Form["HealthJiazuDady"].ToString();
+            }
+
+            if (String.IsNullOrEmpty(Request.Form["HealthJiazuMama"]))
+            {
+                healthDto.HealthJiazuMama = "1 无";
 
             }
-            healthDto.HealthJiazuDady = model.HealthJiazuDady;
-            if (String.IsNullOrEmpty(model.HealthJiazuMama))
+            else
+            { 
+                Request.Form["HealthJiazuMama"].ToString();
+            }
+
+            if (String.IsNullOrEmpty(Request.Form["HealthJiazuXiongdi"]))
             {
-                model.HealthJiazuMama = "1 无";
+
+                healthDto.HealthJiazuXiongdi = "1 无";
+            }
+            else
+            { 
+            Request.Form["HealthJiazuXiongdi"].ToString();
 
             }
-            healthDto.HealthJiazuMama = model.HealthJiazuMama;
-            if (String.IsNullOrEmpty(model.HealthJiazuXiongdi))
+            if (String.IsNullOrEmpty(Request.Form["HealthJiazuZinv"]))
             {
-                model.HealthJiazuXiongdi = "1 无";
+                healthDto.HealthJiazuZinv = "1 无";
 
             }
-            healthDto.HealthJiazuXiongdi = model.HealthJiazuXiongdi;
-            if (String.IsNullOrEmpty(model.HealthJiazuZinv))
+            else
             {
-                model.HealthJiazuZinv = "1 无";
+                healthDto.HealthJiazuZinv = Request.Form["HealthJiazuZinv"].ToString();
+            }
+           
+            healthDto.HealthYichuan = Request.Form["HealthYichuan"].ToString();
+            if (String.IsNullOrEmpty(Request.Form["HealthCanji"]))
+            {
+
+                healthDto.HealthCanji = "1 无";
 
             }
-            healthDto.HealthJiazuZinv = model.HealthJiazuZinv;
-            healthDto.HealthYichuan = model.HealthYichuan;
-            if (String.IsNullOrEmpty(model.HealthCanji))
+            else
             {
-                model.HealthCanji = "1 无";
-
+                healthDto.HealthCanji = Request.Form["HealthCanji"].ToString();
             }
-            healthDto.HealthCanji = model.HealthCanji;
-            healthDto.HealthChufang = model.HealthChufang;
-            healthDto.HealthRanliao = model.HealthRanliao;
-            healthDto.HealthYinshui = model.HealthYinshui;
-            healthDto.HealthCesuo = model.HealthCesuo;
-            healthDto.HealthQichulan = model.HealthQichulan;
+
+            healthDto.HealthChufang = Request.Form["HealthChufang"].ToString();
+            healthDto.HealthRanliao = Request.Form["HealthRanliao"].ToString();
+            healthDto.HealthYinshui = Request.Form["HealthYinshui"].ToString();
+            healthDto.HealthCesuo = Request.Form["HealthCesuo"].ToString();
+            healthDto.HealthQichulan = Request.Form["HealthQichulan"].ToString();
 
             HealthBll.AddHealth(healthDto);
 
@@ -216,72 +248,105 @@ namespace CrmWeb.Controllers
 
         #region 客户更新动作
         [HttpPost]
-        public ActionResult HealthUpdate(HealthEditViewModel model)
+        public ActionResult HealthUpdate()
         {
             string table = "CrmHealth";
-            string strwhere = "HealthId=" + model.HealthId;
+            string strwhere = "HealthId=" + int.Parse(Request.Form["HealthId"].ToString());
             HealthDto healthDto = HealthBll.GetOneHealthDto(table,strwhere);
-            healthDto.HealthUserId = model.HealthUserId;
-            healthDto.HealthXuexing = model.HealthXuexing;
-            healthDto.HealthRH = model.HealthRH;
-            healthDto.HealthFeiyong = model.HealthFeiyong;
-            if (String.IsNullOrEmpty(model.HealthGuomin))
+            healthDto.HealthId = int.Parse(Request.Form["HealthId"].ToString());
+            healthDto.HealthUserId = int.Parse(Request.Form["HealthUserId"].ToString());
+            healthDto.HealthXuexing = Request.Form["HealthXuexing"].ToString();
+            healthDto.HealthRH = Request.Form["HealthRH"].ToString();
+            healthDto.HealthFeiyong = Request.Form["HealthFeiyong"].ToString();
+            if (String.IsNullOrEmpty(Request.Form["HealthGuomin"]))
             {
-                model.HealthGuomin = "1 无";
+                healthDto.HealthGuomin = "1 无";
 
             }
-            healthDto.HealthGuomin = model.HealthGuomin;
-            if (String.IsNullOrEmpty(model.HealthBaolou))
+            else
             {
-                model.HealthBaolou = "1 无";
+                healthDto.HealthGuomin = Request.Form["HealthGuomin"].ToString();
+            }
+            if (String.IsNullOrEmpty(Request.Form["HealthBaolou"]))
+            {
+                healthDto.HealthBaolou = "1 无";
 
             }
-            healthDto.HealthBaolou = model.HealthBaolou;
-            if (String.IsNullOrEmpty(model.HealthJibing))
+
+            else
             {
-                model.HealthJibing = "1 无";
+                healthDto.HealthBaolou = Request.Form["HealthBaolou"].ToString();
+            }
+            if (String.IsNullOrEmpty(Request.Form["HealthJibing"]))
+            {
+                healthDto.HealthJibing = "1 无";
 
             }
-            healthDto.HealthJibing = model.HealthJibing;
-            healthDto.HealthShoushu = model.HealthShoushu;
-            healthDto.HealthWaishang = model.HealthWaishang;
-            healthDto.HealthShuxue = model.HealthShuxue;
-            if (String.IsNullOrEmpty(model.HealthJiazuDady))
+            else
             {
-                model.HealthJiazuDady = "1 无";
+                healthDto.HealthJibing = Request.Form["HealthJibing"].ToString();
 
             }
-            healthDto.HealthJiazuDady = model.HealthJiazuDady;
-            if (String.IsNullOrEmpty(model.HealthJiazuMama))
+            healthDto.HealthShoushu = Request.Form["HealthShoushu"].ToString();
+            healthDto.HealthWaishang = Request.Form["HealthWaishang"].ToString();
+            healthDto.HealthShuxue = Request.Form["HealthShuxue"].ToString();
+            if (String.IsNullOrEmpty(Request.Form["HealthJiazuDady"]))
             {
-                model.HealthJiazuMama = "1 无";
+
+                healthDto.HealthJiazuDady = "1 无";
+            }
+            else
+            {
+                Request.Form["HealthJiazuDady"].ToString();
+            }
+
+            if (String.IsNullOrEmpty(Request.Form["HealthJiazuMama"]))
+            {
+                healthDto.HealthJiazuMama = "1 无";
 
             }
-            healthDto.HealthJiazuMama = model.HealthJiazuMama;
-            if (String.IsNullOrEmpty(model.HealthJiazuXiongdi))
+            else
             {
-                model.HealthJiazuXiongdi = "1 无";
+                Request.Form["HealthJiazuMama"].ToString();
+            }
+
+            if (String.IsNullOrEmpty(Request.Form["HealthJiazuXiongdi"]))
+            {
+
+                healthDto.HealthJiazuXiongdi = "1 无";
+            }
+            else
+            {
+                Request.Form["HealthJiazuXiongdi"].ToString();
 
             }
-            healthDto.HealthJiazuXiongdi = model.HealthJiazuXiongdi;
-            if (String.IsNullOrEmpty(model.HealthJiazuZinv))
+            if (String.IsNullOrEmpty(Request.Form["HealthJiazuZinv"]))
             {
-                model.HealthJiazuZinv = "1 无";
+                healthDto.HealthJiazuZinv = "1 无";
 
             }
-            healthDto.HealthJiazuZinv = model.HealthJiazuZinv;
-            healthDto.HealthYichuan = model.HealthYichuan;
-            if (String.IsNullOrEmpty(model.HealthCanji))
+            else
             {
-                model.HealthCanji = "1 无";
+                healthDto.HealthJiazuZinv = Request.Form["HealthJiazuZinv"].ToString();
+            }
+
+            healthDto.HealthYichuan = Request.Form["HealthYichuan"].ToString();
+            if (String.IsNullOrEmpty(Request.Form["HealthCanji"]))
+            {
+
+                healthDto.HealthCanji = "1 无";
 
             }
-            healthDto.HealthCanji = model.HealthCanji;
-            healthDto.HealthChufang = model.HealthChufang;
-            healthDto.HealthRanliao = model.HealthRanliao;
-            healthDto.HealthYinshui = model.HealthYinshui;
-            healthDto.HealthCesuo = model.HealthCesuo;
-            healthDto.HealthQichulan = model.HealthQichulan;
+            else
+            {
+                healthDto.HealthCanji = Request.Form["HealthCanji"].ToString();
+            }
+
+            healthDto.HealthChufang = Request.Form["HealthChufang"].ToString();
+            healthDto.HealthRanliao = Request.Form["HealthRanliao"].ToString();
+            healthDto.HealthYinshui = Request.Form["HealthYinshui"].ToString();
+            healthDto.HealthCesuo = Request.Form["HealthCesuo"].ToString();
+            healthDto.HealthQichulan = Request.Form["HealthQichulan"].ToString();
 
 
 
