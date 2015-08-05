@@ -71,6 +71,7 @@ namespace CrmWeb.Controllers
             ViewBag.PageCount = pager.PageCount;
             ViewBag.RecordCount = pager.Amount;
 
+            ViewData["UserDoctorList"] = DoctorBll.GetFenpeiDoctorForSelect();
 
             return View(pager.Entity);
         }

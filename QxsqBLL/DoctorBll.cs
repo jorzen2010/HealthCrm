@@ -42,6 +42,28 @@ namespace QxsqBLL
         }
         #endregion
 
+        #region   医生分配用的以下拉框显示
+        public static List<SelectListItem> GetFenpeiDoctorForSelect()
+        {
+            string strwhere = "1=1";
+            
+              
+            List<DoctorDto> DoctorDtoList = DoctorDal.GetDoctorList("CrmDoctor", strwhere);
+
+            List<SelectListItem> items = new List<SelectListItem>();
+
+            items.Add(new SelectListItem { Text = "将此患者分配给", Value = "9999" });
+
+            foreach (DoctorDto doctorDto in DoctorDtoList)
+            {
+
+                items.Add(new SelectListItem { Text = doctorDto.DoctorRealName, Value = doctorDto.DoctorId.ToString() });
+            }
+
+            return items;
+        }
+        #endregion
+
         public static List<DoctorDto> GetDoctorDtoList(string table,string strwhere)
         {
             return DoctorDal.GetDoctorList(table,strwhere);
