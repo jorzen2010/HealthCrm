@@ -44,15 +44,9 @@
                                         <div class="rdo">
 
                                             @foreach (string healthInfo in ViewData["HealthXuexingList"] as IEnumerable<string>)
-                                            {
-                                                if (Model.HealthXuexing == healthInfo)
-                                                {
-                                                    <input type="radio" name="HealthXuexing" class="rdolist" value="@healthInfo" checked="checked" />
-                                                }
-                                                else
-                                                {
-                                                    <input type="radio" name="HealthXuexing" class="rdolist" value="@healthInfo" />
-                                                }
+{
+
+    <input type="radio" name="HealthXuexing" class="rdolist" value="@healthInfo" @(Model.HealthXuexing.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="rdobox">
 
@@ -64,14 +58,9 @@
 
                                             }
 
-                                            @if (Model.HealthXuexing == "不详")
-                                            {
-                                                <input type="radio" name="HealthXuexing" class="rdolist" value="不详" checked="checked" />
-                                            }
-                                            else
-                                            {
-                                                <input type="radio" name="HealthXuexing" class="rdolist" value="不详" />
-                                            }
+    
+    <input type="radio" name="HealthXuexing" class="rdolist" value="不详"  @(Model.HealthXuexing.Contains("不详") == true ? "checked=\"checked\"" : "") />
+
 
                                             <label class="rdobox">
 
@@ -89,8 +78,8 @@
                                         <div class="rdo">
 
                                             @foreach (string healthInfo in ViewData["HealthRHList"] as IEnumerable<string>)
-                                            {
-                                                <input type="radio" name="HealthRH" class="rdolist" value="@healthInfo" />
+{
+    <input type="radio" name="HealthRH" class="rdolist" value="@healthInfo" @(Model.HealthRH.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="rdobox">
 
@@ -101,7 +90,7 @@
                                                 </label>
 
                                             }
-                                            <input type="radio" name="HealthRH" class="rdolist" value="不详" checked="checked" />
+                                            <input type="radio" name="HealthRH" class="rdolist" value="不详" @(Model.HealthRH.Contains("不详") == true ? "checked=\"checked\"" : "") />
 
                                             <label class="rdobox">
 
@@ -203,7 +192,7 @@
                                     <td colspan="2">暴露史</td>
                                     <td>
                                         <div class="fuxuan">
-                                            <input type="checkbox" name="HealthBaolouWu" class="chklist HealthBaolouWu" value="1 无" checked="checked" />
+                                            <input type="checkbox" name="HealthBaolouWu" class="chklist HealthBaolouWu" value="1 无" @(Model.HealthBaolou.Contains("1 无") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -216,11 +205,11 @@
                                             </label>
 
                                             @foreach (string healthInfo in ViewData["HealthBaolouList"] as IEnumerable<string>)
-                                            {
+{
 
 
 
-                                                <input type="checkbox" name="HealthBaolou" class="chklist HealthBaolou" value="@healthInfo" />
+    <input type="checkbox" name="HealthBaolou" class="chklist HealthBaolou" value="@healthInfo" @(Model.HealthBaolou.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="chkbox HealthBaolou">
                                                     <span class="check-image"></span>
@@ -241,7 +230,7 @@
 
                                         <div class="fuxuan">
 
-                                            <input type="checkbox" name="HealthJibingWu" id="HealthJibingWu" class="chklist HealthJibingWu" value="1 无" checked="checked" />
+                                            <input type="checkbox" name="HealthJibingWu" id="HealthJibingWu" class="chklist HealthJibingWu" value="1 无" @(Model.HealthBaolou.Contains("无") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -254,11 +243,11 @@
                                             </label>
 
                                             @foreach (string healthInfo in ViewData["HealthJibingList"] as IEnumerable<string>)
-                                            {
+{
 
 
 
-                                                <input type="checkbox" name="HealthJibing" class="chklist" value="@healthInfo" />
+    <input type="checkbox" name="HealthJibing" class="chklist" value="@healthInfo" @(Model.HealthJibing.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="chkbox HealthJibing">
                                                     <span class="check-image"></span>
@@ -307,7 +296,7 @@
                                         <div class="rdo">
 
 
-                                            <input type="radio" name="HealthShoushu" class="rdolist" value="1 无" checked="checked" />
+                                            <input type="radio" name="HealthShoushu" class="rdolist" value="1 无" @(Model.HealthShoushu.Contains("1 无") == true ? "checked=\"checked\"" : "") />
 
                                             <label class="rdobox">
 
@@ -317,7 +306,7 @@
 
                                             </label>
 
-                                            <input type="radio" name="HealthShoushu" id="HealthShoushuYou" class="rdolist" value="2 有" />
+                                            <input type="radio" name="HealthShoushu" id="HealthShoushuYou" class="rdolist" value="2 有" @(Model.HealthShoushu.Contains("2 有") == true ? "checked=\"checked\"" : "") />
 
                                             <label class="rdobox HealthShoushu">
 
@@ -366,7 +355,7 @@
                                         <div class="rdo">
 
 
-                                            <input type="radio" name="HealthWaishang" class="rdolist" value="1 无" checked="checked" />
+                                            <input type="radio" name="HealthWaishang" class="rdolist" value="1 无" @(Model.HealthWaishang.Contains("1 无") == true ? "checked=\"checked\"" : "") />
 
                                             <label class="rdobox">
 
@@ -376,7 +365,7 @@
 
                                             </label>
 
-                                            <input type="radio" name="HealthWaishang" id="HealthWaishangYou" class="rdolist" value="2 有" />
+                                            <input type="radio" name="HealthWaishang" id="HealthWaishangYou" class="rdolist" value="2 有" @(Model.HealthWaishang.Contains("2 有") == true ? "checked=\"checked\"" : "") />
 
                                             <label class="rdobox HealthWaishang">
 
@@ -486,7 +475,7 @@
                                     <td class="col-xs-1">父亲</td>
                                     <td class="col-xs-1">
                                         <div class="fuxuan">
-                                            <input type="checkbox" name="HealthJiazuDadyWu" class="chklist HealthJiazuDadyWu" value="1 无" checked="checked" />
+                                            <input type="checkbox" name="HealthJiazuDadyWu" class="chklist HealthJiazuDadyWu" value="1 无" @(Model.HealthJiazuDady.Contains("1 无") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -499,11 +488,11 @@
                                             </label>
 
                                             @foreach (string healthInfo in ViewData["HealthJiazuList"] as IEnumerable<string>)
-                                            {
+{
 
 
 
-                                                <input type="checkbox" name="HealthJiazuDady" class="chklist HealthJiazuDady" value="@healthInfo" />
+    <input type="checkbox" name="HealthJiazuDady" class="chklist HealthJiazuDady" value="@healthInfo" @(Model.HealthJiazuDady.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="chkbox HealthJiazuDady">
                                                     <span class="check-image"></span>
@@ -513,7 +502,7 @@
                                                 </label>
 
                                             }
-                                            <input type="checkbox" name="HealthJiazuDady" id="HealthJiazuDady12" class="chklist" value="12 其他" />
+                                            <input type="checkbox" name="HealthJiazuDady" id="HealthJiazuDady12" class="chklist" value="12 其他" @(Model.HealthJiazuDady.Contains("12 其他") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -532,7 +521,7 @@
                                     <td>母亲</td>
                                     <td>
                                         <div class="fuxuan">
-                                            <input type="checkbox" name="HealthJiazuMamaWu" class="chklist HealthJiazuMamaWu" value="1 无" checked="checked" />
+                                            <input type="checkbox" name="HealthJiazuMamaWu" class="chklist HealthJiazuMamaWu" value="1 无" @(Model.HealthJiazuMama.Contains("1 无") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -545,11 +534,11 @@
                                             </label>
 
                                             @foreach (string healthInfo in ViewData["HealthJiazuList"] as IEnumerable<string>)
-                                            {
+{
 
 
 
-                                                <input type="checkbox" name="HealthJiazuMama" class="chklist HealthJiazuMama" value="@healthInfo" />
+    <input type="checkbox" name="HealthJiazuMama" class="chklist HealthJiazuMama" value="@healthInfo" @(Model.HealthJiazuMama.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="chkbox HealthJiazuMama">
                                                     <span class="check-image"></span>
@@ -559,7 +548,7 @@
                                                 </label>
 
                                             }
-                                            <input type="checkbox" name="HealthJiazuMama" id="HealthJiazuMama12" class="chklist" value="12 其他" />
+                                            <input type="checkbox" name="HealthJiazuMama" id="HealthJiazuMama12" class="chklist" value="12 其他" @(Model.HealthJiazuMama.Contains("12 其他") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -578,7 +567,7 @@
                                     <td>兄弟姐妹</td>
                                     <td>
                                         <div class="fuxuan">
-                                            <input type="checkbox" name="HealthJiazuXiongdiWu" class="chklist HealthJiazuXiongdiWu" value="1 无" checked="checked" />
+                                            <input type="checkbox" name="HealthJiazuXiongdiWu" class="chklist HealthJiazuXiongdiWu" value="1 无" @(Model.HealthJiazuXiongdi.Contains("1 无") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -591,11 +580,11 @@
                                             </label>
 
                                             @foreach (string healthInfo in ViewData["HealthJiazuList"] as IEnumerable<string>)
-                                            {
+{
 
 
 
-                                                <input type="checkbox" name="HealthJiazuXiongdi" class="chklist HealthJiazuXiongdi" value="@healthInfo" />
+    <input type="checkbox" name="HealthJiazuXiongdi" class="chklist HealthJiazuXiongdi" value="@healthInfo" @(Model.HealthJiazuXiongdi.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="chkbox HealthJiazuXiongdi">
                                                     <span class="check-image"></span>
@@ -605,7 +594,7 @@
                                                 </label>
 
                                             }
-                                            <input type="checkbox" name="HealthJiazuXiongdi" id="HealthJiazuXiongdi12" class="chklist" value="12 其他" />
+                                            <input type="checkbox" name="HealthJiazuXiongdi" id="HealthJiazuXiongdi12" class="chklist" value="12 其他"  @(Model.HealthJiazuXiongdi.Contains("12 其他") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -624,7 +613,7 @@
                                     <td>子女</td>
                                     <td>
                                         <div class="fuxuan">
-                                            <input type="checkbox" name="HealthJiazuZinvWu" class="chklist HealthJiazuZinvWu" value="1 无" checked="checked" />
+                                            <input type="checkbox" name="HealthJiazuZinvWu" class="chklist HealthJiazuZinvWu" value="1 无" @(Model.HealthJiazuZinv.Contains("1 无") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -641,7 +630,7 @@
 
 
 
-                                                <input type="checkbox" name="HealthJiazuZinv" class="chklist HealthJiazuZinv" value="@healthInfo" />
+                                                <input type="checkbox" name="HealthJiazuZinv" class="chklist HealthJiazuZinv" value="@healthInfo" @(Model.HealthJiazuZinv.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="chkbox HealthJiazuZinv">
                                                     <span class="check-image"></span>
@@ -651,7 +640,7 @@
                                                 </label>
 
                                             }
-                                            <input type="checkbox" name="HealthJiazuZinv" id="HealthJiazuZinv12" class="chklist" value="12 其他" />
+                                            <input type="checkbox" name="HealthJiazuZinv" id="HealthJiazuZinv12" class="chklist" value="12 其他" @(Model.HealthJiazuZinv.Contains("12 其他") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -675,7 +664,7 @@
                                         <div class="rdo">
 
 
-                                            <input type="radio" name="HealthYichuan" class="rdolist" value="1 无" checked="checked" />
+                                            <input type="radio" name="HealthYichuan" class="rdolist" value="1 无" @(Model.HealthYichuan.Contains("1 无") == true ? "checked=\"checked\"" : "") />
 
                                             <label class="rdobox">
 
@@ -685,7 +674,7 @@
 
                                             </label>
 
-                                            <input type="radio" name="HealthYichuan" id="HealthYichuanYou" class="rdolist" value="2 有" />
+                                            <input type="radio" name="HealthYichuan" id="HealthYichuanYou" class="rdolist" value="2 有" @(Model.HealthYichuan.Contains("2 有") == true ? "checked=\"checked\"" : "") />
 
                                             <label class="rdobox HealthYichuan">
 
@@ -705,7 +694,7 @@
                                     <td colspan="2">残疾情况</td>
                                     <td>
                                         <div class="fuxuan">
-                                            <input type="checkbox" name="HealthCanjiWu" class="chklist HealthCanjiWu" value="1  无" checked="checked" />
+                                            <input type="checkbox" name="HealthCanjiWu" class="chklist HealthCanjiWu" value="1  无" @(Model.HealthCanji.Contains("无") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -718,11 +707,11 @@
                                             </label>
 
                                             @foreach (string healthInfo in ViewData["HealthCanjiList"] as IEnumerable<string>)
-                                            {
+{
 
 
 
-                                                <input type="checkbox" name="HealthCanji" class="chklist" value="@healthInfo" />
+    <input type="checkbox" name="HealthCanji" class="chklist" value="@healthInfo" @(Model.HealthCanji.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -735,7 +724,7 @@
                                                 </label>
 
                                             }<br />
-                                            <input type="checkbox" name="HealthCanji" id="HealthCanji8" class="chklist HealthCanji" value="8 其他残疾" />
+                                            <input type="checkbox" name="HealthCanji" id="HealthCanji8" class="chklist HealthCanji" value="8 其他残疾" @(Model.HealthCanji.Contains("其他残疾") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -757,18 +746,10 @@
                                     <td class="col-xs-1">
                                         <div class="rdo">
 
-                                            <input type="radio" name="HealthChufang" class="rdolist" value="1 无" checked="checked" />
-
-                                            <label class="rdobox">
-
-                                                <span class="check-image"></span>
-
-                                                <span class="radiobox-content">1 无</span>
-
-                                            </label>
+                                           
                                             @foreach (string healthInfo in ViewData["HealthChufangList"] as IEnumerable<string>)
-                                            {
-                                                <input type="radio" name="HealthChufang" class="rdolist" value="@healthInfo" />
+{
+    <input type="radio" name="HealthChufang" class="rdolist" value="@healthInfo" @(Model.HealthChufang.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="rdobox">
 
@@ -788,7 +769,7 @@
                                     <td>
                                         <div class="rdo">
 
-                                            <input type="radio" name="HealthRanliao" class="rdolist" value="0 不详" checked="checked" />
+                                            <input type="radio" name="HealthRanliao" class="rdolist" value="0 不详" @(Model.HealthRanliao.Contains("0 不详") == true ? "checked=\"checked\"" : "") />
 
                                             <label class="rdobox">
 
@@ -798,8 +779,8 @@
 
                                             </label>
                                             @foreach (string healthInfo in ViewData["HealthRanliaoList"] as IEnumerable<string>)
-                                            {
-                                                <input type="radio" name="HealthRanliao" class="rdolist" value="@healthInfo" />
+{
+    <input type="radio" name="HealthRanliao" class="rdolist" value="@healthInfo" @(Model.HealthRanliao.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="rdobox">
 
@@ -818,7 +799,7 @@
                                     <td>饮水</td>
                                     <td>
                                         <div class="rdo">
-                                            <input type="radio" name="HealthYinshui" class="rdolist" value="0 不详" checked="checked" />
+                                            <input type="radio" name="HealthYinshui" class="rdolist" value="0 不详" @(Model.HealthYinshui.Contains("0 不详") == true ? "checked=\"checked\"" : "") />
 
                                             <label class="rdobox">
 
@@ -828,8 +809,8 @@
 
                                             </label>
                                             @foreach (string healthInfo in ViewData["HealthYinshuiList"] as IEnumerable<string>)
-                                            {
-                                                <input type="radio" name="HealthYinshui" class="rdolist" value="@healthInfo" />
+{
+    <input type="radio" name="HealthYinshui" class="rdolist" value="@healthInfo" @(Model.HealthYinshui.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="rdobox">
 
@@ -849,7 +830,7 @@
                                     <td>
                                         <div class="rdo">
 
-                                            <input type="radio" name="HealthCesuo" class="rdolist" value="0 不详" checked="checked" />
+                                            <input type="radio" name="HealthCesuo" class="rdolist" value="0 不详" @(Model.HealthCesuo.Contains("0 不详") == true ? "checked=\"checked\"" : "") />
 
                                             <label class="rdobox">
 
@@ -859,8 +840,8 @@
 
                                             </label>
                                             @foreach (string healthInfo in ViewData["HealthCesuoList"] as IEnumerable<string>)
-                                            {
-                                                <input type="radio" name="HealthCesuo" class="rdolist" value="@healthInfo" />
+{
+    <input type="radio" name="HealthCesuo" class="rdolist" value="@healthInfo" @(Model.HealthCesuo.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="rdobox">
 
@@ -879,7 +860,7 @@
                                     <td>禽畜栏</td>
                                     <td>
                                         <div class="rdo">
-                                            <input type="radio" name="HealthQichulan" class="rdolist" value="0 不详" checked="checked" />
+                                            <input type="radio" name="HealthQichulan" class="rdolist" value="0 不详" @(Model.HealthQichulan.Contains(" 0 不详") == true ? "checked=\"checked\"" : "") />
 
                                             <label class="rdobox">
 
@@ -889,8 +870,8 @@
 
                                             </label>
                                             @foreach (string healthInfo in ViewData["HealthQichulanList"] as IEnumerable<string>)
-                                            {
-                                                <input type="radio" name="HealthQichulan" class="rdolist" value="@healthInfo" />
+{
+    <input type="radio" name="HealthQichulan" class="rdolist" value="@healthInfo" @(Model.HealthQichulan.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="rdobox">
 

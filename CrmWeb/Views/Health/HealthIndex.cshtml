@@ -1,4 +1,5 @@
-﻿@{
+﻿@using QxsqDAL;
+@{
     ViewBag.Title = "客户列表";
 }
 
@@ -64,7 +65,7 @@
                             {
                                 <tr>
                                     <td>@item.HealthId</td>
-                                <td>@item.HealthUserId</td>
+                                <td>@UserDal.GetOneUser("CrmUser","UserId="+item.HealthUserId).UserName</td>
                                 <td>@item.HealthFeiyong</td>
 
                                 <td>@item.HealthJibing </td>

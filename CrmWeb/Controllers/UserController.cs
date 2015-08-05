@@ -15,11 +15,51 @@ namespace CrmWeb.Controllers
       
         #region 客户列表页
        
-        public ActionResult UserIndex(int? p)
+        public ActionResult UserIndex(int? p,int?groupId)
         {
 
+            int GroupId = groupId ?? 0;
+            string strwhere = "";
+            if (GroupId == 0)
+            {
+                strwhere = "UserId>0";
+            }
+            else
+            {
+                strwhere = "UserGroup=" + GroupId;
+            }
+            string table = "CrmUser";
 
-            string strwhere = "UserId>0";
+            Pager pager = new Pager();
+            pager.PageSize = 20;
+            pager.PageNo = p ?? 1;
+
+            pager = UserBll.GetUserPager(pager, strwhere, table);
+            ViewBag.PageNo = p ?? 1;
+            ViewBag.PageCount = pager.PageCount;
+            ViewBag.RecordCount = pager.Amount;
+
+
+            return View(pager.Entity);
+        }
+        #endregion
+
+
+        #region 客户列表页
+
+        public ActionResult UserFenpei(int? p, int? groupId)
+        {
+
+            int GroupId = groupId ?? 0;
+            string strwhere = "";
+            if (GroupId == 0)
+            {
+                strwhere = "UserId>0";
+            }
+            else
+            {
+                strwhere = "UserGroup=" + GroupId;
+            }
             string table = "CrmUser";
 
             Pager pager = new Pager();

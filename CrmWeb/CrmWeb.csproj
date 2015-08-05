@@ -836,6 +836,7 @@
     <Content Include="Views\Health\HealthEdit.cshtml" />
     <Content Include="Views\Health\HealthIndex.cshtml" />
     <Content Include="Views\Health\UserInfoAdd.cshtml" />
+    <Content Include="Views\User\UserFenpei.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

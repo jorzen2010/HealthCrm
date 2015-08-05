@@ -12,9 +12,9 @@ namespace CrmWeb.Controllers
 {
     public class HealthController : BaseController
     {
-      
+
         #region 客户列表页
-       
+
         public ActionResult HealthIndex(int? p)
         {
 
@@ -65,7 +65,7 @@ namespace CrmWeb.Controllers
         public ActionResult HealthEdit(int HealthId)
         {
             string table = "CrmHealth";
-            string strwhere="HealthId="+HealthId;
+            string strwhere = "HealthId=" + HealthId;
             HealthDto healthDto = HealthBll.GetOneHealthDto(table, strwhere);
 
             HealthEditViewModel model = new HealthEditViewModel();
@@ -135,18 +135,18 @@ namespace CrmWeb.Controllers
 
             }
             else
-            { 
-            healthDto.HealthGuomin = Request.Form["HealthGuomin"].ToString();
+            {
+                healthDto.HealthGuomin = Request.Form["HealthGuomin"].ToString();
             }
             if (String.IsNullOrEmpty(Request.Form["HealthBaolou"]))
             {
                 healthDto.HealthBaolou = "1 无";
 
             }
-            
+
             else
             {
-            healthDto.HealthBaolou = Request.Form["HealthBaolou"].ToString();
+                healthDto.HealthBaolou = Request.Form["HealthBaolou"].ToString();
             }
             if (String.IsNullOrEmpty(Request.Form["HealthJibing"]))
             {
@@ -154,8 +154,8 @@ namespace CrmWeb.Controllers
 
             }
             else
-            { 
-             healthDto.HealthJibing = Request.Form["HealthJibing"].ToString();
+            {
+                healthDto.HealthJibing = Request.Form["HealthJibing"].ToString();
 
             }
             healthDto.HealthShoushu = Request.Form["HealthShoushu"].ToString();
@@ -167,8 +167,8 @@ namespace CrmWeb.Controllers
                 healthDto.HealthJiazuDady = "1 无";
             }
             else
-            { 
-              Request.Form["HealthJiazuDady"].ToString();
+            {
+                healthDto.HealthJiazuDady = Request.Form["HealthJiazuDady"].ToString();
             }
 
             if (String.IsNullOrEmpty(Request.Form["HealthJiazuMama"]))
@@ -177,8 +177,8 @@ namespace CrmWeb.Controllers
 
             }
             else
-            { 
-                Request.Form["HealthJiazuMama"].ToString();
+            {
+                healthDto.HealthJiazuMama = Request.Form["HealthJiazuMama"].ToString();
             }
 
             if (String.IsNullOrEmpty(Request.Form["HealthJiazuXiongdi"]))
@@ -187,8 +187,8 @@ namespace CrmWeb.Controllers
                 healthDto.HealthJiazuXiongdi = "1 无";
             }
             else
-            { 
-            Request.Form["HealthJiazuXiongdi"].ToString();
+            {
+                healthDto.HealthJiazuXiongdi = Request.Form["HealthJiazuXiongdi"].ToString();
 
             }
             if (String.IsNullOrEmpty(Request.Form["HealthJiazuZinv"]))
@@ -200,7 +200,7 @@ namespace CrmWeb.Controllers
             {
                 healthDto.HealthJiazuZinv = Request.Form["HealthJiazuZinv"].ToString();
             }
-           
+
             healthDto.HealthYichuan = Request.Form["HealthYichuan"].ToString();
             if (String.IsNullOrEmpty(Request.Form["HealthCanji"]))
             {
@@ -221,8 +221,8 @@ namespace CrmWeb.Controllers
 
             HealthBll.AddHealth(healthDto);
 
-           return RedirectTo("/Health/HealthIndex", "客户身体信息添加成功了");
-           //return RedirectToAction("HealthIndex");
+            return RedirectTo("/Health/HealthIndex", "客户身体信息添加成功了");
+            //return RedirectToAction("HealthIndex");
 
 
         }
@@ -233,13 +233,13 @@ namespace CrmWeb.Controllers
         public ActionResult HealthInsert1()
         {
 
-          //  string content = Request.Form["healthXuexing"].ToString();
-          //  string content2 = Request.Form["healthFeiyong"].ToString();
+            //  string content = Request.Form["healthXuexing"].ToString();
+            //  string content2 = Request.Form["healthFeiyong"].ToString();
             //string content3 = Request.Form["healthJiazuDady"].ToString();
 
 
 
-           // return Content(content3);
+            // return Content(content3);
             return RedirectToAction("HealthIndex");
 
 
@@ -252,7 +252,7 @@ namespace CrmWeb.Controllers
         {
             string table = "CrmHealth";
             string strwhere = "HealthId=" + int.Parse(Request.Form["HealthId"].ToString());
-            HealthDto healthDto = HealthBll.GetOneHealthDto(table,strwhere);
+            HealthDto healthDto = HealthBll.GetOneHealthDto(table, strwhere);
             healthDto.HealthId = int.Parse(Request.Form["HealthId"].ToString());
             healthDto.HealthUserId = int.Parse(Request.Form["HealthUserId"].ToString());
             healthDto.HealthXuexing = Request.Form["HealthXuexing"].ToString();
@@ -380,7 +380,7 @@ namespace CrmWeb.Controllers
 
             //  string content = Request.Form["healthXuexing"].ToString();
             //  string content2 = Request.Form["healthFeiyong"].ToString();
-           // string content3 = Request.Form["healthJiazuDady"].ToString();
+            // string content3 = Request.Form["healthJiazuDady"].ToString();
 
             int JiwangshiUserId = 0;
             string JiwangshiName = "";
@@ -392,7 +392,7 @@ namespace CrmWeb.Controllers
             JiwangshiClass = Request.Form["JiwangshiClass"].ToString();
             JiwangshiName = Request.Form["JiwangshiName"].ToString();
             JiwangshiJibingClass = Request.Form["JiwangshiJibingClass"].ToString();
-            JiwangshiTime =DateTime.Parse(Request.Form["JiwangshiTime"].ToString());
+            JiwangshiTime = DateTime.Parse(Request.Form["JiwangshiTime"].ToString());
 
 
             JiwangshiDto jiwangshiDto = new JiwangshiDto();
@@ -407,7 +407,7 @@ namespace CrmWeb.Controllers
 
 
 
-            return ;
+            return;
             //return RedirectToAction("HealthIndex");
 
 
