@@ -11,14 +11,17 @@ namespace QxsqBLL
 {
     public class UserClassBll
     {
-         
 
 
-        public static List<UserClassDto> GetUserClassDtoList(string table,string strwhere)
+
+        public static List<UserClassDto> GetUserClassDtoList(string table, string strwhere)
         {
-            return UserClassDal.GetUserClassList(table,strwhere);
+            return UserClassDal.GetUserClassList(table, strwhere);
         }
 
+      
+
+      
 
 
         #region 得到一个UserClassPager 

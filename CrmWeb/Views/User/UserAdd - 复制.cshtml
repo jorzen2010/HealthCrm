@@ -1,11 +1,8 @@
-﻿@using QxsqDTO;
-@model CrmWeb.Models.UserAddViewModel
+﻿@model CrmWeb.Models.UserAddViewModel
 @{
     ViewBag.Title = "个人基本信息录入";
 }
-<link href="/css/index.css" rel="stylesheet" />
 
-<link href="/css/labelauty.css" rel="stylesheet" />
 
 <script type="text/javascript" src="/js/laydate.js"></script>
 <script type="text/javascript" src="/js/laydate.dev.js"></script>
@@ -46,7 +43,7 @@
                 <div class="input-group">
                     <span class="input-group-addon">@Html.LabelFor(model => model.UserName) </span>
                     @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model =>model.UserName)
+                    @Html.ValidationMessageFor(model => model.UserName)
                 </div>
             </div>
 
@@ -72,7 +69,10 @@
                 @Html.ValidationMessageFor(model => model.UserMinzu)
             </div>
         </div>
-        
+            
+
+       
+
         
         <br /><br /><br />
         <div class="col-xs-3">
@@ -212,7 +212,16 @@
         </div>
         <br /><br /><br />    
                     
-           
+        <div class="col-xs-12">
+            <div class="input-group">
+                <span class="input-group-addon">@Html.LabelFor(model => model.UserClass) </span>
+             <input type="checkbox" />健康居民
+                <input type="checkbox" />健康居民
+
+                <input type="checkbox" />健康居民<input type="checkbox" />健康居民
+            </div>
+        </div>
+        <br /><br /><br />        
         <div class="col-xs-12">
             <div class="input-group">
                 <span class="input-group-addon">@Html.LabelFor(model => model.UserBeizhu) </span>
@@ -220,48 +229,13 @@
                 @Html.ValidationMessageFor(model => model.UserBeizhu)
             </div>
         </div>
-      
-        <br /><br /><br />       
-                    <hr />    
-        <div class="col-xs-12">
-            <table class="table table-bordered">
-                <tr>
-                    <th class="col-xs-1">用户归档</th>
-                    <td class="col-xs-11">
-
-                        <div class="fuxuan">
-
-                            @foreach (UserClassDto userClass in ViewData["UserClass"] as IEnumerable<UserClassDto>)
-                            {
-
-
-
-                                <input type="checkbox" name="UserClass" class="chklist" value="@userClass.UserClassName" />
-
-
-
-                                <label class="chkbox">
-
-                                    <span class="check-image"></span>
-
-                                    <span class="radiobox-content">@userClass.UserClassName</span>
-
-                                </label>
-
-                            }
-                           
-
-
-
-                        </div>
-
-                    </td>
-                </tr>
-            </table>
-        </div>
         <br /><br /><br />        
-
-        </div><!-- /.box-body -->
+                    
+              
+                    
+                    
+                    
+                     </div><!-- /.box-body -->
 
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">保存并下一步</button>
@@ -279,31 +253,15 @@
 
     </section><!-- /.content -->
 </aside>
-
 @section JsBottom{
-    <script src="/js/jquery-1.11.2.min.js"></script>
-    <script src="/js/labelauty.js"></script>
+<script type="text/javascript">
+    laydate({
+        elem: '#UserBirthday'
+    });
 
-    <script type="text/javascript">
+   // $("#UserNumber").(function () {
+  //      checkCard();
+  //  });
+</script>
 
-        $(document).ready(function () {
-
-            //参数{input类名，选择类型(单选or多选)}
-
-            $(".rdolist").labelauty("rdolist", "rdo");
-
-            $(".chklist").labelauty("chklist", "check");
-
-            $("#JibingAddForm").hide();
-
-        });
-
-
-
-        laydate({
-            elem: '#UserBirthday'
-        });
-
-
-    </script>
 }

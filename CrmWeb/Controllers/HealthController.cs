@@ -37,7 +37,7 @@ namespace CrmWeb.Controllers
         #endregion
 
         #region 客户添加
-        public ActionResult HealthAdd()
+        public ActionResult HealthAdd(int userId,string userName)
         {
             ViewData["HealthXuexingList"] = UserInfoCommon.HealthInfoList("HealthXuexing");
             ViewData["HealthRHList"] = UserInfoCommon.HealthInfoList("HealthRH");
@@ -56,6 +56,8 @@ namespace CrmWeb.Controllers
             ViewData["HealthYinshuiList"] = UserInfoCommon.HealthInfoList("HealthYinshui");
             ViewData["HealthCesuoList"] = UserInfoCommon.HealthInfoList("HealthCesuo");
             ViewData["HealthQichulanList"] = UserInfoCommon.HealthInfoList("HealthQichulan");
+            ViewBag.userId = userId;
+            ViewBag.userName = userName;
             return View();
 
         }

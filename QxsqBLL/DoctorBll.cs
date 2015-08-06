@@ -52,7 +52,7 @@ namespace QxsqBLL
 
             List<SelectListItem> items = new List<SelectListItem>();
 
-            items.Add(new SelectListItem { Text = "将此患者分配给", Value = "9999" });
+            items.Add(new SelectListItem { Text = "将此患者分配给", Value = "" });
 
             foreach (DoctorDto doctorDto in DoctorDtoList)
             {

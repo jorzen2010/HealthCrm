@@ -38,72 +38,84 @@
                     </div><!-- /.box-header -->
 
 
+                    <form method="post" action="/User/FenpeiUser">
+                        <div class="box-body">
+                        
+                            <div class="row">
+                                <div class="col-xs-6 btn-group btn-toolbar">
+                                    <table>
+                                        <tr>
+                                            <td><button type="button" class="btn btn-sm btn-success" id="SelectDoctorAll">全选</button></td>
+                                            <td><button type="button" class="btn btn-sm btn-danger" id="SelectDoctorNo">全不选</button></td>
+                                            <td>
+                                                <div class="input-group">
+                                                    @Html.DropDownList("FenpeiDoctor", ViewData["UserDoctorList"] as IEnumerable<SelectListItem>, new { @class = "form-control" })
+                                                    <div class="input-group-btn">
+                                                        <button type="submit" class="btn btn-primary" id="FenpeiUser">确定分配</button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
 
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-xs-2 btn-group btn-toolbar">
 
-                                <button type="button" class="btn btn-sm btn-success" id="SelectDoctorAll">全选</button>
 
-                                <button type="button" class="btn btn-sm btn-danger" id="SelectDoctorNo">全不选</button>
-                                <button type="button" class="btn btn-sm btn-info" id="SelectDoctorReverse">反选</button>
 
- 
-                            </div>
-                           
-                            <div class="col-xs-3">
-                                <div class="input-group">
-                                    @Html.DropDownList("FenpeiDoctor", ViewData["UserDoctorList"] as IEnumerable<SelectListItem>, new { @class = "form-control" })
-                                    <div class="input-group-btn">
-                                        <button type="button" class="btn btn-primary">确定分配</button>
-                                    </div>
+
+
                                 </div>
+
+
+
                             </div>
 
-                        </div>
-                    <hr/>
-                       
-                            <table class="table table-hover table-bordered" >
+
+                            <table class="table table-hover table-bordered">
                                 <tr>
                                     <th>序号</th>
                                     <th>患者姓名</th>
+                                    <th>所在单位</th>
+                                    <th>责任医生</th>
                                     <th>患者手机</th>
                                     <th>患者性别</th>
-                                    <th>所在单位</th>
+
                                     <th>联系人</th>
                                     <th>联系人电话</th>
-                                    <th>责任医生</th>
-                                    
+
+
 
                                 </tr>
                                 @foreach (var item in Model)
-                                {
+                            {
                                     <tr>
 
                                         <td><input type="checkbox" value="@item.UserId" name="UserId" id="UserId"></td>
                                         <td>@item.UserName</td>
+                                        <td>@GroupDal.GetOneGroup("CrmGroup", "GroupId=" + item.UserGroup).GroupName </td>
+                                        <td>@DoctorDal.GetOneDoctor("CrmDoctor", "DoctorId=" + item.UserDoctor).DoctorRealName </td>
                                         <td>@item.UserTel</td>
 
                                         <td>@item.UserSex </td>
-                                        <td>@GroupDal.GetOneGroup("CrmGroup", "GroupId=" + item.UserGroup).GroupName </td>
+
 
 
                                         <td>@item.UserFirstPerson</td>
                                         <td>@item.UserFirstPersonTel</td>
-                                        <td>@DoctorDal.GetOneDoctor("CrmDoctor", "DoctorId=" + item.UserDoctor).DoctorRealName </td>
+
 
 
 
                                     </tr>
 
 
-                                }
+                            }
 
 
                             </table>
-                        
-                    </div><!-- /.box-body -->
 
+
+                        </div><!-- /.box-body -->
+                    </form>
                     <div class="box-footer clearfix">
                         <!-- Pagging -->
                         共 @ViewBag.RecordCount 条记录 <div class="SkyPager"></div>
@@ -181,8 +193,7 @@
           
         });
 
-       
-      
+        
     </script>
 
 

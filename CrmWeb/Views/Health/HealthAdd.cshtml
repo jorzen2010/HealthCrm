@@ -29,13 +29,13 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header">
-                        <h2 class="box-title txt-center">@ViewBag.Title</h2>
+                        <h2 class="box-title txt-center"><b>【@ViewBag.userName】</b>@ViewBag.Title</h2>
                     </div><!-- /.box-header -->
                     <!-- form start -->
 
                     <form action="/Health/HealthInsert" method="post">
                         <div class="box-body">
-                        <input type="hidden" value="1" name="HealthUserId" id="HealthUserId">
+                            <input type="hidden" value="@ViewBag.userId" name="HealthUserId" id="HealthUserId">
                             <table class="table table-bordered">
                                 <tr>
                                     <th class="text-center col-xs-2" colspan="2">血型</th>

@@ -77,6 +77,48 @@ namespace CrmWeb.Controllers
         }
         #endregion
 
+        #region 客户更新动作
+        [HttpPost]
+        public ActionResult FenpeiUser()
+        {
+            if (string.IsNullOrEmpty(Request.Form["UserId"]) == true||string.IsNullOrEmpty(Request.Form["FenpeiDoctor"])==true)
+            {
+                return RedirectTo("/User/UserFenpei", "你尚未选择用户或医生，不能分配");
+            }
+            else
+            { 
+             string UserId = Request.Form["UserId"].ToString();
+             int UserDoctor = int.Parse(Request.Form["FenpeiDoctor"].ToString());
+             string[] UserIdList = UserId.Split(',');
+             foreach (string userId in UserIdList)
+             {
+                 int FenpeiUserId = int.Parse(userId);
+                 string table = "CrmUser";
+                 string strwhere = "UserId=" + FenpeiUserId;
+                 UserDto userDto = UserBll.GetOneUserDto(table, strwhere);
+                 userDto.UserDoctor = UserDoctor;
+                 UserBll.UpdateUserDto(userDto);
+             
+             }
+             return RedirectTo("/User/UserFenpei", "成功分配！");
+            }
+           
+
+
+
+
+
+
+            
+          //   return Content(UserDoctor.ToString());
+          //  return RedirectToAction("UserIndex");
+
+
+        }
+
+        #endregion
+
+
         #region 客户添加
         public ActionResult UserAdd()
         {
@@ -88,6 +130,7 @@ namespace CrmWeb.Controllers
             ViewData["UserWenhuaList"] = UserCommonBll.GetUserInfoForSelect("UserWenhua");
             ViewData["UserGroupList"] = GroupBll.GetGroupForSelect();
             ViewData["UserDoctorList"] = DoctorBll.GetDoctorForSelect(int.Parse(System.Web.HttpContext.Current.Request.Cookies["DoctorId"].Value));
+            ViewData["UserClass"] = UserClassBll.GetUserClassDtoList("CrmUserClass", "1=1");
             return View();
 
         }
@@ -185,8 +228,10 @@ namespace CrmWeb.Controllers
             userDto.UserBeizhu = model.UserBeizhu;
 
            UserBll.AddUser(userDto);
+           UserDto healthUser = UserBll.GetOneUserDto("CrmUser", "UserName='" + userDto.UserName + "' and UserNumber='" + userDto.UserNumber + "' and UserTel='"+userDto.UserTel+"'");
 
-          return RedirectTo("/User/UserIndex", "客户添加成功了");
+         // return RedirectTo("/User/UserIndex", "客户添加成功了");
+           return Redirect("/Health/HealthAdd?userId=" + healthUser.UserId + "&userName=" + userDto.UserName);
           //  return Content();
 
 
