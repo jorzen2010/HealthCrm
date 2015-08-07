@@ -129,7 +129,7 @@ namespace QxsqDAL
             jiwangshiDto.JiwangshiName = dr["JiwangshiName"].ToString();
             jiwangshiDto.JiwangshiJibingClass = dr["JiwangshiJibingClass"].ToString();
 
-            jiwangshiDto.JiwangshiUserId = int.Parse(dr["JiwangshiPassword"].ToString());
+            jiwangshiDto.JiwangshiUserId = int.Parse(dr["JiwangshiUserId"].ToString());
             jiwangshiDto.JiwangshiClass = dr["JiwangshiClass"].ToString();
 
             jiwangshiDto.JiwangshiTime = DateTime.Parse(dr["JiwangshiTime"].ToString());

@@ -25,8 +25,22 @@ namespace CrmWeb.Controllers
         }
         #endregion
 
-        
 
+        [ChildActionOnly]
+        public ActionResult JiwangshiView(int userId,string jiwangshiClass)
+        {
+            string table = "CrmJiwangshi";
+
+            string strwhere = "JiwangshiUserId=" + userId+" and JiwangshiClass='"+jiwangshiClass+"'";
+
+
+            List<JiwangshiDto> jiwangshiDtoList = JiwangshiBll.GetJiwangshiDtoList(table, strwhere);
+
+
+            ViewData["jiwangshiDto"] = jiwangshiDtoList;
+
+            return View("_JiwangshiPartial");
+        }
         
 
     }

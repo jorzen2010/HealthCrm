@@ -15,18 +15,19 @@ namespace CrmWeb.Controllers
       
         #region 客户列表页
        
-        public ActionResult UserIndex(int? p,int?groupId)
+        public ActionResult UserIndex(int? p,int?groupId,int?userClass)
         {
 
             int GroupId = groupId ?? 0;
-            string strwhere = "";
-            if (GroupId == 0)
+            int UserClass = userClass ?? 0;
+            string strwhere = "1=1";
+            if (GroupId > 0)
             {
-                strwhere = "UserId>0";
+                strwhere =strwhere+ " and UserGroup=" + GroupId;
             }
-            else
+            if (UserClass > 0)
             {
-                strwhere = "UserGroup=" + GroupId;
+                strwhere = strwhere + " and UserClass=" + UserClass;
             }
             string table = "CrmUser";
 
@@ -184,6 +185,7 @@ namespace CrmWeb.Controllers
             ViewData["UserWenhuaList"] = UserCommonBll.GetUserInfoForSelect("UserWenhua");
             ViewData["UserGroupList"] = GroupBll.GetGroupForSelect();
             ViewData["UserDoctorList"] = DoctorBll.GetDoctorForSelect(int.Parse(System.Web.HttpContext.Current.Request.Cookies["DoctorId"].Value));
+            ViewData["UserClass"] = UserClassBll.GetUserClassDtoList("CrmUserClass", "1=1");
 
 
             return View(model);
@@ -215,7 +217,17 @@ namespace CrmWeb.Controllers
             userDto.UserHunyin = model.UserHunyin;
             userDto.UserDoctor = model.UserDoctor;
             userDto.UserGroup = model.UserGroup;
-            userDto.UserClass = model.UserClass;
+           // userDto.UserClass = model.UserClass;
+           // userDto.UserClass = Request.Form["UserClass"];
+            if (String.IsNullOrEmpty(Request.Form["UserClass"]))
+            {
+                userDto.UserClass = "11";
+
+            }
+            else
+            {
+                userDto.UserClass = Request.Form["UserClass"].ToString();
+            }
             userDto.UserNowAddress = model.UserNowAddress;
             userDto.UserOldAddress = model.UserOldAddress;
             userDto.UserJobGroup = model.UserJobGroup;
@@ -262,7 +274,16 @@ namespace CrmWeb.Controllers
             userDto.UserHunyin = model.UserHunyin;
             userDto.UserDoctor = model.UserDoctor;
             userDto.UserGroup = model.UserGroup;
-            userDto.UserClass = model.UserClass;
+
+            if (String.IsNullOrEmpty(Request.Form["UserClass"]))
+            {
+                userDto.UserClass = "11";
+
+            }
+            else
+            {
+                userDto.UserClass = Request.Form["UserClass"].ToString();
+            }
             userDto.UserNowAddress = model.UserNowAddress;
             userDto.UserOldAddress = model.UserOldAddress;
             userDto.UserJobGroup = model.UserJobGroup;

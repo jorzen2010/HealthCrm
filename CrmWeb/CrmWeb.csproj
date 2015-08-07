@@ -838,6 +838,7 @@
     <Content Include="Views\Health\UserInfoAdd.cshtml" />
     <Content Include="Views\User\UserFenpei.cshtml" />
     <Content Include="Views\User\UserAdd - 复制.cshtml" />
+    <Content Include="Views\Health\_JiwangshiPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

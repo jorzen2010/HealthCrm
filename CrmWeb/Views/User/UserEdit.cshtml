@@ -1,8 +1,11 @@
-﻿@model CrmWeb.Models.UserEditViewModel
+﻿@using QxsqDTO;
+@model CrmWeb.Models.UserEditViewModel
 @{
     ViewBag.Title = "个人信息编辑";
 }
+<link href="/css/index.css" rel="stylesheet" />
 
+<link href="/css/labelauty.css" rel="stylesheet" />
 <script type="text/javascript" src="/js/laydate.js"></script>
 <script type="text/javascript" src="/js/laydate.dev.js"></script>
 
@@ -224,7 +227,56 @@
                             </div>
                             <br /><br /><br />
 
+                            <hr />
+                            <div class="col-xs-12">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th class="col-xs-1">用户归档</th>
+                                        <td class="col-xs-11">
 
+                                            <div class="fuxuan">
+
+                                                <input type="checkbox" name="UserClassWu" class="chklist UserClassWu" value="健康居民" @(Model.UserClass.Contains("健康居民") == true ? "checked=\"checked\"" : "") />
+
+
+
+                                                <label class="chkbox UserClassWu">
+
+                                                    <span class="check-image"></span>
+
+                                                    <span class="radiobox-content">健康居民</span>
+
+                                                </label>
+
+                                                @foreach (UserClassDto userClass in ViewData["UserClass"] as IEnumerable<UserClassDto>)
+{
+
+
+
+    <input type="checkbox" name="UserClass" class="chklist" value="@userClass.UserClassId" @(Model.UserClass.Contains(@userClass.UserClassId.ToString()) == true ? "checked=\"checked\"" : "") />
+
+
+
+                                                    <label class="chkbox UserClass">
+
+                                                        <span class="check-image"></span>
+
+                                                        <span class="radiobox-content">@userClass.UserClassName</span>
+
+                                                    </label>
+
+                                                }
+
+
+
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br /><br /><br />
 
                         </div><!-- /.box-body -->
 
@@ -246,14 +298,31 @@
 
 
 
+
 @section JsBottom{
+    <script src="/js/jquery-1.11.2.min.js"></script>
+    <script src="/js/labelauty.js"></script>
+
     <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            //参数{input类名，选择类型(单选or多选)}
+
+            $(".rdolist").labelauty("rdolist", "rdo");
+
+            $(".chklist").labelauty("chklist", "check");
+
+
+
+        });
+
+
+
         laydate({
             elem: '#UserBirthday'
         });
 
-        // $("#UserNumber").(function () {
-        //      checkCard();
-        //  });
+
     </script>
 }

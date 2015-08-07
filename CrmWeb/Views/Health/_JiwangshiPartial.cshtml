@@ -1,0 +1,17 @@
+﻿@using QxsqDTO;
+@{
+    Layout = null;
+}                                      
+
+
+
+    @foreach (JiwangshiDto jiwangshi in ViewData["jiwangshiDto"] as IEnumerable<JiwangshiDto>)
+    { 
+    <tr>
+        <td>@jiwangshi.JiwangshiJibingClass</td>
+        <td>@jiwangshi.JiwangshiName</td>
+        <td>@jiwangshi.JiwangshiTime.ToString("yyyy-MM-dd")</td>
+        
+        <td><button type="button"  class="btn btn-xs btn-danger">删除</button></td>
+    </tr>
+    }

@@ -273,7 +273,7 @@
                                                     <th><input type="text" name="JiwangshiName" id="JiwangshiName" /></th>
                                                     <th>确诊时间</th>
                                                     <th><input type="text" name="JiwangshiTime" id="JiwangshiTime" /></th>
-                                                    <th><button type="button" id="JiwangshiJibing">确定新增</button></th>
+                                                    <th><button type="button" id="JiwangshiJibing" class="btn btn-primary">确定新增</button></th>
                                                 </tr>
                                             </table>
                                         </div>
@@ -283,10 +283,11 @@
                                                 <th>疾病类别</th>
                                                 <th>疾病名称</th>
                                                 <th>确诊时间</th>
-                                                <th>修改</th>
+                                                
                                                 <th>删除</th>
                                             </tr>
-                                        </table>
+                                            @{Html.RenderAction("JiwangshiView", "Health", new { userId = 1, jiwangshiClass = "疾病" });}  </table>
+
 
                                     </td>
                                 </tr>
@@ -343,9 +344,12 @@
                                                 <th>手术类别</th>
                                                 <th>手术名称</th>
                                                 <th>手术时间</th>
-                                                <th>修改</th>
+                                               
                                                 <th>删除</th>
-                                            </tr>
+                                                </tr>
+                                                @{Html.RenderAction("JiwangshiView", "Health", new { userId = 1, jiwangshiClass = "手术" });}
+                                       
+
                                         </table>
                                     </td>
                                 </tr>
@@ -402,9 +406,11 @@
                                                 <th>外伤类别</th>
                                                 <th>外伤名称</th>
                                                 <th>外伤时间</th>
-                                                <th>修改</th>
+
                                                 <th>删除</th>
                                             </tr>
+                                                @{Html.RenderAction("JiwangshiView", "Health", new { userId = 1, jiwangshiClass = "外伤" });}
+                                            
                                         </table>
 
                                     </td>
@@ -461,9 +467,10 @@
                                                 <th>输血类别</th>
                                                 <th>输血原因</th>
                                                 <th>输血时间</th>
-                                                <th>修改</th>
+                                              
                                                 <th>删除</th>
                                             </tr>
+                                            @{Html.RenderAction("JiwangshiView", "Health", new { userId = 1, jiwangshiClass = "输血" });}
                                         </table>
 
 
@@ -860,7 +867,7 @@
                                     <td>禽畜栏</td>
                                     <td>
                                         <div class="rdo">
-                                            <input type="radio" name="HealthQichulan" class="rdolist" value="0 不详" @(Model.HealthQichulan.Contains(" 0 不详") == true ? "checked=\"checked\"" : "") />
+                                            <input type="radio" name="HealthQichulan" class="rdolist" value="0 不详" @(Model.HealthQichulan.Contains("0 不详") == true ? "checked=\"checked\"" : "") />
 
                                             <label class="rdobox">
 

@@ -42,6 +42,8 @@
 
         });
 
+       
+
 
         $(".HealthJiazuDadyWu").click(function () {
             // $("input[name='HealthGuomin']").removeAttr("checked");
