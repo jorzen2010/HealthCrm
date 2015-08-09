@@ -1,4 +1,5 @@
 ﻿@using QxsqDAL;
+@using QxsqDTO;
 @{
     ViewBag.Title = "客户列表";
 }
@@ -37,26 +38,32 @@
 
                     </div><!-- /.box-header -->
 
-                   
+
 
                     <div class="box-body">
-                        <h4>
+                        <h5>
                             所在单位：
 
-                            <a href="/User/UserIndex?groupId=0"> <button class="btn btn-sm btn-info">全部</button></a>
-                            <a href="/User/UserIndex?groupId=1"> <button class="btn btn-sm btn-info">润福养老院</button></a>
-                            <a href="/User/UserIndex?groupId=2"> <button class="btn btn-sm btn-info">道外区养老院</button></a>
-                            <a href="/User/UserIndex?groupId=3"> <button class="btn btn-sm btn-info">南岗区养老院</button></a>
-                        </h4>
-                        <h4>
+                            <a href="/User/UserIndex?groupId=0&userClass=@Request["userClass"]"> <button class="btn btn-sm btn-info" name="BtngroupId" title="0">全部</button></a>
+                            @foreach (GroupDto group in ViewData["UserGroupList"] as IEnumerable<GroupDto>)
+                            {
+                                <a href="/User/UserIndex?groupId=@group.GroupId&userClass=@Request["userClass"]"> <button class="btn btn-sm " name="BtngroupId" title="@group.GroupId">@group.GroupName</button></a>
+
+                            }
+                        </h5>
+                        <h5>
                             用户归档：
 
-                            <a href="/User/UserIndex?groupId=0"> <button class="btn btn-sm btn-info">全部</button></a>
-                            <a href="/User/UserIndex?groupId=1"> <button class="btn btn-sm btn-info">健康居民</button></a>
-                            <a href="/User/UserIndex?groupId=2"> <button class="btn btn-sm btn-info">孕妇</button></a>
-                            <a href="/User/UserIndex?groupId=3"> <button class="btn btn-sm btn-info">儿童</button></a>
-                        </h4>
-                     <table class="table table-hover table-bordered">
+                            <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=0"> <button class="btn btn-sm" title="0" name="BtnuserClass">全部</button></a>
+                            @foreach (UserClassDto userClass in ViewData["UserClass"] as IEnumerable<UserClassDto>)
+                            {
+                                <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=@userClass.UserClassId"> <button class="btn btn-sm" title="@userClass.UserClassId" name="BtnuserClass">@userClass.UserClassName</button></a>
+
+                            }
+
+                        </h5>
+
+                        <table class="table table-hover table-bordered">
                             <tr>
                                 <th>序号</th>
                                 <th>患者姓名</th>
@@ -65,6 +72,7 @@
                                 <th>所在单位</th>
                                 <th>联系人</th>
                                 <th>联系人电话</th>
+                                <th>用户归档</th>
 
                                 <th>操作</th>
                             </tr>
@@ -72,24 +80,34 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                               
+
                                     <td>@item.UserId</td>
                                     <td>@item.UserName</td>
                                     <td>@item.UserTel</td>
 
                                     <td>@item.UserSex </td>
-                                    <td>@GroupDal.GetOneGroup("CrmGroup","GroupId="+item.UserGroup).GroupName </td>
+                                    <td>@GroupDal.GetOneGroup("CrmGroup", "GroupId=" + item.UserGroup).GroupName </td>
 
 
                                     <td>@item.UserFirstPerson</td>
                                     <td>@item.UserFirstPersonTel</td>
+                                    <td>
+                                    @foreach (UserClassDto userClass in ViewData["UserClass"] as IEnumerable<UserClassDto>)
+                                    {
+                                        if (item.UserClass.Contains(userClass.UserClassId.ToString()) == true)
+                                        {
+                                        <span class='label label-success'>@userClass.UserClassName</span>
+                                        }
+                                    } 
+
+                                    </td>
 
                                     <td>
 
                                         <a href="@Url.Action("UserEdit", "User", new { UserId = @item.UserId })">
                                             <button class="btn btn-sm btn-success"><i class="fa fa fa-edit"></i>  编辑基本信息</button>
                                         </a>
-                                         
+
                                         <a href="@Url.Action("UserEdit", "User", new { UserId = @item.UserId })">
                                             <button class="btn btn-sm btn-warning"><i class="fa fa fa-edit"></i>  编辑身体指标信息</button>
                                         </a>
@@ -98,8 +116,8 @@
                                     </td>
 
                                 </tr>
-                           
-                                   
+
+
                             }
 
 
@@ -143,41 +161,85 @@
         });
 
         PageClick = function(no) {
-            window.location = "?p=" + no;
+            //window.location = "?p=" + no;
+            window.location = "?p=" + no+"&groupId="+getParamValue("groupId")+"&userClass="+getParamValue("userClass");
+
+         
         }
 
-
-        function GuahaoPay(guahaoId,value) {
-            var table="QxsqGuahao";
-            var strwhere="GuahaoId="+guahaoId;
-            var columnname="GuahaoStatus";
-            var columnvalue=value;
-            var url = '@Url.Action("SetModelByAjax", "Guahao")?table='+table+'&strwhere='+strwhere+'&columnname='+columnname+"&columnvalue="+columnvalue;
-
-
-            $.getJSON(url, function(data) {
-
-                window.location.reload();
-            });
-
-        }
-        function DeleteGuahao(id){
-            $.confirm({
-                title: '确认删除!',
-                content: '你确定要删除吗？!',
-                confirmButton:'确定删除',
-                cancelButton:'我后悔了',
-                confirm: function(){
-                    //alert('Confirmed!');
-                    window.location = "/Guahao/GuahaoDelete?GuahaoId="+id ;
-                },
-                cancel: function(){
-
+        function getUrlParams()
+        {
+            var search = window.location.search ;
+            // 写入数据字典
+            var tmparray = search.substr(1,search.length).split("&");
+            var paramsArray = new Array;
+            if( tmparray != null)
+            {
+                for(var i = 0;i<tmparray.length;i++)
+                {
+                    var reg = /[=|^==]/; // 用=进行拆分，但不包括==
+                    var set1 = tmparray[i].replace(reg,'&');
+                    var tmpStr2 = set1.split('&');
+                    var array = new Array ;
+                    array[tmpStr2[0]] = tmpStr2[1] ;
+                    paramsArray.push(array);
                 }
-            });
+            }
+            // 将参数数组进行返回
+            return paramsArray ;
+        }
+        // 根据参数名称获取参数值
+        function getParamValue(name)
+        {
+            var paramsArray = getUrlParams();
+            if(paramsArray != null)
+            {
+                for(var i = 0 ; i < paramsArray.length ; i ++ )
+                {
+                    for(var j in paramsArray[i] )
+                    {
+                        if( j == name )
+                        {
+                            return paramsArray[i][j] ;
+                        }
+                    }
+                }
+            }
+            return null ;
+        } 
+
+        
+        var BtngroupId = document.getElementsByName("BtngroupId"); 
+
+        for(var i=0;i<BtngroupId.length;i++){
+            var links = BtngroupId[i].getAttribute("title"); 
+            if(getParamValue("groupId")==links)
+            {
+               
+                $(BtngroupId[i]).addClass('btn-info');
+            }
+            else
+            {
+                $(BtngroupId[i]).removeClass('btn-info');
+            }
 
         }
 
+        var BtnuserClass = document.getElementsByName("BtnuserClass"); 
+
+        for(var i=0;i<BtnuserClass.length;i++){
+            var thelinks = BtnuserClass[i].getAttribute("title"); 
+            if(getParamValue("userClass")==thelinks)
+            {
+               
+                $(BtnuserClass[i]).addClass('btn-info');
+            }
+            else
+            {
+                $(BtnuserClass[i]).removeClass('btn-info');
+            }
+
+        }
     </script>
 
 

@@ -26,14 +26,14 @@
         <!-- 这里是左侧导航-->
 
         <ul class="sidebar-menu">
-            <li class="active">
+            <li>
                 <a href="@Url.Action("Index","Home")">
                     <i class="fa fa-dashboard"></i> <span>桌面</span>
                 </a>
                 
             </li>
             <li>
-                <a href="@Url.Action("UserIndex","User")">
+                <a href="@Url.Action("UserIndex", "User", new { groupId=0,userClass=0})">
                     <i class="fa fa-th"></i> <span>客户基本信息</span>
                 </a>
             </li>

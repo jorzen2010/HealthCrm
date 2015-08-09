@@ -236,17 +236,7 @@
 
                                             <div class="fuxuan">
 
-                                                <input type="checkbox" name="UserClassWu" class="chklist UserClassWu" value="健康居民" @(Model.UserClass.Contains("健康居民") == true ? "checked=\"checked\"" : "") />
-
-
-
-                                                <label class="chkbox UserClassWu">
-
-                                                    <span class="check-image"></span>
-
-                                                    <span class="radiobox-content">健康居民</span>
-
-                                                </label>
+                                             
 
                                                 @foreach (UserClassDto userClass in ViewData["UserClass"] as IEnumerable<UserClassDto>)
 {

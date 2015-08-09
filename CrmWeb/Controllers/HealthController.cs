@@ -73,7 +73,6 @@ namespace CrmWeb.Controllers
             HealthEditViewModel model = new HealthEditViewModel();
 
             model.HealthId = healthDto.HealthId;
-            model.HealthId = healthDto.HealthId;
             model.HealthUserId = healthDto.HealthUserId;
             model.HealthXuexing = healthDto.HealthXuexing;
             model.HealthRH = healthDto.HealthRH;
@@ -133,7 +132,7 @@ namespace CrmWeb.Controllers
             healthDto.HealthFeiyong = Request.Form["HealthFeiyong"].ToString();
             if (String.IsNullOrEmpty(Request.Form["HealthGuomin"]))
             {
-                healthDto.HealthGuomin = "1 无";
+                healthDto.HealthGuomin = "无";
 
             }
             else
@@ -142,7 +141,7 @@ namespace CrmWeb.Controllers
             }
             if (String.IsNullOrEmpty(Request.Form["HealthBaolou"]))
             {
-                healthDto.HealthBaolou = "1 无";
+                healthDto.HealthBaolou = "无";
 
             }
 
@@ -152,7 +151,7 @@ namespace CrmWeb.Controllers
             }
             if (String.IsNullOrEmpty(Request.Form["HealthJibing"]))
             {
-                healthDto.HealthJibing = "1 无";
+                healthDto.HealthJibing = "无";
 
             }
             else
@@ -166,7 +165,7 @@ namespace CrmWeb.Controllers
             if (String.IsNullOrEmpty(Request.Form["HealthJiazuDady"]))
             {
 
-                healthDto.HealthJiazuDady = "1 无";
+                healthDto.HealthJiazuDady = "无";
             }
             else
             {
@@ -175,7 +174,7 @@ namespace CrmWeb.Controllers
 
             if (String.IsNullOrEmpty(Request.Form["HealthJiazuMama"]))
             {
-                healthDto.HealthJiazuMama = "1 无";
+                healthDto.HealthJiazuMama = "无";
 
             }
             else
@@ -186,7 +185,7 @@ namespace CrmWeb.Controllers
             if (String.IsNullOrEmpty(Request.Form["HealthJiazuXiongdi"]))
             {
 
-                healthDto.HealthJiazuXiongdi = "1 无";
+                healthDto.HealthJiazuXiongdi = "无";
             }
             else
             {
@@ -195,7 +194,7 @@ namespace CrmWeb.Controllers
             }
             if (String.IsNullOrEmpty(Request.Form["HealthJiazuZinv"]))
             {
-                healthDto.HealthJiazuZinv = "1 无";
+                healthDto.HealthJiazuZinv = "无";
 
             }
             else
@@ -207,7 +206,7 @@ namespace CrmWeb.Controllers
             if (String.IsNullOrEmpty(Request.Form["HealthCanji"]))
             {
 
-                healthDto.HealthCanji = "1 无";
+                healthDto.HealthCanji = "无";
 
             }
             else
@@ -262,7 +261,7 @@ namespace CrmWeb.Controllers
             healthDto.HealthFeiyong = Request.Form["HealthFeiyong"].ToString();
             if (String.IsNullOrEmpty(Request.Form["HealthGuomin"]))
             {
-                healthDto.HealthGuomin = "1 无";
+                healthDto.HealthGuomin = "无";
 
             }
             else
@@ -271,7 +270,7 @@ namespace CrmWeb.Controllers
             }
             if (String.IsNullOrEmpty(Request.Form["HealthBaolou"]))
             {
-                healthDto.HealthBaolou = "1 无";
+                healthDto.HealthBaolou = "无";
 
             }
 
@@ -281,7 +280,7 @@ namespace CrmWeb.Controllers
             }
             if (String.IsNullOrEmpty(Request.Form["HealthJibing"]))
             {
-                healthDto.HealthJibing = "1 无";
+                healthDto.HealthJibing = "无";
 
             }
             else
@@ -295,7 +294,7 @@ namespace CrmWeb.Controllers
             if (String.IsNullOrEmpty(Request.Form["HealthJiazuDady"]))
             {
 
-                healthDto.HealthJiazuDady = "1 无";
+                healthDto.HealthJiazuDady = "无";
             }
             else
             {
@@ -304,7 +303,7 @@ namespace CrmWeb.Controllers
 
             if (String.IsNullOrEmpty(Request.Form["HealthJiazuMama"]))
             {
-                healthDto.HealthJiazuMama = "1 无";
+                healthDto.HealthJiazuMama = "无";
 
             }
             else
@@ -315,7 +314,7 @@ namespace CrmWeb.Controllers
             if (String.IsNullOrEmpty(Request.Form["HealthJiazuXiongdi"]))
             {
 
-                healthDto.HealthJiazuXiongdi = "1 无";
+                healthDto.HealthJiazuXiongdi = "无";
             }
             else
             {
@@ -324,7 +323,7 @@ namespace CrmWeb.Controllers
             }
             if (String.IsNullOrEmpty(Request.Form["HealthJiazuZinv"]))
             {
-                healthDto.HealthJiazuZinv = "1 无";
+                healthDto.HealthJiazuZinv = "无";
 
             }
             else
@@ -336,7 +335,7 @@ namespace CrmWeb.Controllers
             if (String.IsNullOrEmpty(Request.Form["HealthCanji"]))
             {
 
-                healthDto.HealthCanji = "1 无";
+                healthDto.HealthCanji = "无";
 
             }
             else

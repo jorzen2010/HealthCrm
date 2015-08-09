@@ -1,6 +1,6 @@
 ﻿@using QxsqDAL;
 @{
-    ViewBag.Title = "客户列表";
+    ViewBag.Title = "身体状况信息列表";
 }
 
 <link href="/css/page.css" rel="stylesheet" type="text/css" />
@@ -29,27 +29,12 @@
                     <div class="box-header">
                         <h3 class="box-title">@ViewBag.Title <small>共 @ViewBag.RecordCount 条记录</small></h3>
 
-                        <div class="box-tools pull-right">
-
-
-                            <a href="@Url.Action("UserAdd", "User")" class="btn btn-sm btn-primary" style="color:#ffffff"><i class="fa fa-plus"></i> 新增客户</a>
-
-
-                        </div>
 
                     </div><!-- /.box-header -->
 
                     
                  <div class="box-body">
-                     <h4>
-                         状态类型：
-
-                         <a href="/Guahao/GuahaoIndex?status=0"> <button class="btn btn-sm btn-primary">全部</button></a>
-                         <a href="/Guahao/GuahaoIndex?status=1">  <button class="btn btn-sm btn-warning">孕妇</button></a>
-                         <a href="/Guahao/GuahaoIndex?status=2">  <button class="btn btn-sm btn-info">儿童</button></a>
-                         <a href="/Guahao/GuahaoIndex?status=3">  <button class="btn btn-sm btn-danger">高血压</button></a>
-                         <a href="/Guahao/GuahaoIndex?status=3">  <button class="btn btn-sm btn-danger">糖尿病</button></a>
-                     </h4> <table class="table table-hover table-bordered">
+                     <table class="table table-hover table-bordered">
                             <tr>
                                 <th class="col-xs-1">序号</th>
                                 <th class="col-xs-1">患者姓名</th>

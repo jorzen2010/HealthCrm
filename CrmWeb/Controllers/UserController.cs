@@ -27,12 +27,16 @@ namespace CrmWeb.Controllers
             }
             if (UserClass > 0)
             {
-                strwhere = strwhere + " and UserClass=" + UserClass;
+              //  strwhere = strwhere + " and UserClass=" + UserClass;
+
+                strwhere = strwhere + " and charindex('" + UserClass+"',UserClass)>0";
+
+               // charindex(@a,账号)>0
             }
             string table = "CrmUser";
 
             Pager pager = new Pager();
-            pager.PageSize = 20;
+            pager.PageSize = 1;
             pager.PageNo = p ?? 1;
 
             pager = UserBll.GetUserPager(pager, strwhere, table);
@@ -40,7 +44,8 @@ namespace CrmWeb.Controllers
             ViewBag.PageCount = pager.PageCount;
             ViewBag.RecordCount = pager.Amount;
 
-
+            ViewData["UserClass"] = UserClassBll.GetUserClassDtoList("CrmUserClass", "1=1");
+            ViewData["UserGroupList"] = GroupBll.GetGroupDtoList("CrmGroup", "1=1");
             return View(pager.Entity);
         }
         #endregion
@@ -242,7 +247,7 @@ namespace CrmWeb.Controllers
            UserBll.AddUser(userDto);
            UserDto healthUser = UserBll.GetOneUserDto("CrmUser", "UserName='" + userDto.UserName + "' and UserNumber='" + userDto.UserNumber + "' and UserTel='"+userDto.UserTel+"'");
 
-         // return RedirectTo("/User/UserIndex", "客户添加成功了");
+         // return RedirectTo("/User/UserIndex?groupId=0&userClass=0", "客户添加成功了");
            return Redirect("/Health/HealthAdd?userId=" + healthUser.UserId + "&userName=" + userDto.UserName);
           //  return Content();
 
@@ -299,8 +304,8 @@ namespace CrmWeb.Controllers
 
             UserBll.UpdateUserDto(userDto);
 
-
-            return RedirectToAction("UserIndex");
+            return Redirect("/Health/HealthAdd?userId=" + model.UserId + "&userName=" + userDto.UserName);
+         //   return RedirectToAction("UserIndex");
 
 
         }
