@@ -286,7 +286,8 @@
                                                 
                                                 <th>删除</th>
                                             </tr>
-                                            @{Html.RenderAction("JiwangshiView", "Health", new { userId = 1, jiwangshiClass = "疾病" });}  </table>
+                                            @{Html.RenderAction("JiwangshiView", "Health", new { userId = Model.HealthUserId, jiwangshiClass = "疾病" });}  
+                                        </table>
 
 
                                     </td>
@@ -347,7 +348,7 @@
                                                
                                                 <th>删除</th>
                                                 </tr>
-                                                @{Html.RenderAction("JiwangshiView", "Health", new { userId = 1, jiwangshiClass = "手术" });}
+                                                @{Html.RenderAction("JiwangshiView", "Health", new { userId = Model.HealthUserId, jiwangshiClass = "手术" });}
                                        
 
                                         </table>
@@ -409,7 +410,7 @@
 
                                                 <th>删除</th>
                                             </tr>
-                                                @{Html.RenderAction("JiwangshiView", "Health", new { userId = 1, jiwangshiClass = "外伤" });}
+                                                @{Html.RenderAction("JiwangshiView", "Health", new { userId = Model.HealthUserId, jiwangshiClass = "外伤" });}
                                             
                                         </table>
 
@@ -421,7 +422,7 @@
                                         <div class="rdo">
 
 
-                                            <input type="radio" name="HealthShuxue" class="rdolist" value="无" checked="checked" />
+                                            <input type="radio" name="HealthShuxue" class="rdolist" value="无" @(Model.HealthShuxue.Contains("无") == true ? "checked=\"checked\"" : "") />
 
                                             <label class="rdobox HealthShuxue">
 
@@ -431,7 +432,7 @@
 
                                             </label>
 
-                                            <input type="radio" name="HealthShuxue" id="HealthShuxue" class="rdolist" value="有" />
+                                            <input type="radio" name="HealthShuxue" id="HealthShuxue" class="rdolist" value="有" @(Model.HealthShuxue.Contains("有") == true ? "checked=\"checked\"" : "") />
 
                                             <label class="rdobox HealthShuxue">
 
@@ -470,7 +471,7 @@
                                               
                                                 <th>删除</th>
                                             </tr>
-                                            @{Html.RenderAction("JiwangshiView", "Health", new { userId = 1, jiwangshiClass = "输血" });}
+                                            @{Html.RenderAction("JiwangshiView", "Health", new { userId = Model.HealthUserId, jiwangshiClass = "输血" });}
                                         </table>
 
 
