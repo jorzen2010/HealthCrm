@@ -174,7 +174,6 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\HealthController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Controllers\WordController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -848,7 +847,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\AjaxValidation\" />
-    <Folder Include="Views\Word\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

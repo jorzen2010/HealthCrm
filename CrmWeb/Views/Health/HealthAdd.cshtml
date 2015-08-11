@@ -972,6 +972,10 @@
 
         });
 
+        function delJiwangshi(jiwangshiclass, jiwangshiname, jiwangshitime, jiwangshiuserId) {
+            alert(jiwangshiclass + jiwangshiname + jiwangshitime + jiwangshiuserId);
+            //alert("asdffa");
+        }
 
         //ajax提交既往史疾病部分
         $("#JiwangshiJibing").click(function () {
@@ -994,13 +998,15 @@
                     data: data,
                     success: function () {
                         $("#JibingAddForm").hide();
-                        $("#JiwangshiJibingShow").append("<tr><td>" + data.JiwangshiJibingClass + "</td><td>" + data.JiwangshiName + "</td><td>" + data.JiwangshiTime + "</td><td><button type=\"button\"  class=\"btn btn-xs btn-danger\">删除</button></td></tr>");
+                        $("#JiwangshiJibingShow").append("<tr><td>" + data.JiwangshiJibingClass +
+                            "</td><td>" + data.JiwangshiName + "</td><td>" + data.JiwangshiTime +
+                            "</td><td><button type=\"button\"  class=\"btn btn-xs btn-danger\" onclick=\"delJiwangshi('" + data.JiwangshiClass + "', '" + data.JiwangshiName + "', '" + data.JiwangshiTime + "', '" + data.JiwangshiUserId + "')\">删除</button></td></tr>");
 
                     }
                 });
             }
         });
-
+       
         //ajax提交既往史手术部分
         $("#ShoushuJiwangshiJibing").click(function () {
 
