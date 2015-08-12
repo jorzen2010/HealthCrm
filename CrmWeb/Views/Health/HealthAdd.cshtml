@@ -996,17 +996,67 @@
                     type: "POST",
                     url: url,
                     data: data,
-                    success: function () {
+                    datatype: "json",//请求页面返回的数据类型     
+                    type: "post",
+                    success: function (jb) {
                         $("#JibingAddForm").hide();
-                        $("#JiwangshiJibingShow").append("<tr><td>" + data.JiwangshiJibingClass +
-                            "</td><td>" + data.JiwangshiName + "</td><td>" + data.JiwangshiTime +
-                            "</td><td><button type=\"button\"  class=\"btn btn-xs btn-danger\" onclick=\"delJiwangshi('" + data.JiwangshiClass + "', '" + data.JiwangshiName + "', '" + data.JiwangshiTime + "', '" + data.JiwangshiUserId + "')\">删除</button></td></tr>");
+                       // $("#JiwangshiJibingShow").append("<tr><td>" + data.JiwangshiJibingClass +
+                         //   "</td><td>" + data.JiwangshiName + "</td><td>" + data.JiwangshiTime +
+                        //   "</td><td><button type=\"button\"  class=\"btn btn-xs btn-danger\" onclick=\"delJiwangshi('" + data.JiwangshiClass + "', '" + 
+                       // data.JiwangshiName + "', '" + data.JiwangshiTime + "', '" + data.JiwangshiUserId + "')\">删除</button></td></tr>");
+                        //第一种
+                      //  var tt = "";
+                      //  $.each(json, function (k, v) {
+                      //      $.each(v, function (kk, vv) {
+                               // tt += kk + "：" + vv + "<br/>";
+                              //  tt+="<tr><td>" + data.JiwangshiJibingClass +
+                             //     "</td><td>" + data.JiwangshiName + "</td><td>" + data.JiwangshiTime +
+                             //      "</td><td><button type=\"button\"  class=\"btn btn-xs btn-danger\" onclick=\"delJiwangshi('" + data.JiwangshiClass + "', '" + data.JiwangshiName + "', '" + data.JiwangshiTime + "', '" + data.JiwangshiUserId + "')\">删除</button></td></tr>");
+
+
+                           // });
+                      //  });
+                      //  $("#dataDiv").html(tt);
+                        //第二种
+
+                        var tt="";
+                        //i表示在data中的索引位置，n表示包含的信息的对象
+                      //  $.each(json,function(i,n){
+                            //获取对象中属性为optionsValue的值
+                      //      tt+= n.JiwangshiJibingClass +
+                            //      "</td><td>" + n.JiwangshiName + "</td><td>" + n.JiwangshiTime +
+                           //        "</td><td><button type=\"button\"  class=\"btn btn-xs btn-danger\" onclick=\"delJiwangshi('" + n.JiwangshiId ;
+
+
+                      //  });
+
+                        for (var i = 0; i < jb.length; i++) {
+                          
+                            var thejiwangshitime = (jb[i].JiwangshiTime.replace("/Date(", "")).replace(")/", "");
+                            
+
+
+                            tt += "<tr><td>"+jb[i].JiwangshiJibingClass +
+                                 "</td><td>" + jb[i].JiwangshiName + "</td><td>" + getLocalTime(thejiwangshitime) +
+                                  "</td><td><button type=\"button\"  class=\"btn btn-xs btn-danger\" onclick=\"delJiwangshi('" + jb[i].JiwangshiId + "')\">删除</button></td></tr>";
+                        }
+
+                       
+                        $('#JiwangshiJibingShow').html(tt); 
+
+
 
                     }
                 });
             }
         });
+        function getLocalTime(nS) {
+          //  return new Date(parseInt(nS)).toLocaleString().replace("/", "-");
+            return new Date(parseInt(nS)).toLocaleString();
+        }
        
+      
+
         //ajax提交既往史手术部分
         $("#ShoushuJiwangshiJibing").click(function () {
 
@@ -1128,6 +1178,9 @@
 
 
 
-
     </script>
+
+
+
+ 
 }

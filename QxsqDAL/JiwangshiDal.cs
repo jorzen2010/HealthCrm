@@ -14,7 +14,7 @@ namespace QxsqDAL
     public class JiwangshiDal
     {
 
-       #region 医生添加
+        #region 医生添加
 
         public static void AddJiwangshi(JiwangshiDto jiwangshiDto)
         {
@@ -57,6 +57,7 @@ namespace QxsqDAL
 
         }
         #endregion
+
         #region 获取医生List数据
         public static List<JiwangshiDto> GetJiwangshiList(string table,string strwhere)
         {
@@ -176,7 +177,6 @@ namespace QxsqDAL
         }
         #endregion
 
-
         #region 更新一个Jiwangshi
         public static void UpdateJiwangshi(JiwangshiDto jiwangshiDto)
         {
@@ -189,7 +189,6 @@ namespace QxsqDAL
         }
 
         #endregion
-
 
         #region 取得单表的查询并进行分页数据
         public static Pager GetJiwangshiPage(Pager pager, string strwhere, string table)

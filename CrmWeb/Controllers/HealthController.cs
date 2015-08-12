@@ -7,6 +7,7 @@ using Common;
 using QxsqBLL;
 using CrmWeb.Models;
 using QxsqDTO;
+using Newtonsoft.Json;
 
 namespace CrmWeb.Controllers
 {
@@ -376,7 +377,7 @@ namespace CrmWeb.Controllers
 
         #region 新增动作疾病详情
         [HttpPost]
-        public void AjaxJibingInsert()
+        public void AjaxJibingInsert12()
         {
 
             //  string content = Request.Form["healthXuexing"].ToString();
@@ -430,6 +431,51 @@ namespace CrmWeb.Controllers
 
             return View("_JiwangshiPartial");
         }
+
+        #region 新增动作疾病详情
+        [HttpPost]
+        public JsonResult AjaxJibingInsert()
+        {
+
+            //  string content = Request.Form["healthXuexing"].ToString();
+            //  string content2 = Request.Form["healthFeiyong"].ToString();
+            // string content3 = Request.Form["healthJiazuDady"].ToString();
+
+            int JiwangshiUserId = 0;
+            string JiwangshiName = "";
+            string JiwangshiClass = "既往史";
+            DateTime JiwangshiTime = System.DateTime.Now;
+            string JiwangshiJibingClass = "";
+
+            JiwangshiUserId = int.Parse(Request.Form["JiwangshiUserId"].ToString());
+            JiwangshiClass = Request.Form["JiwangshiClass"].ToString();
+            JiwangshiName = Request.Form["JiwangshiName"].ToString();
+            JiwangshiJibingClass = Request.Form["JiwangshiJibingClass"].ToString();
+            JiwangshiTime = DateTime.Parse(Request.Form["JiwangshiTime"].ToString());
+
+
+            JiwangshiDto jiwangshiDto = new JiwangshiDto();
+
+            jiwangshiDto.JiwangshiUserId = JiwangshiUserId;
+            jiwangshiDto.JiwangshiClass = JiwangshiClass;
+            jiwangshiDto.JiwangshiName = JiwangshiName;
+            jiwangshiDto.JiwangshiJibingClass = JiwangshiJibingClass;
+            jiwangshiDto.JiwangshiTime = JiwangshiTime;
+
+            JiwangshiBll.AddJiwangshi(jiwangshiDto);
+
+            var json = new JsonResult();  
+            List<JiwangshiDto> jiwangshiDtoList=JiwangshiBll.GetJiwangshiDtoList("CrmJiwangshi","JiwangshiUserId="+JiwangshiUserId);
+
+            json.Data = jiwangshiDtoList;
+            json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+
+            return json;
+            //return RedirectToAction("HealthIndex");
+
+
+        }
+        #endregion
 
     }
 }
