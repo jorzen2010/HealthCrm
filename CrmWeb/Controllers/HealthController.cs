@@ -464,8 +464,36 @@ namespace CrmWeb.Controllers
 
             JiwangshiBll.AddJiwangshi(jiwangshiDto);
 
-            var json = new JsonResult();  
-            List<JiwangshiDto> jiwangshiDtoList=JiwangshiBll.GetJiwangshiDtoList("CrmJiwangshi","JiwangshiUserId="+JiwangshiUserId);
+            var json = new JsonResult();
+            string strwhere = "JiwangshiUserId=" + JiwangshiUserId + " and JiwangshiClass='" + JiwangshiClass + "'";
+            List<JiwangshiDto> jiwangshiDtoList = JiwangshiBll.GetJiwangshiDtoList("CrmJiwangshi", strwhere);
+
+            json.Data = jiwangshiDtoList;
+            json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+
+            return json;
+            //return RedirectToAction("HealthIndex");
+
+
+        }
+        #endregion
+
+        #region 新增动作疾病详情
+        [HttpPost]
+        public JsonResult AjaxJibingDel(int jiwangshiId,int jiwangshiUserId,string jiwangshiClass)
+        {
+
+            string table = "CrmJiwangshi";
+            string strwhere = "JiwangshiId=" + jiwangshiId;
+
+
+            JiwangshiBll.DeleteJiwangshiDto(table,strwhere);
+
+     
+
+            var json = new JsonResult();
+            string wherestr = "JiwangshiUserId=" + jiwangshiUserId + " and JiwangshiClass='" + jiwangshiClass + "'";
+            List<JiwangshiDto> jiwangshiDtoList = JiwangshiBll.GetJiwangshiDtoList("CrmJiwangshi", wherestr);
 
             json.Data = jiwangshiDtoList;
             json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;

@@ -18,10 +18,16 @@ namespace QxsqDAL
 
         public static void AddArticleClass(ArticleClassDto articleClassDto)
         {
+            try
+            {
+                SqlParameter[] arParames = ArticleClassDal.getParameters(articleClassDto);
 
-            SqlParameter[] arParames = ArticleClassDal.getParameters(articleClassDto);
-
-            SqlHelper.ExecuteNonQuery(CommonDal.ConnectionString, CommandType.StoredProcedure, "CreateArticleClass", arParames);
+                SqlHelper.ExecuteNonQuery(CommonDal.ConnectionString, CommandType.StoredProcedure, "CreateArticleClass", arParames);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
 
         }
         #endregion

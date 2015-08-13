@@ -44,9 +44,9 @@
                                         <div class="rdo">
 
                                             @foreach (string healthInfo in ViewData["HealthXuexingList"] as IEnumerable<string>)
-{
+                                            {
 
-    <input type="radio" name="HealthXuexing" class="rdolist" value="@healthInfo" @(Model.HealthXuexing.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
+                                                <input type="radio" name="HealthXuexing" class="rdolist" value="@healthInfo" @(Model.HealthXuexing.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="rdobox">
 
@@ -58,8 +58,8 @@
 
                                             }
 
-    
-    <input type="radio" name="HealthXuexing" class="rdolist" value="不详"  @(Model.HealthXuexing.Contains("不详") == true ? "checked=\"checked\"" : "") />
+
+                                            <input type="radio" name="HealthXuexing" class="rdolist" value="不详" @(Model.HealthXuexing.Contains("不详") == true ? "checked=\"checked\"" : "") />
 
 
                                             <label class="rdobox">
@@ -78,8 +78,8 @@
                                         <div class="rdo">
 
                                             @foreach (string healthInfo in ViewData["HealthRHList"] as IEnumerable<string>)
-{
-    <input type="radio" name="HealthRH" class="rdolist" value="@healthInfo" @(Model.HealthRH.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
+                                            {
+                                                <input type="radio" name="HealthRH" class="rdolist" value="@healthInfo" @(Model.HealthRH.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="rdobox">
 
@@ -205,11 +205,11 @@
                                             </label>
 
                                             @foreach (string healthInfo in ViewData["HealthBaolouList"] as IEnumerable<string>)
-{
+                                            {
 
 
 
-    <input type="checkbox" name="HealthBaolou" class="chklist HealthBaolou" value="@healthInfo" @(Model.HealthBaolou.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
+                                                <input type="checkbox" name="HealthBaolou" class="chklist HealthBaolou" value="@healthInfo" @(Model.HealthBaolou.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="chkbox HealthBaolou">
                                                     <span class="check-image"></span>
@@ -243,11 +243,11 @@
                                             </label>
 
                                             @foreach (string healthInfo in ViewData["HealthJibingList"] as IEnumerable<string>)
-{
+                                            {
 
 
 
-    <input type="checkbox" name="HealthJibing" class="chklist" value="@healthInfo" @(Model.HealthJibing.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
+                                                <input type="checkbox" name="HealthJibing" class="chklist" value="@healthInfo" @(Model.HealthJibing.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="chkbox HealthJibing">
                                                     <span class="check-image"></span>
@@ -266,7 +266,7 @@
 
                                                     <th>
                                                         <input type="hidden" name="JiwangshiClass" id="JiwangshiClass" value="疾病" />
-                                                        <input type="hidden" name="JiwangshiUserId" id="JiwangshiUserId" value="1" />
+                                                        <input type="hidden" name="JiwangshiUserId" id="JiwangshiUserId" value="@Model.HealthUserId" />
                                                         <input type="hidden" name="JiwangshiJibingClass" id="JiwangshiJibingClass" />
                                                         疾病名称:
                                                     </th>
@@ -277,18 +277,19 @@
                                                 </tr>
                                             </table>
                                         </div>
+                                        <div id="JiwangshiJibingShow">
 
-                                        <table class="table table-bordered" id="JiwangshiJibingShow">
-                                            <tr>
-                                                <th>疾病类别</th>
-                                                <th>疾病名称</th>
-                                                <th>确诊时间</th>
-                                                
-                                                <th>删除</th>
-                                            </tr>
-                                            @{Html.RenderAction("JiwangshiView", "Health", new { userId = Model.HealthUserId, jiwangshiClass = "疾病" });}  
-                                        </table>
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th>疾病类别</th>
+                                                    <th>疾病名称</th>
+                                                    <th>确诊时间</th>
 
+                                                    <th>删除</th>
+                                                </tr>
+                                                @{Html.RenderAction("JiwangshiView", "Health", new { userId = Model.HealthUserId, jiwangshiClass = "疾病" });}
+                                            </table>
+                                        </div>
 
                                     </td>
                                 </tr>
@@ -328,7 +329,7 @@
 
                                                     <th>
                                                         <input type="hidden" name="ShoushuJiwangshiClass" id="ShoushuJiwangshiClass" value="手术" />
-                                                        <input type="hidden" name="ShoushuJiwangshiUserId" id="ShoushuJiwangshiUserId" value="1" />
+                                                        <input type="hidden" name="ShoushuJiwangshiUserId" id="ShoushuJiwangshiUserId" value="@Model.HealthUserId" />
                                                         <input type="hidden" name="ShoushuJiwangshiJibingClass" id="ShoushuJiwangshiJibingClass" value="手术" />
                                                         手术名称:
                                                     </th>
@@ -339,19 +340,20 @@
                                                 </tr>
                                             </table>
                                         </div>
+                                        <div id="ShoushuJiwangshiJibingShow">
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th>手术类别</th>
+                                                    <th>手术名称</th>
+                                                    <th>手术时间</th>
 
-                                        <table class="table table-bordered" id="ShoushuJiwangshiJibingShow">
-                                            <tr>
-                                                <th>手术类别</th>
-                                                <th>手术名称</th>
-                                                <th>手术时间</th>
-                                               
-                                                <th>删除</th>
+                                                    <th>删除</th>
                                                 </tr>
                                                 @{Html.RenderAction("JiwangshiView", "Health", new { userId = Model.HealthUserId, jiwangshiClass = "手术" });}
-                                       
 
-                                        </table>
+
+                                            </table>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -390,7 +392,7 @@
 
                                                     <th>
                                                         <input type="hidden" name="WaishangJiwangshiClass" id="WaishangJiwangshiClass" value="外伤" />
-                                                        <input type="hidden" name="WaishangJiwangshiUserId" id="WaishangJiwangshiUserId" value="1" />
+                                                        <input type="hidden" name="WaishangJiwangshiUserId" id="WaishangJiwangshiUserId" value="@Model.HealthUserId" />
                                                         <input type="hidden" name="WaishangJiwangshiJibingClass" id="WaishangJiwangshiJibingClass" value="外伤" />
                                                         外伤名称:
                                                     </th>
@@ -401,18 +403,19 @@
                                                 </tr>
                                             </table>
                                         </div>
+                                        <div id="WaishangJiwangshiJibingShow">
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th>外伤类别</th>
+                                                    <th>外伤名称</th>
+                                                    <th>外伤时间</th>
 
-                                        <table class="table table-bordered" id="WaishangJiwangshiJibingShow">
-                                            <tr>
-                                                <th>外伤类别</th>
-                                                <th>外伤名称</th>
-                                                <th>外伤时间</th>
-
-                                                <th>删除</th>
-                                            </tr>
+                                                    <th>删除</th>
+                                                </tr>
                                                 @{Html.RenderAction("JiwangshiView", "Health", new { userId = Model.HealthUserId, jiwangshiClass = "外伤" });}
-                                            
-                                        </table>
+
+                                            </table>
+                                        </div>
 
                                     </td>
                                 </tr>
@@ -451,7 +454,7 @@
 
                                                     <th>
                                                         <input type="hidden" name="ShuxueJiwangshiClass" id="ShuxueJiwangshiClass" value="输血" />
-                                                        <input type="hidden" name="ShuxueJiwangshiUserId" id="ShuxueJiwangshiUserId" value="1" />
+                                                        <input type="hidden" name="ShuxueJiwangshiUserId" id="ShuxueJiwangshiUserId" value="@Model.HealthUserId" />
                                                         <input type="hidden" name="ShuxueJiwangshiJibingClass" id="ShuxueJiwangshiJibingClass" value="输血" />
                                                         输血原因:
                                                     </th>
@@ -462,17 +465,18 @@
                                                 </tr>
                                             </table>
                                         </div>
+                                        <div id="ShuxueJiwangshiJibingShow">
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th>输血类别</th>
+                                                    <th>输血原因</th>
+                                                    <th>输血时间</th>
 
-                                        <table class="table table-bordered" id="ShuxueJiwangshiJibingShow">
-                                            <tr>
-                                                <th>输血类别</th>
-                                                <th>输血原因</th>
-                                                <th>输血时间</th>
-                                              
-                                                <th>删除</th>
-                                            </tr>
-                                            @{Html.RenderAction("JiwangshiView", "Health", new { userId = Model.HealthUserId, jiwangshiClass = "输血" });}
-                                        </table>
+                                                    <th>删除</th>
+                                                </tr>
+                                                @{Html.RenderAction("JiwangshiView", "Health", new { userId = Model.HealthUserId, jiwangshiClass = "输血" });}
+                                            </table>
+                                        </div>
 
 
                                     </td>
@@ -496,11 +500,11 @@
                                             </label>
 
                                             @foreach (string healthInfo in ViewData["HealthJiazuList"] as IEnumerable<string>)
-{
+                                            {
 
 
 
-    <input type="checkbox" name="HealthJiazuDady" class="chklist HealthJiazuDady" value="@healthInfo" @(Model.HealthJiazuDady.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
+                                                <input type="checkbox" name="HealthJiazuDady" class="chklist HealthJiazuDady" value="@healthInfo" @(Model.HealthJiazuDady.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="chkbox HealthJiazuDady">
                                                     <span class="check-image"></span>
@@ -542,11 +546,11 @@
                                             </label>
 
                                             @foreach (string healthInfo in ViewData["HealthJiazuList"] as IEnumerable<string>)
-{
+                                            {
 
 
 
-    <input type="checkbox" name="HealthJiazuMama" class="chklist HealthJiazuMama" value="@healthInfo" @(Model.HealthJiazuMama.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
+                                                <input type="checkbox" name="HealthJiazuMama" class="chklist HealthJiazuMama" value="@healthInfo" @(Model.HealthJiazuMama.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="chkbox HealthJiazuMama">
                                                     <span class="check-image"></span>
@@ -588,11 +592,11 @@
                                             </label>
 
                                             @foreach (string healthInfo in ViewData["HealthJiazuList"] as IEnumerable<string>)
-{
+                                            {
 
 
 
-    <input type="checkbox" name="HealthJiazuXiongdi" class="chklist HealthJiazuXiongdi" value="@healthInfo" @(Model.HealthJiazuXiongdi.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
+                                                <input type="checkbox" name="HealthJiazuXiongdi" class="chklist HealthJiazuXiongdi" value="@healthInfo" @(Model.HealthJiazuXiongdi.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="chkbox HealthJiazuXiongdi">
                                                     <span class="check-image"></span>
@@ -602,7 +606,7 @@
                                                 </label>
 
                                             }
-                                            <input type="checkbox" name="HealthJiazuXiongdi" id="HealthJiazuXiongdi12" class="chklist" value="其他"  @(Model.HealthJiazuXiongdi.Contains("其他") == true ? "checked=\"checked\"" : "") />
+                                            <input type="checkbox" name="HealthJiazuXiongdi" id="HealthJiazuXiongdi12" class="chklist" value="其他" @(Model.HealthJiazuXiongdi.Contains("其他") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -715,11 +719,11 @@
                                             </label>
 
                                             @foreach (string healthInfo in ViewData["HealthCanjiList"] as IEnumerable<string>)
-{
+                                            {
 
 
 
-    <input type="checkbox" name="HealthCanji" class="chklist" value="@healthInfo" @(Model.HealthCanji.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
+                                                <input type="checkbox" name="HealthCanji" class="chklist" value="@healthInfo" @(Model.HealthCanji.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -764,8 +768,8 @@
 
                                             </label>
                                             @foreach (string healthInfo in ViewData["HealthChufangList"] as IEnumerable<string>)
-{
-    <input type="radio" name="HealthChufang" class="rdolist" value="@healthInfo" @(Model.HealthChufang.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
+                                            {
+                                                <input type="radio" name="HealthChufang" class="rdolist" value="@healthInfo" @(Model.HealthChufang.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="rdobox">
 
@@ -795,8 +799,8 @@
 
                                             </label>
                                             @foreach (string healthInfo in ViewData["HealthRanliaoList"] as IEnumerable<string>)
-{
-    <input type="radio" name="HealthRanliao" class="rdolist" value="@healthInfo" @(Model.HealthRanliao.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
+                                            {
+                                                <input type="radio" name="HealthRanliao" class="rdolist" value="@healthInfo" @(Model.HealthRanliao.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="rdobox">
 
@@ -825,8 +829,8 @@
 
                                             </label>
                                             @foreach (string healthInfo in ViewData["HealthYinshuiList"] as IEnumerable<string>)
-{
-    <input type="radio" name="HealthYinshui" class="rdolist" value="@healthInfo" @(Model.HealthYinshui.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
+                                            {
+                                                <input type="radio" name="HealthYinshui" class="rdolist" value="@healthInfo" @(Model.HealthYinshui.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="rdobox">
 
@@ -856,8 +860,8 @@
 
                                             </label>
                                             @foreach (string healthInfo in ViewData["HealthCesuoList"] as IEnumerable<string>)
-{
-    <input type="radio" name="HealthCesuo" class="rdolist" value="@healthInfo" @(Model.HealthCesuo.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
+                                            {
+                                                <input type="radio" name="HealthCesuo" class="rdolist" value="@healthInfo" @(Model.HealthCesuo.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="rdobox">
 
@@ -886,8 +890,8 @@
 
                                             </label>
                                             @foreach (string healthInfo in ViewData["HealthQichulanList"] as IEnumerable<string>)
-{
-    <input type="radio" name="HealthQichulan" class="rdolist" value="@healthInfo" @(Model.HealthQichulan.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
+                                            {
+                                                <input type="radio" name="HealthQichulan" class="rdolist" value="@healthInfo" @(Model.HealthQichulan.Contains(healthInfo) == true ? "checked=\"checked\"" : "") />
 
                                                 <label class="rdobox">
 
@@ -981,10 +985,59 @@
 
         });
 
-        function delJiwangshi(jiwangshiclass,jiwangshiname,jiwangshitime,jiwangshiuserId) {
-             alert(jiwangshiclass + jiwangshiname + jiwangshitime + jiwangshiuserId);
-            //alert("asdffa");
+        function delJiwangshi(jiwangshiId, jiwangshiUserId, jiwangshiClass) {
+
+
+            var data = {
+                jiwangshiId: jiwangshiId,
+                jiwangshiUserId: jiwangshiUserId,
+                jiwangshiClass: jiwangshiClass
+            };
+            var url = '/Health/AjaxJibingDel';
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data,
+                datatype: "json",//请求页面返回的数据类型
+                success: function (jb) {
+                    $("#JibingAddForm").hide();
+                    var tt = "<table class=\"table table-bordered\"><tr><th>" + jiwangshiClass + "类别</th><th>" + jiwangshiClass + "名称</th> <th>" + jiwangshiClass + "时间</th> <th>删除</th></tr>";
+                    for (var i = 0; i < jb.length; i++) {
+                        var thejiwangshitime = (jb[i].JiwangshiTime.replace("/Date(", "")).replace(")/", "");
+                        tt += "<tr><td>" + jb[i].JiwangshiJibingClass +
+                             "</td><td>" + jb[i].JiwangshiName + "</td><td>" + getLocalTime(thejiwangshitime) +
+                              "</td><td><button type=\"button\"  class=\"btn btn-xs btn-danger\" onclick=\"delJiwangshi('" + jb[i].JiwangshiId + "','" + jb[i].JiwangshiUserId + "','" + jb[i].JiwangshiClass + "')\">删除</button></td></tr>";
+                    }
+                    tt += "</table>"
+                    if (jiwangshiClass == '疾病') {
+                        $('#JiwangshiJibingShow').html(tt);
+                    }
+                    if (jiwangshiClass == '手术') {
+                        $('#ShoushuJiwangshiJibingShow').html(tt);
+                        $("#ShoushuJiwangshiName").val("");
+                        $("#ShoushuJiwangshiTime").val('');
+                    }
+                    if (jiwangshiClass == '外伤') {
+                        $('#WaishangJiwangshiJibingShow').html(tt);
+                        $("#WaishangJiwangshiName").val("");
+                        $("#WaishangJiwangshiTime").val('');
+                    }
+                    if (jiwangshiClass == '输血') {
+
+                        $('#ShuxueJiwangshiJibingShow').html(tt);
+                        $("#ShuxueJiwangshiName").val("");
+                        $("#ShuxueJiwangshiTime").val('');
+                    }
+
+
+
+
+                }
+            });
+
+
         }
+
         //ajax提交既往史疾病部分
         $("#JiwangshiJibing").click(function () {
             if ($("#JiwangshiName").val() == "" || $("#JiwangshiTime").val() == "") {
@@ -1004,9 +1057,25 @@
                     type: "POST",
                     url: url,
                     data: data,
-                    success: function () {
+                    datatype: "json",//请求页面返回的数据类型
+                    type: "post",
+                    success: function (jb) {
                         $("#JibingAddForm").hide();
-                        $("#JiwangshiJibingShow").append("<tr><td>" + data.JiwangshiJibingClass + "</td><td>" + data.JiwangshiName + "</td><td>" + data.JiwangshiTime + "</td><td>修改</td><td>删除</td></tr>");
+                        var tt = "<table class=\"table table-bordered\"><tr><th>疾病类别</th><th>疾病名称</th> <th>确诊时间</th> <th>删除</th></tr>";
+                        for (var i = 0; i < jb.length; i++) {
+                            var thejiwangshitime = (jb[i].JiwangshiTime.replace("/Date(", "")).replace(")/", "");
+                            tt += "<tr><td>" + jb[i].JiwangshiJibingClass +
+                                 "</td><td>" + jb[i].JiwangshiName + "</td><td>" + getLocalTime(thejiwangshitime) +
+                                  "</td><td><button type=\"button\"  class=\"btn btn-xs btn-danger\" onclick=\"delJiwangshi('" + jb[i].JiwangshiId + "','" + jb[i].JiwangshiUserId + "','" + jb[i].JiwangshiClass + "')\">删除</button></td></tr>";
+                        }
+                        tt += "</table>"
+
+                        $('#JiwangshiJibingShow').html(tt);
+                        $("#JiwangshiName").val("");
+                        $("#JiwangshiTime").val('');
+                       
+
+
 
                     }
                 });
@@ -1033,11 +1102,31 @@
                     type: "POST",
                     url: url,
                     data: data,
+                    /*
                     success: function () {
                         // $("#ShoushuJibingAddForm").hide();
-                        $("#ShoushuJiwangshiJibingShow").append("<tr><td>" + data.JiwangshiJibingClass + "</td><td>" + data.JiwangshiName + "</td><td>" + data.JiwangshiTime + "</td><td>修改</td><td>删除</td></tr>");
+                        $("#ShoushuJiwangshiJibingShow").append("<tr><td>" + data.JiwangshiJibingClass + "</td><td>" + data.JiwangshiName + "</td><td>" + data.JiwangshiTime + "</td><td><button type=\"button\"  class=\"btn btn-xs btn-danger\">删除</button></td></td></tr>");
                         $("#ShoushuJiwangshiName").val("");
                         $("#ShoushuJiwangshiTime").val('');
+                    }
+                    */
+                    success: function (jb) {
+
+                        var tt = "<table class=\"table table-bordered\"><tr><th>手术类别</th><th>手术名称</th> <th>手术时间</th> <th>删除</th></tr>";
+                        for (var i = 0; i < jb.length; i++) {
+                            var thejiwangshitime = (jb[i].JiwangshiTime.replace("/Date(", "")).replace(")/", "");
+                            tt += "<tr><td>" + jb[i].JiwangshiJibingClass +
+                                 "</td><td>" + jb[i].JiwangshiName + "</td><td>" + getLocalTime(thejiwangshitime) +
+                                  "</td><td><button type=\"button\"  class=\"btn btn-xs btn-danger\" onclick=\"delJiwangshi('" + jb[i].JiwangshiId + "','" + jb[i].JiwangshiUserId + "','" + jb[i].JiwangshiClass + "')\">删除</button></td></tr>";
+                        }
+                        tt += "</table>"
+
+                        $('#ShoushuJiwangshiJibingShow').html(tt);
+                        $("#ShoushuJiwangshiName").val("");
+                        $("#ShoushuJiwangshiTime").val('');
+
+
+
                     }
                 });
 
@@ -1050,7 +1139,7 @@
         $("#WaishangJiwangshiJibing").click(function () {
 
             if ($("#WaishangJiwangshiName").val() == "" || $("#WaishangJiwangshiTime").val() == "") {
-                alert("请填写手术名称及时间");
+                alert("请填写外伤名称及时间");
                 return false;
             }
             else {
@@ -1066,12 +1155,33 @@
                     type: "POST",
                     url: url,
                     data: data,
+                    /*
                     success: function () {
                         // $("#WaishangJibingAddForm").hide();
-                        $("#WaishangJiwangshiJibingShow").append("<tr><td>" + data.JiwangshiJibingClass + "</td><td>" + data.JiwangshiName + "</td><td>" + data.JiwangshiTime + "</td><td>修改</td><td>删除</td></tr>");
+                        $("#WaishangJiwangshiJibingShow").append("<tr><td>" + data.JiwangshiJibingClass + "</td><td>" + data.JiwangshiName + "</td><td>" + data.JiwangshiTime + "</td><td><button type=\"button\"  class=\"btn btn-xs btn-danger\">删除</button></td></td></tr>");
                         $("#WaishangJiwangshiName").val("");
                         $("#WaishangJiwangshiTime").val('');
                     }
+                    */
+                    success: function (jb) {
+
+                        var tt = "<table class=\"table table-bordered\"><tr><th>外伤类别</th><th>外伤名称</th> <th>外伤时间</th> <th>删除</th></tr>";
+                        for (var i = 0; i < jb.length; i++) {
+                            var thejiwangshitime = (jb[i].JiwangshiTime.replace("/Date(", "")).replace(")/", "");
+                            tt += "<tr><td>" + jb[i].JiwangshiJibingClass +
+                                 "</td><td>" + jb[i].JiwangshiName + "</td><td>" + getLocalTime(thejiwangshitime) +
+                                  "</td><td><button type=\"button\"  class=\"btn btn-xs btn-danger\" onclick=\"delJiwangshi('" + jb[i].JiwangshiId + "','" + jb[i].JiwangshiUserId + "','" + jb[i].JiwangshiClass + "')\">删除</button></td></tr>";
+                        }
+                        tt += "</table>"
+
+                        $('#WaishangJiwangshiJibingShow').html(tt);
+                        $("#WaishangJiwangshiName").val("");
+                        $("#WaishangJiwangshiTime").val('');
+
+
+
+                    }
+
                 });
 
             }
@@ -1098,17 +1208,34 @@
                     type: "POST",
                     url: url,
                     data: data,
-                    success: function () {
-                        // $("#ShuxueJibingAddForm").hide();
-                        $("#ShuxueJiwangshiJibingShow").append("<tr><td>" + data.JiwangshiJibingClass + "</td><td>" + data.JiwangshiName + "</td><td>" + data.JiwangshiTime + "</td><td>修改</td><td>删除</td></tr>");
+                    success: function (jb) {
+
+                        var tt = "<table class=\"table table-bordered\"><tr><th>输血类别</th><th>输血原因</th> <th>输血时间</th> <th>删除</th></tr>";
+                        for (var i = 0; i < jb.length; i++) {
+                            var thejiwangshitime = (jb[i].JiwangshiTime.replace("/Date(", "")).replace(")/", "");
+                            tt += "<tr><td>" + jb[i].JiwangshiJibingClass +
+                                 "</td><td>" + jb[i].JiwangshiName + "</td><td>" + getLocalTime(thejiwangshitime) +
+                                  "</td><td><button type=\"button\"  class=\"btn btn-xs btn-danger\" onclick=\"delJiwangshi('" + jb[i].JiwangshiId + "','" + jb[i].JiwangshiUserId + "','" + jb[i].JiwangshiClass + "')\">删除</button></td></tr>";
+                        }
+                        tt += "</table>"
+
+                        $('#ShuxueJiwangshiJibingShow').html(tt);
                         $("#ShuxueJiwangshiName").val("");
                         $("#ShuxueJiwangshiTime").val('');
+
+
+
                     }
                 });
 
             }
 
         });
+
+        function getLocalTime(nS) {
+            //  return new Date(parseInt(nS)).toLocaleString().replace("/", "-");
+            return new Date(parseInt(nS)).toLocaleString().toString().replace(/^([^\s]+).*$/, '$1').replace(/[^\d]/g, '-');;
+        }
 
         laydate({
             elem: '#JiwangshiTime'
