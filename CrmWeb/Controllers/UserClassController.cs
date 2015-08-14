@@ -73,7 +73,7 @@ namespace CrmWeb.Controllers
            
             UserClassBll.AddUserClass(userClassDto);
 
-           return RedirectTo("/UserClass/UserClassIndex", "医生添加成功了");
+           return RedirectTo("/UserClass/UserClassIndex", "归档类别添加成功了");
            //return RedirectToAction("UserClassIndex");
 
 

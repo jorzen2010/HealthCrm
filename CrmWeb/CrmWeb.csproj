@@ -166,6 +166,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AjaxValidationController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\InfoController.cs" />
     <Compile Include="Controllers\JiwangshiController.cs" />
     <Compile Include="Controllers\UserClassController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
@@ -843,6 +844,8 @@
     <Content Include="Views\User\UserFenpei.cshtml" />
     <Content Include="Views\User\UserAdd - 复制.cshtml" />
     <Content Include="Views\Health\_JiwangshiPartial.cshtml" />
+    <Content Include="Views\User\UserSearch.cshtml" />
+    <Content Include="Views\Info\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

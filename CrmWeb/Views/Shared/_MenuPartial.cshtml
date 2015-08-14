@@ -13,11 +13,11 @@
             </div>
         </div>
         <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
+        <form action="/User/UserSearch" method="get" class="sidebar-form">
             <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search..." />
+                <input type="text" name="userName" class="form-control" />
                 <span class="input-group-btn">
-                    <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                    <button type="submit" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i> 查找</button>
                 </span>
             </div>
         </form>
@@ -26,63 +26,64 @@
         <!-- 这里是左侧导航-->
 
         <ul class="sidebar-menu">
+  
             <li>
-                <a href="@Url.Action("Index","Home")">
-                    <i class="fa fa-dashboard"></i> <span>桌面</span>
-                </a>
-                
-            </li>
-            <li>
-                <a href="@Url.Action("UserIndex", "User", new { groupId=0,userClass=0})">
-                    <i class="fa fa-th"></i> <span>客户基本信息</span>
+                <a href="@Url.Action("UserAdd","User")">
+                    <i class="fa fa-plus-square"></i> <span>新增客户</span>
                 </a>
             </li>
-            <li>
-                <a href="@Url.Action("HealthIndex","Health")">
-                    <i class="fa fa-th"></i> <span>客户身体信息</span>
-                </a>
-            </li>
-            <li>
-                <a href="@Url.Action("UserFenpei","User")">
-                    <i class="fa fa-th"></i> <span>客户分配</span>
-                </a>
-            </li>
+            @if (System.Web.HttpContext.Current.Request.Cookies["Doctor"].Value == "jorzen2010")
+            {
+                <li>
+                    <a href="@Url.Action("UserIndex", "User", new { groupId=0,userClass=0,doctorId=0})">
+                        <i class="fa fa-th"></i> <span>客户中心</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("HealthIndex","Health")">
+                        <i class="fa fa-th"></i> <span>客户身体信息</span>
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="@Url.Action("UserIndex", "User", new { groupId = 0, userClass = 0, doctorId = System.Web.HttpContext.Current.Request.Cookies["DoctorId"].Value })">
+                        <i class="fa fa-th"></i> <span>客户中心</span>
+                    </a>
+                </li>
+            }
+
            
-            <!-- 留作备用
+
+
+            @if (System.Web.HttpContext.Current.Request.Cookies["Doctor"].Value == "jorzen2010")
+            {
+                <li>
+                    <a href="@Url.Action("UserFenpei","User")">
+                        <i class="fa fa-th"></i> <span>客户分配</span>
+                    </a>
+                </li>
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <span>系统设置</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="@Url.Action("DoctorIndex", "Doctor")"><i class="fa fa-angle-double-right"></i> 医生设置</a></li>
+                        <li><a href="@Url.Action("UserClassIndex", "UserClass")"><i class="fa fa-angle-double-right"></i> 用户归档（疾病类别）</a></li>
+                        <li><a href="@Url.Action("GroupIndex", "Group")"><i class="fa fa-angle-double-right"></i> 社区（单位）设置</a></li>
+
+                    </ul>
+                </li>
+            }
             <li>
-                <a href="pages/widgets.html">
-                    <i class="fa fa-th"></i> <span>预约挂号</span> <small class="badge pull-right bg-green">8</small>
+                <a href="@Url.Action("Index","Info")">
+                    <i class="fa fa-exclamation-circle"></i> <span>软件说明</span>
                 </a>
             </li>
-            
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-bar-chart-o"></i>
-                    <span>新闻中心</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="@Url.Action("AddNews","Home")"><i class="fa fa-angle-double-right"></i> 增加新闻</a></li>
-                    <li><a href="@Url.Action("NewsList","Home")"><i class="fa fa-angle-double-right"></i>  新闻列表</a></li>
-                </ul>
-            </li>
-
-          -->
-
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-bar-chart-o"></i>
-                    <span>系统设置</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="@Url.Action("DoctorIndex", "Doctor")"><i class="fa fa-angle-double-right"></i> 医生设置</a></li>
-                    <li><a href="@Url.Action("UserClassIndex", "UserClass")"><i class="fa fa-angle-double-right"></i> 用户归档（疾病类别）</a></li>
-                    <li><a href="@Url.Action("GroupIndex", "Group")"><i class="fa fa-angle-double-right"></i> 社区（单位）设置</a></li>
-                    
-                </ul>
-            </li>
-
         </ul>
     </section>
     <!-- /.sidebar -->

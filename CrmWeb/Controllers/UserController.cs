@@ -15,11 +15,12 @@ namespace CrmWeb.Controllers
       
         #region 客户列表页
        
-        public ActionResult UserIndex(int? p,int?groupId,int?userClass)
+        public ActionResult UserIndex(int? p,int?groupId,int?userClass,int?doctorId)
         {
 
             int GroupId = groupId ?? 0;
             int UserClass = userClass ?? 0;
+            int DoctorId = doctorId ?? 0;
             string strwhere = "1=1";
             if (GroupId > 0)
             {
@@ -27,16 +28,20 @@ namespace CrmWeb.Controllers
             }
             if (UserClass > 0)
             {
-              //  strwhere = strwhere + " and UserClass=" + UserClass;
 
                 strwhere = strwhere + " and charindex('" + UserClass+"',UserClass)>0";
 
-               // charindex(@a,账号)>0
+            }
+            if (DoctorId > 0)
+            {
+
+                strwhere = strwhere + " and UserDoctor=" + DoctorId;
+
             }
             string table = "CrmUser";
 
             Pager pager = new Pager();
-            pager.PageSize = 1;
+            pager.PageSize = 20;
             pager.PageNo = p ?? 1;
 
             pager = UserBll.GetUserPager(pager, strwhere, table);
@@ -46,6 +51,7 @@ namespace CrmWeb.Controllers
 
             ViewData["UserClass"] = UserClassBll.GetUserClassDtoList("CrmUserClass", "1=1");
             ViewData["UserGroupList"] = GroupBll.GetGroupDtoList("CrmGroup", "1=1");
+            ViewData["DoctorList"] = DoctorBll.GetDoctorDtoList("CrmDoctor", "1=1");
             return View(pager.Entity);
         }
         #endregion
@@ -194,6 +200,21 @@ namespace CrmWeb.Controllers
 
 
             return View(model);
+
+        }
+
+        #endregion
+
+        #region 客户搜索
+        public ActionResult UserSearch(string userName)
+        {
+
+            string table = "CrmUser";
+            string strwhere = "UserName='" +userName+"'";
+            List<UserDto> userDtoList = UserBll.GetUserDtoList(table,strwhere);
+            ViewData["UserClass"] = UserClassBll.GetUserClassDtoList("CrmUserClass", "1=1");
+            ViewData["UserGroupList"] = GroupBll.GetGroupDtoList("CrmGroup", "1=1");
+            return View(userDtoList);
 
         }
 

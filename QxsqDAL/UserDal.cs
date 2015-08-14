@@ -61,7 +61,7 @@ namespace QxsqDAL
         #endregion
 
         #region 获取客户List数据
-        public static List<UserDto> GetUserList(string strwhere)
+        public static List<UserDto> GetUserList(string table,string strwhere)
         {
             List<UserDto> userlist = new List<UserDto>();
 
@@ -69,7 +69,7 @@ namespace QxsqDAL
 
             SqlParameter[] arParames = new SqlParameter[2];
             arParames[0] = new SqlParameter("@table ", SqlDbType.VarChar, 200);
-            arParames[0].Value = "QxsqUser";
+            arParames[0].Value = table;
 
             arParames[1] = new SqlParameter("@Where ", SqlDbType.VarChar, 8000);
             arParames[1].Value = strwhere;

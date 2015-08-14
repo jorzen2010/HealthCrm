@@ -14,9 +14,9 @@ namespace QxsqBLL
          
 
 
-        public static List<UserDto> GetUserDtoList(string strwhere)
+        public static List<UserDto> GetUserDtoList(string table,string strwhere)
         {
-            return UserDal.GetUserList(strwhere);
+            return UserDal.GetUserList(table,strwhere);
         }
 
 

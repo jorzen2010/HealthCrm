@@ -16,7 +16,6 @@ namespace Common
                 userInfoList.Add("未知的性别");
                 userInfoList.Add("男");
                 userInfoList.Add("女");
-                userInfoList.Add("未说明的性别");
             
             }
             if (userInfo == "UserHuji")
@@ -43,10 +42,10 @@ namespace Common
                 userInfoList.Add("初中");
                 userInfoList.Add("高中/技校/中专");
                 userInfoList.Add("大学专科");
-                userInfoList.Add("不详");
                 userInfoList.Add("大学本科");
                 userInfoList.Add("大学研究生");
                 userInfoList.Add("大学博士及以上");
+                userInfoList.Add("不详");
 
   
             }

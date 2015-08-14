@@ -65,10 +65,10 @@ namespace CrmWeb.Controllers
         #endregion
 
         #region 客户编辑
-        public ActionResult HealthEdit(int HealthId)
+        public ActionResult HealthEdit(int userId, string userName)
         {
             string table = "CrmHealth";
-            string strwhere = "HealthId=" + HealthId;
+            string strwhere = "HealthUserId=" + userId;
             HealthDto healthDto = HealthBll.GetOneHealthDto(table, strwhere);
 
             HealthEditViewModel model = new HealthEditViewModel();
@@ -113,7 +113,8 @@ namespace CrmWeb.Controllers
             ViewData["HealthYinshuiList"] = UserInfoCommon.HealthInfoList("HealthYinshui");
             ViewData["HealthCesuoList"] = UserInfoCommon.HealthInfoList("HealthCesuo");
             ViewData["HealthQichulanList"] = UserInfoCommon.HealthInfoList("HealthQichulan");
-
+            ViewBag.userId = userId;
+            ViewBag.userName = userName;
 
             return View(model);
 

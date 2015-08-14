@@ -58,8 +58,8 @@
 
                                 <td>
 
-                                    <a href="@Url.Action("HealthEdit", "Health", new { HealthId = @item.HealthId })">
-                                        <button class="btn btn-sm btn-success"><i class="fa fa fa-edit"></i>  编辑基本信息</button>
+                                    <a href="@Url.Action("HealthEdit", "Health", new { userId = @item.HealthUserId, userName = UserDal.GetOneUser("CrmUser", "UserId=" + item.HealthUserId).UserName })">
+                                        <button class="btn btn-sm btn-info"><i class="fa fa fa-edit"></i>  编辑身体指标信息</button>
                                     </a>
 
 

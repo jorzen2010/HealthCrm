@@ -1,7 +1,7 @@
 ﻿@using QxsqDAL;
 @using QxsqDTO;
 @{
-    ViewBag.Title = "客户列表";
+    ViewBag.Title = "客户搜索结果";
 }
 
 <link href="/css/page.css" rel="stylesheet" type="text/css" />
@@ -41,39 +41,8 @@
 
 
                     <div class="box-body">
-                        <h5>
-                            所在单位：
+                       
 
-                            <a href="/User/UserIndex?groupId=0&userClass=@Request["userClass"]&doctorId=@Request["doctorId"]"> <button class="btn btn-sm btn-info" name="BtngroupId" title="0">全部</button></a>
-                            @foreach (GroupDto group in ViewData["UserGroupList"] as IEnumerable<GroupDto>)
-                            {
-                                <a href="/User/UserIndex?groupId=@group.GroupId&userClass=@Request["userClass"]&doctorId=@Request["doctorId"]"> <button class="btn btn-sm " name="BtngroupId" title="@group.GroupId">@group.GroupName</button></a>
-
-                            }
-                        </h5>
-                        <h5>
-                            用户归档：
-
-                            <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=0&doctorId=@Request["doctorId"]"> <button class="btn btn-sm" title="0" name="BtnuserClass">全部</button></a>
-                            @foreach (UserClassDto userClass in ViewData["UserClass"] as IEnumerable<UserClassDto>)
-{
-    <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=@userClass.UserClassId&doctorId=@Request["doctorId"]"> <button class="btn btn-sm" title="@userClass.UserClassId" name="BtnuserClass">@userClass.UserClassName</button></a>
-
-}
-
-                        </h5>@if (System.Web.HttpContext.Current.Request.Cookies["Doctor"].Value == "jorzen2010")
-            {
-                        <h5>
-                            责任医生：
-
-                            <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=@Request["userClass"]&doctorId=0"> <button class="btn btn-sm btn-info" name="BtndoctorId" title="0">全部</button></a>
-                            @foreach (DoctorDto doctor in ViewData["DoctorLIst"] as IEnumerable<DoctorDto>)
-                            {
-                                <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=@Request["userClass"]&doctorId=@doctor.DoctorId"> <button class="btn btn-sm " name="BtndoctorId" title="@doctor.DoctorId">@doctor.DoctorRealName</button></a>
-
-                            }
-                        </h5>
-                        }
                         <table class="table table-hover table-bordered">
                             <tr>
                                 <th>序号</th>
@@ -84,6 +53,7 @@
                                 <th>联系人</th>
                                 <th>联系人电话</th>
                                 <th class="col-xs-2">用户归档</th>
+                                <th>责任医生</th>
 
                                 <th class="col-xs-3">操作</th>
                             </tr>
@@ -114,6 +84,9 @@
 
 </h4></td>
 
+        <td>@DoctorDal.GetOneDoctor("CrmDoctor","DoctorId="+item.UserDoctor).DoctorRealName</td>
+        @if (item.UserDoctor.ToString() == System.Web.HttpContext.Current.Request.Cookies["DoctorId"].Value)
+        { 
         <td>
 
             <a href="@Url.Action("UserEdit", "User", new { UserId = @item.UserId })">
@@ -134,7 +107,19 @@
 
 
         </td>
+        }
+        else
+        {
+             <td>
 
+          
+                <button class="btn btn-sm btn-danger disabled"> 此用户不在你的管理范围内禁止修改</button>
+           
+           
+
+
+        </td>
+        }
     </tr>
 
 
@@ -182,7 +167,7 @@
 
         PageClick = function(no) {
             //window.location = "?p=" + no;
-            window.location = "?p=" + no+"&groupId="+getParamValue("groupId")+"&userClass="+getParamValue("userClass")+"&doctorId="+getParamValue("doctorId");
+            window.location = "?p=" + no+"&groupId="+getParamValue("groupId")+"&userClass="+getParamValue("userClass");
 
          
         }
@@ -257,22 +242,6 @@
             else
             {
                 $(BtnuserClass[i]).removeClass('btn-info');
-            }
-
-        }
-
-        var BtndoctorId = document.getElementsByName("BtndoctorId"); 
-
-        for(var i=0;i<BtndoctorId.length;i++){
-            var links = BtndoctorId[i].getAttribute("title"); 
-            if(getParamValue("doctorId")==links)
-            {
-               
-                $(BtndoctorId[i]).addClass('btn-info');
-            }
-            else
-            {
-                $(BtndoctorId[i]).removeClass('btn-info');
             }
 
         }
