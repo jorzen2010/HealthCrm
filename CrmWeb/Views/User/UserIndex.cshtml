@@ -56,23 +56,23 @@
 
                             <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=0&doctorId=@Request["doctorId"]"> <button class="btn btn-sm" title="0" name="BtnuserClass">全部</button></a>
                             @foreach (UserClassDto userClass in ViewData["UserClass"] as IEnumerable<UserClassDto>)
-{
-    <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=@userClass.UserClassId&doctorId=@Request["doctorId"]"> <button class="btn btn-sm" title="@userClass.UserClassId" name="BtnuserClass">@userClass.UserClassName</button></a>
-
-}
-
-                        </h5>@if (System.Web.HttpContext.Current.Request.Cookies["Doctor"].Value == "jorzen2010")
-            {
-                        <h5>
-                            责任医生：
-
-                            <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=@Request["userClass"]&doctorId=0"> <button class="btn btn-sm btn-info" name="BtndoctorId" title="0">全部</button></a>
-                            @foreach (DoctorDto doctor in ViewData["DoctorLIst"] as IEnumerable<DoctorDto>)
                             {
-                                <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=@Request["userClass"]&doctorId=@doctor.DoctorId"> <button class="btn btn-sm " name="BtndoctorId" title="@doctor.DoctorId">@doctor.DoctorRealName</button></a>
+                                <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=@userClass.UserClassId&doctorId=@Request["doctorId"]"> <button class="btn btn-sm" title="@userClass.UserClassId" name="BtnuserClass">@userClass.UserClassName</button></a>
 
                             }
-                        </h5>
+
+                        </h5>@if (System.Web.HttpContext.Current.Request.Cookies["Doctor"].Value == "jorzen2010")
+                        {
+                            <h5>
+                                责任医生：
+
+                                <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=@Request["userClass"]&doctorId=0"> <button class="btn btn-sm btn-info" name="BtndoctorId" title="0">全部</button></a>
+                                @foreach (DoctorDto doctor in ViewData["DoctorLIst"] as IEnumerable<DoctorDto>)
+                                {
+                                    <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=@Request["userClass"]&doctorId=@doctor.DoctorId"> <button class="btn btn-sm " name="BtndoctorId" title="@doctor.DoctorId">@doctor.DoctorRealName</button></a>
+
+                                }
+                            </h5>
                         }
                         <table class="table table-hover table-bordered">
                             <tr>
@@ -89,56 +89,75 @@
                             </tr>
 
                             @foreach (var item in Model)
-{
+                            {
 
-    <tr>
-        <td>@item.UserId</td>
-        <td>@item.UserName</td>
-        <td>@item.UserTel</td>
+                                <tr>
+                                    <td>@item.UserId</td>
+                                    <td>@item.UserName</td>
+                                    <td>@item.UserTel</td>
 
-        <td>@item.UserSex </td>
-        <td>@GroupDal.GetOneGroup("CrmGroup", "GroupId=" + item.UserGroup).GroupName </td>
-
-
-        <td>@item.UserFirstPerson</td>
-        <td>@item.UserFirstPersonTel</td>
-        <td><h4>
-    @foreach (UserClassDto userClass in ViewData["UserClass"] as IEnumerable<UserClassDto>)
-    {
-        if (item.UserClass.Contains(userClass.UserClassId.ToString()) == true)
-        {
-            <span class='label label-@(userClass.UserClassName.Contains("居民") == true ? "success" : "danger")'>@userClass.UserClassName</span>
-        }
-
-    }
-
-</h4></td>
-
-        <td>
-
-            <a href="@Url.Action("UserEdit", "User", new { UserId = @item.UserId })">
-                <button class="btn btn-sm btn-success"><i class="fa fa fa-edit"></i>  编辑</button>
-            </a>
-            @if (String.IsNullOrEmpty(HealthDal.GetOneHealth("CrmHealth", "HealthUserId=" + item.UserId).HealthXuexing))
-            {
-                <a href="@Url.Action("HealthAdd", "Health", new { userId = @item.UserId,userName=@item.UserName})">
-                    <button class="btn btn-sm btn-danger"><i class="fa fa fa-edit"></i> 新增身体指标信息</button>
-                </a>
-            }
-            else
-            {
-                <a href="@Url.Action("HealthEdit", "Health", new { userId = @item.UserId, userName = @item.UserName })">
-                    <button class="btn btn-sm btn-info"><i class="fa fa fa-edit"></i>  编辑身体指标信息</button>
-                </a>
-            }
+                                    <td>@item.UserSex </td>
+                                    <td>@GroupDal.GetOneGroup("CrmGroup", "GroupId=" + item.UserGroup).GroupName </td>
 
 
-        </td>
+                                    <td>@item.UserFirstPerson</td>
+                                    <td>@item.UserFirstPersonTel</td>
+                                    <td>
+                                        <h4>
+                                            @foreach (UserClassDto userClass in ViewData["UserClass"] as IEnumerable<UserClassDto>)
+                                            {
+                                                if (item.UserClass.Contains(userClass.UserClassId.ToString()) == true)
+                                                {
+                                                    <span class='label label-@(userClass.UserClassName.Contains("居民") == true ? "success" : "danger")'>@userClass.UserClassName</span>
+                                                }
 
-    </tr>
+                                            }
+
+                                        </h4>
+                                    </td>
 
 
-}
+                                    @if (item.UserDoctor.ToString() == System.Web.HttpContext.Current.Request.Cookies["DoctorId"].Value)
+                                    {
+                                        <td>
+
+                                            <a href="@Url.Action("UserEdit", "User", new { UserId = @item.UserId })">
+                                                <button class="btn btn-sm btn-success"><i class="fa fa fa-edit"></i>  编辑</button>
+                                            </a>
+                                            @if (String.IsNullOrEmpty(HealthDal.GetOneHealth("CrmHealth", "HealthUserId=" + item.UserId).HealthXuexing))
+                                            {
+                                                <a href="@Url.Action("HealthAdd", "Health", new { userId = @item.UserId,userName=@item.UserName})">
+                                                    <button class="btn btn-sm btn-danger"><i class="fa fa fa-edit"></i> 新增身体指标信息</button>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("HealthEdit", "Health", new { userId = @item.UserId, userName = @item.UserName })">
+                                                    <button class="btn btn-sm btn-info"><i class="fa fa fa-edit"></i>  编辑身体指标信息</button>
+                                                </a>
+                                            }
+                                            <a href="@Url.Action("UserImport", "User", new { UserId = @item.UserId })">
+                                                <button class="btn btn-sm btn-success"><i class="fa fa fa-edit"></i> 导出</button>
+                                            </a>
+
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+
+
+                                            <button class="btn btn-sm btn-danger disabled"> 此用户不在你的管理范围内禁止修改</button>
+
+
+
+
+                                        </td>
+                                    }
+                                </tr>
+
+
+                            }
 
 
                         </table>
@@ -184,7 +203,7 @@
             //window.location = "?p=" + no;
             window.location = "?p=" + no+"&groupId="+getParamValue("groupId")+"&userClass="+getParamValue("userClass")+"&doctorId="+getParamValue("doctorId");
 
-         
+
         }
 
         function getUrlParams()
@@ -226,16 +245,16 @@
                 }
             }
             return null ;
-        } 
+        }
 
-        
-        var BtngroupId = document.getElementsByName("BtngroupId"); 
+
+        var BtngroupId = document.getElementsByName("BtngroupId");
 
         for(var i=0;i<BtngroupId.length;i++){
-            var links = BtngroupId[i].getAttribute("title"); 
+            var links = BtngroupId[i].getAttribute("title");
             if(getParamValue("groupId")==links)
             {
-               
+
                 $(BtngroupId[i]).addClass('btn-info');
             }
             else
@@ -245,13 +264,13 @@
 
         }
 
-        var BtnuserClass = document.getElementsByName("BtnuserClass"); 
+        var BtnuserClass = document.getElementsByName("BtnuserClass");
 
         for(var i=0;i<BtnuserClass.length;i++){
-            var thelinks = BtnuserClass[i].getAttribute("title"); 
+            var thelinks = BtnuserClass[i].getAttribute("title");
             if(getParamValue("userClass")==thelinks)
             {
-               
+
                 $(BtnuserClass[i]).addClass('btn-info');
             }
             else
@@ -261,13 +280,13 @@
 
         }
 
-        var BtndoctorId = document.getElementsByName("BtndoctorId"); 
+        var BtndoctorId = document.getElementsByName("BtndoctorId");
 
         for(var i=0;i<BtndoctorId.length;i++){
-            var links = BtndoctorId[i].getAttribute("title"); 
+            var links = BtndoctorId[i].getAttribute("title");
             if(getParamValue("doctorId")==links)
             {
-               
+
                 $(BtndoctorId[i]).addClass('btn-info');
             }
             else

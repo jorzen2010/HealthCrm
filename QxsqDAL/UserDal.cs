@@ -229,6 +229,7 @@ namespace QxsqDAL
             userDto.UserDiy5 = dr["UserDiy5"].ToString();
             userDto.UserDiy6 = dr["UserDiy6"].ToString();
             userDto.UserBeizhu = dr["UserBeizhu"].ToString();
+            userDto.UserRegTime =DateTime.Parse(dr["UserRegTime"].ToString());
 
             
 
@@ -271,6 +272,7 @@ namespace QxsqDAL
             userDto.UserDiy5 = dr["UserDiy5"].ToString();
             userDto.UserDiy6 = dr["UserDiy6"].ToString();
             userDto.UserBeizhu = dr["UserBeizhu"].ToString();
+            userDto.UserRegTime = DateTime.Parse(dr["UserRegTime"].ToString());
 
             return userDto;
         }

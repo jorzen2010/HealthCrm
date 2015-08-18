@@ -126,7 +126,7 @@
 
                                             }
 
-                                            <input type="checkbox" name="HealthFeiyong" id="HealthFeiyong8" class="chklist" value="8 其他" @(Model.HealthFeiyong.Contains("其他") == true ? "checked=\"checked\"" : "") />
+                                            <input type="checkbox" name="HealthFeiyong" id="HealthFeiyong8" class="chklist" value="@(Model.HealthFeiyong.Contains("其他") == true ? Model.HealthFeiyong.Substring(Model.HealthFeiyong.LastIndexOf(",") + 1) : "其他")" @(Model.HealthFeiyong.Contains("其他") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -137,7 +137,7 @@
                                                 <span class="radiobox-content">其他</span>
 
                                             </label>
-                                            <input type="text" id="HealthFeiiyongQita" class="input-sm" />
+                                            <input type="text" id="HealthFeiiyongQita" value="@(Model.HealthFeiyong.Contains("其他") == true ? Model.HealthFeiyong.Substring(Model.HealthFeiyong.LastIndexOf(",") + 1) : "")" />
                                         </div>
                                     </td>
                                 </tr>
@@ -173,7 +173,7 @@
                                                 </label>
 
                                             }
-                                            <input type="checkbox" name="HealthGuomin" id="HealthGuomin5" class="chklist" value="8 其他" @(Model.HealthGuomin.Contains("其他") == true ? "checked=\"checked\"" : "") />
+                                            <input type="checkbox" name="HealthGuomin" id="HealthGuomin5" class="chklist" value="@(Model.HealthGuomin.Contains("其他") == true ? Model.HealthGuomin.Substring(Model.HealthGuomin.LastIndexOf(",") + 1) : "其他")" @(Model.HealthGuomin.Contains("其他") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -181,10 +181,10 @@
 
                                                 <span class="check-image"></span>
 
-                                                <span class="radiobox-content">8 其他</span>
+                                                <span class="radiobox-content">其他</span>
 
                                             </label>
-                                            <input type="text" id="HealthGuominQita" />
+                                            <input type="text" id="HealthGuominQita" value="@(Model.HealthGuomin.Contains("其他") == true ? Model.HealthGuomin.Substring(Model.HealthGuomin.LastIndexOf(",") + 1) : "")" />
                                         </div>
                                     </td>
                                 </tr>
@@ -487,7 +487,7 @@
                                     <td class="col-xs-1">父亲</td>
                                     <td class="col-xs-1">
                                         <div class="fuxuan">
-                                            <input type="checkbox" name="HealthJiazuDadyWu" class="chklist HealthJiazuDadyWu" value="无" @(Model.HealthJiazuDady.Contains("无") == true ? "checked=\"checked\"" : "") />
+                                            <input type="checkbox" name="HealthJiazuDadyWu" class="chklist HealthJiazuDadyWu" value="无"  @(Model.HealthJiazuDady.Contains("无") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -514,7 +514,7 @@
                                                 </label>
 
                                             }
-                                            <input type="checkbox" name="HealthJiazuDady" id="HealthJiazuDady12" class="chklist" value="其他" @(Model.HealthJiazuDady.Contains("其他") == true ? "checked=\"checked\"" : "") />
+                                            <input type="checkbox" name="HealthJiazuDady" id="HealthJiazuDady12" class="chklist" value="@(Model.HealthJiazuDady.Contains("其他") == true ? Model.HealthJiazuDady.Substring(Model.HealthJiazuDady.LastIndexOf(",") + 1) : "其他")" @(Model.HealthJiazuDady.Contains("其他") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -525,7 +525,7 @@
                                                 <span class="radiobox-content">其他</span>
 
                                             </label>
-                                            <input type="text" id="HealthJiazuDadyQita" />
+                                            <input type="text" id="HealthJiazuDadyQita" value="@(Model.HealthJiazuDady.Contains("其他") == true ? Model.HealthJiazuDady.Substring(Model.HealthJiazuDady.LastIndexOf(",") + 1) : "")" />
                                         </div>
                                     </td>
                                 </tr>
@@ -560,7 +560,7 @@
                                                 </label>
 
                                             }
-                                            <input type="checkbox" name="HealthJiazuMama" id="HealthJiazuMama12" class="chklist" value="其他" @(Model.HealthJiazuMama.Contains("12 其他") == true ? "checked=\"checked\"" : "") />
+                                            <input type="checkbox" name="HealthJiazuMama" id="HealthJiazuMama12" class="chklist" value="@(Model.HealthJiazuMama.Contains("其他") == true ? Model.HealthJiazuMama.Substring(Model.HealthJiazuMama.LastIndexOf(",") + 1) : "其他")" @(Model.HealthJiazuMama.Contains("其他") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -571,7 +571,7 @@
                                                 <span class="radiobox-content">其他</span>
 
                                             </label>
-                                            <input type="text" id="HealthJiazuMamaQita" />
+                                            <input type="text" id="HealthJiazuMamaQita" value="@(Model.HealthJiazuMama.Contains("其他") == true ? Model.HealthJiazuMama.Substring(Model.HealthJiazuMama.LastIndexOf(",") + 1) : "")" />
                                         </div>
                                     </td>
                                 </tr>
@@ -587,7 +587,7 @@
 
                                                 <span class="check-image"></span>
 
-                                                <span class="radiobox-content"></span>
+                                                <span class="radiobox-content">无</span>
 
                                             </label>
 
@@ -606,7 +606,7 @@
                                                 </label>
 
                                             }
-                                            <input type="checkbox" name="HealthJiazuXiongdi" id="HealthJiazuXiongdi12" class="chklist" value="其他" @(Model.HealthJiazuXiongdi.Contains("其他") == true ? "checked=\"checked\"" : "") />
+                                            <input type="checkbox" name="HealthJiazuXiongdi" id="HealthJiazuXiongdi12" class="chklist" value="@(Model.HealthJiazuXiongdi.Contains("其他") == true ? Model.HealthJiazuXiongdi.Substring(Model.HealthJiazuXiongdi.LastIndexOf(",") + 1) : "其他")" @(Model.HealthJiazuXiongdi.Contains("其他") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -617,7 +617,7 @@
                                                 <span class="radiobox-content">其他</span>
 
                                             </label>
-                                            <input type="text" id="HealthJiazuXiongdiQita" />
+                                            <input type="text" id="HealthJiazuXiongdiQita" value="@(Model.HealthJiazuXiongdi.Contains("其他") == true ? Model.HealthJiazuXiongdi.Substring(Model.HealthJiazuXiongdi.LastIndexOf(",") + 1) : "")" />
                                         </div>
                                     </td>
                                 </tr>
@@ -652,7 +652,7 @@
                                                 </label>
 
                                             }
-                                            <input type="checkbox" name="HealthJiazuZinv" id="HealthJiazuZinv12" class="chklist" value="其他" @(Model.HealthJiazuZinv.Contains("其他") == true ? "checked=\"checked\"" : "") />
+                                            <input type="checkbox" name="HealthJiazuZinv" id="HealthJiazuZinv12" class="chklist" value="@(Model.HealthJiazuZinv.Contains("其他") == true ? Model.HealthJiazuZinv.Substring(Model.HealthJiazuZinv.LastIndexOf(",") + 1) : "其他")" @(Model.HealthJiazuZinv.Contains("其他") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -663,7 +663,7 @@
                                                 <span class="radiobox-content">其他</span>
 
                                             </label>
-                                            <input type="text" id="HealthJiazuZinvQita" />
+                                            <input type="text" id="HealthJiazuZinvQita" value="@(Model.HealthJiazuZinv.Contains("其他") == true ? Model.HealthJiazuZinv.Substring(Model.HealthJiazuZinv.LastIndexOf(",") + 1) : "")" />
                                         </div>
                                     </td>
                                 </tr>
@@ -686,7 +686,7 @@
 
                                             </label>
 
-                                            <input type="radio" name="HealthYichuan" id="HealthYichuanYou" class="rdolist" value="有" @(Model.HealthYichuan.Contains("有") == true ? "checked=\"checked\"" : "") />
+                                            <input type="radio" name="HealthYichuan" id="HealthYichuanYou" class="rdolist" value="@(Model.HealthYichuan.Contains("有") == true ? Model.HealthYichuan : "有")" @(Model.HealthYichuan.Contains("有") == true ? "checked=\"checked\"" : "") />
 
                                             <label class="rdobox HealthYichuan">
 
@@ -695,7 +695,7 @@
                                                 <span class="radiobox-content">有</span>
 
                                             </label>
-                                            <input type="text" id="HealthYichuanQita" />
+                                            <input type="text" id="HealthYichuanQita" value="@(Model.HealthYichuan.Contains("有") == true ? Model.HealthYichuan : "")" />
 
 
                                         </div>
@@ -736,7 +736,7 @@
                                                 </label>
 
                                             }<br />
-                                            <input type="checkbox" name="HealthCanji" id="HealthCanji8" class="chklist HealthCanji" value="其他残疾" @(Model.HealthCanji.Contains("其他残疾") == true ? "checked=\"checked\"" : "") />
+                                            <input type="checkbox" name="HealthCanji" id="HealthCanji8" class="chklist HealthCanji" value="@(Model.HealthCanji.Contains("其他残疾") == true ? Model.HealthCanji.Substring(Model.HealthCanji.LastIndexOf(",") + 1) : "其他残疾")" @(Model.HealthCanji.Contains("其他残疾") == true ? "checked=\"checked\"" : "") />
 
 
 
@@ -747,7 +747,7 @@
                                                 <span class="radiobox-content">其他残疾</span>
 
                                             </label>
-                                            <input type="text" id="HealthCanjiQita" />
+                                            <input type="text" id="HealthCanjiQita" value="@(Model.HealthCanji.Contains("其他残疾") == true ? Model.HealthCanji.Substring(Model.HealthCanji.LastIndexOf(",") + 1) : "")" />
                                         </div>
                                     </td>
                                 </tr>
@@ -951,6 +951,13 @@
 
         });
 
+        $("#HealthGuominQita").keyup(function () {
+            var content = "其他" + $("#HealthGuominQita").val();
+            $("#HealthGuomin5").val(content);
+
+
+        });
+
         $("#HealthCanjiQita").keyup(function () {
             var content = "其他残疾" + $("#HealthCanjiQita").val();
             $("#HealthCanji8").val(content);
@@ -974,13 +981,13 @@
         });
 
         $("#HealthJiazuZinvQita").keyup(function () {
-            var content = "其他" + $("#HealthYichuanQita").val();
+            var content = "其他" + $("#HealthJiazuZinvQita").val();
             $("#HealthJiazuZinv12").val(content);
 
         });
 
         $("#HealthYichuanQita").keyup(function () {
-            var content = "有" + $("#HealthJiazuZinvQita").val();
+            var content = "有" + $("#HealthYichuanQita").val();
             $("#HealthYichuanYou").val(content);
 
         });

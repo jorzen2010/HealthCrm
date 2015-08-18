@@ -37,6 +37,7 @@ namespace QxsqDTO
      public string UserDiy5 { get; set; }
      public string UserDiy6 { get; set; }
      public string UserBeizhu { get; set; }
+     public DateTime UserRegTime { get; set; }
 
     }
 }

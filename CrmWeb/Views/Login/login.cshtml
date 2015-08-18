@@ -96,7 +96,7 @@
 
                             case "1":
                                 $("#DoctorLoginAlert").html(data.MessageInfo);
-                                top.location = '/User/UserIndex';
+                                top.location = data.MessageUrl;
                                 break;
                             case "0": $("#DoctorLoginAlert").html(data.MessageInfo);
                                 break;

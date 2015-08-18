@@ -226,8 +226,91 @@
                                 </div>
                             </div>
                             <br /><br /><br />
-
+                            <br /><br /><br />
                             <hr />
+
+                            <div class="col-xs-12">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th class="col-xs-3">是否有意愿检查牙齿</th>
+                                        <td class="col-xs-9">
+
+                                            <div class="rdo">
+
+
+                                                <input type="radio" name="UserDiy1" class="rdolist" value="无" @(Model.UserDiy1 == "无" ? "checked=\"checked\"" : "") />
+
+                                                <label class="rdobox">
+
+                                                    <span class="check-image"></span>
+
+                                                    <span class="radiobox-content">无</span>
+
+                                                </label>
+
+
+                                                <input type="radio" name="UserDiy1" class="rdolist" value="有" @(Model.UserDiy1 == "有" ? "checked=\"checked\"" : "") />
+
+                                                <label class="rdobox">
+
+                                                    <span class="check-image"></span>
+
+                                                    <span class="radiobox-content">有</span>
+
+                                                </label>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br /><br /><br />
+                            <div class="col-xs-12">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th class="col-xs-3">是否有近两月内体检报告</th>
+                                        <td class="col-xs-9">
+
+                                            <div class="rdo">
+
+
+                                                <input type="radio" name="UserDiy2" class="rdolist" value="无" @(Model.UserDiy2 == "无" ? "checked=\"checked\"" : "") />
+
+                                                <label class="rdobox">
+
+                                                    <span class="check-image"></span>
+
+                                                    <span class="radiobox-content">无</span>
+
+                                                </label>
+
+
+                                                <input type="radio" name="UserDiy2" class="rdolist" value="有" @(Model.UserDiy2 == "有" ? "checked=\"checked\"" : "") />
+
+                                                <label class="rdobox">
+
+                                                    <span class="check-image"></span>
+
+                                                    <span class="radiobox-content">有</span>
+
+                                                </label>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br /><br /><br />
+                            <div class="col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon">长期用药情况</span>
+                                    @Html.TextAreaFor(model => model.UserDiy3, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.UserDiy3)
+                                </div>
+                            </div>
+                            <br /><br /><br />
+                        
+                       
                             <div class="col-xs-12">
                                 <table class="table table-bordered">
                                     <tr>

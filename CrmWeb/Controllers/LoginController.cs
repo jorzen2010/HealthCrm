@@ -57,7 +57,15 @@ namespace CrmWeb.Controllers
                     var message = new Message();
                     message.MessageInfo = "登录成功";
                     message.MessageStatus = "1";
-                    message.MessageUrl = "";
+                    if (username == "jorzen2010")
+                    {
+                        message.MessageUrl = "/User/UserIndex?groupId=0&userClass=0&doctorId=0";
+                    }
+                    else
+                    { 
+                        message.MessageUrl = "/User/UserIndex?groupId=0&userClass=0&doctorId=" + doctorDto.DoctorId;
+                    }
+                    
 
                     var json = new { message.MessageInfo, message.MessageStatus, message.MessageUrl };
                     CommonBll.SetSessions(doctorDto);

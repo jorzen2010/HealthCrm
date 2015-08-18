@@ -10,7 +10,9 @@ namespace CrmWeb.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+           // return View();
+            return RedirectToAction("UserIndex", "User", new { groupId = 0, userClass = 0, doctorId = System.Web.HttpContext.Current.Request.Cookies["DoctorId"].Value });
+
         }
 
         

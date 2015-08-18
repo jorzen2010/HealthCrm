@@ -224,8 +224,10 @@ namespace CrmWeb.Controllers
 
             HealthBll.AddHealth(healthDto);
 
-            return RedirectTo("/Health/HealthIndex", "客户身体信息添加成功了");
+         //   return RedirectTo("/Health/HealthIndex", "客户身体信息添加成功了");
             //return RedirectToAction("HealthIndex");
+            return RedirectToAction("UserIndex", "User", new { groupId = 0, userClass = 0, doctorId = System.Web.HttpContext.Current.Request.Cookies["DoctorId"].Value });
+
 
 
         }
@@ -300,7 +302,7 @@ namespace CrmWeb.Controllers
             }
             else
             {
-                Request.Form["HealthJiazuDady"].ToString();
+                healthDto.HealthJiazuDady = Request.Form["HealthJiazuDady"].ToString();
             }
 
             if (String.IsNullOrEmpty(Request.Form["HealthJiazuMama"]))
@@ -310,7 +312,7 @@ namespace CrmWeb.Controllers
             }
             else
             {
-                Request.Form["HealthJiazuMama"].ToString();
+                healthDto.HealthJiazuMama=Request.Form["HealthJiazuMama"].ToString();
             }
 
             if (String.IsNullOrEmpty(Request.Form["HealthJiazuXiongdi"]))
@@ -320,7 +322,7 @@ namespace CrmWeb.Controllers
             }
             else
             {
-                Request.Form["HealthJiazuXiongdi"].ToString();
+                healthDto.HealthJiazuXiongdi = Request.Form["HealthJiazuXiongdi"].ToString();
 
             }
             if (String.IsNullOrEmpty(Request.Form["HealthJiazuZinv"]))
@@ -355,8 +357,9 @@ namespace CrmWeb.Controllers
 
             HealthBll.UpdateHealthDto(healthDto);
 
+            return RedirectToAction("UserIndex", "User", new { groupId = 0, userClass = 0, doctorId = System.Web.HttpContext.Current.Request.Cookies["DoctorId"].Value });
 
-            return RedirectToAction("HealthIndex");
+          //  return RedirectToAction("HealthIndex");
 
 
         }
