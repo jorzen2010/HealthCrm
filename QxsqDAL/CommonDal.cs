@@ -12,7 +12,7 @@ namespace QxsqDAL
 {
     public class CommonDal
     {
-        public static string ConnectionString = "server=(local);database=HealthCrm;uid=sa;password=8;min pool size=512;max pool size=512;";
+        public static string ConnectionString = "server=(local);database=HealthCrm;uid=sa;password=8;min pool size=30;max pool size=512;";
 
         #region 删除一个对象
         public static void DeleteObject(string table, string strwhere)
@@ -25,14 +25,24 @@ namespace QxsqDAL
 
             arParames[1] = new SqlParameter("@Where ", SqlDbType.VarChar, 8000);
             arParames[1].Value = strwhere;
+            SqlConnection myconn = new SqlConnection(CommonDal.ConnectionString);
+            try
+            {
+                SqlHelper.ExecuteNonQuery(myconn, CommandType.StoredProcedure, "deleteModelByWhere", arParames);
+  }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
 
-            SqlHelper.ExecuteNonQuery(CommonDal.ConnectionString, CommandType.StoredProcedure, "deleteModelByWhere", arParames);
-
+                myconn.Close();
+                myconn.Dispose();
+            }
 
         }
         #endregion
-
-
 
         #region 更新一个对象的一个字段
         public static void SetModelBitByAjax(string table, string strwhere, string columnname, string columnvalue)
@@ -52,14 +62,24 @@ namespace QxsqDAL
 
             arParames[3] = new SqlParameter("@columnvalue ", SqlDbType.VarChar, 200);
             arParames[3].Value = columnvalue;
+SqlConnection myconn = new SqlConnection(CommonDal.ConnectionString);
+            try
+            {
+                SqlDataReader dr = SqlHelper.ExecuteReader(myconn, CommandType.StoredProcedure, "setModelBitByAjax", arParames);
+  }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
 
-            SqlDataReader dr = SqlHelper.ExecuteReader(CommonDal.ConnectionString, CommandType.StoredProcedure, "setModelBitByAjax", arParames);
-
+                myconn.Close();
+                myconn.Dispose();
+            }
 
         }
         #endregion setBitFiledByAjax
-
-
 
         #region 删除一个Editor对象DTO
         public static void DeleteOneDto(string table, string strwhere)
@@ -72,10 +92,22 @@ namespace QxsqDAL
 
             arParames[1] = new SqlParameter("@Where ", SqlDbType.VarChar, 8000);
             arParames[1].Value = strwhere;
+SqlConnection myconn = new SqlConnection(CommonDal.ConnectionString);
+            try
+            {
+                SqlHelper.ExecuteNonQuery(myconn, CommandType.StoredProcedure, "deleteModelByWhere", arParames);
 
-            SqlHelper.ExecuteNonQuery(CommonDal.ConnectionString, CommandType.StoredProcedure, "deleteModelByWhere", arParames);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
 
-
+                myconn.Close();
+                myconn.Dispose();
+            }
 
         }
         #endregion

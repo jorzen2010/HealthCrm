@@ -43,14 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonDal.cs" />
-    <Compile Include="ArticleClassDal.cs" />
-    <Compile Include="ArticleDal.cs" />
     <Compile Include="CloudHealthDal.cs" />
     <Compile Include="JiwangshiDal.cs" />
     <Compile Include="UserClassDal.cs" />
     <Compile Include="GroupDal.cs" />
     <Compile Include="DoctorDal.cs" />
-    <Compile Include="GuahaoDal.cs" />
     <Compile Include="MokuaiDal.cs" />
     <Compile Include="EditorDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

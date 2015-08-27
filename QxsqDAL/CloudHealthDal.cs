@@ -14,19 +14,31 @@ namespace QxsqDAL
     public class CloudHealthDal
     {
 
-       #region 医生添加
+       #region 血压数据添加
 
         public static void AddCloudHealth(CloudHealthDto cloudHealthDto)
         {
 
             SqlParameter[] arParames = CloudHealthDal.getParameters(cloudHealthDto);
+            SqlConnection myconn = new SqlConnection(CommonDal.ConnectionString);
+            try
+            {
+                SqlHelper.ExecuteNonQuery(myconn, CommandType.StoredProcedure, "CreateCloudHealth", arParames);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally 
+            {
 
-            SqlHelper.ExecuteNonQuery(CommonDal.ConnectionString, CommandType.StoredProcedure, "CreateCloudHealth", arParames);
-
+                myconn.Close();
+                myconn.Dispose();
+            }
         }
         #endregion
 
-        #region 获取一个医生DTO
+        #region 获取一个血压数据DTO
 
         public static CloudHealthDto GetOneCloudHealth(string table,string strwhere)
         {
@@ -40,8 +52,10 @@ namespace QxsqDAL
             arParames[1].Value = strwhere;
 
             DataTable dt = null;
-
-            DataSet ds = SqlHelper.ExecuteDataset(CommonDal.ConnectionString, CommandType.StoredProcedure, "getModelByWhere", arParames);
+            SqlConnection myconn = new SqlConnection(CommonDal.ConnectionString);
+            try
+            {
+                DataSet ds = SqlHelper.ExecuteDataset(myconn, CommandType.StoredProcedure, "getModelByWhere", arParames);
             dt = ds.Tables[0];
             foreach (DataRow dr in dt.Rows)
             {
@@ -53,11 +67,21 @@ namespace QxsqDAL
 
             return cloudHealthDto;
 
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
 
+                myconn.Close();
+                myconn.Dispose();
+            }
 
         }
         #endregion
-        #region 获取医生List数据
+        #region 获取血压数据List数据
         public static List<CloudHealthDto> GetCloudHealthList(string table,string strwhere)
         {
             List<CloudHealthDto> cloudHealthlist = new List<CloudHealthDto>();
@@ -70,9 +94,11 @@ namespace QxsqDAL
 
             arParames[1] = new SqlParameter("@Where ", SqlDbType.VarChar, 8000);
             arParames[1].Value = strwhere;
-
+             SqlConnection myconn = new SqlConnection(CommonDal.ConnectionString);
+            try
+            {
             DataTable dt = null;
-            DataSet ds = SqlHelper.ExecuteDataset(CommonDal.ConnectionString, CommandType.StoredProcedure, "getModelByWhere", arParames);
+            DataSet ds = SqlHelper.ExecuteDataset(myconn, CommandType.StoredProcedure, "getModelByWhere", arParames);
             dt = ds.Tables[0];
             foreach (DataRow dr in dt.Rows)
             {
@@ -86,6 +112,18 @@ namespace QxsqDAL
             }
 
             return cloudHealthlist;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+
+                myconn.Close();
+                myconn.Dispose();
+            }
+
 
         }
         #endregion
@@ -174,8 +212,21 @@ namespace QxsqDAL
 
             arParames[1] = new SqlParameter("@Where ", SqlDbType.VarChar, 8000);
             arParames[1].Value = strwhere;
+            SqlConnection myconn = new SqlConnection(CommonDal.ConnectionString);
+            try
+            {
+            SqlHelper.ExecuteNonQuery(myconn, CommandType.StoredProcedure, "deleteModelByWhere", arParames);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
 
-            SqlHelper.ExecuteNonQuery(CommonDal.ConnectionString, CommandType.StoredProcedure, "deleteModelByWhere", arParames);
+                myconn.Close();
+                myconn.Dispose();
+            }
 
 
 
@@ -188,9 +239,21 @@ namespace QxsqDAL
         {
 
             SqlParameter[] arParames = CloudHealthDal.getParameters(cloudHealthDto);
+             SqlConnection myconn = new SqlConnection(CommonDal.ConnectionString);
+            try
+            {
+            SqlHelper.ExecuteNonQuery(myconn, CommandType.StoredProcedure, "UpdateCloudHealth", arParames);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
 
-            SqlHelper.ExecuteNonQuery(CommonDal.ConnectionString, CommandType.StoredProcedure, "UpdateCloudHealth", arParames);
-
+                myconn.Close();
+                myconn.Dispose();
+            }
 
         }
 
@@ -237,11 +300,13 @@ namespace QxsqDAL
             //@RecordCount --总记录数
             arParms[8] = new SqlParameter("@RecordCount", SqlDbType.Int);
             arParms[8].Direction = ParameterDirection.Output;
-
+              SqlConnection myconn = new SqlConnection(CommonDal.ConnectionString);
+            try
+            {
             CloudHealthDto cloudHealthDto = null;
             List<CloudHealthDto> list = new List<CloudHealthDto>();
             DataTable dt = null;
-            DataSet ds = SqlHelper.ExecuteDataset(CommonDal.ConnectionString, CommandType.StoredProcedure, "sp_AspNetPageView", arParms);
+            DataSet ds = SqlHelper.ExecuteDataset(myconn, CommandType.StoredProcedure, "sp_AspNetPageView", arParms);
             dt = ds.Tables[0];
             foreach (DataRow dr in dt.Rows)
             {
@@ -256,6 +321,17 @@ namespace QxsqDAL
             pager.PageCount = (int)arParms[7].Value;
 
             return pager;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+
+                myconn.Close();
+                myconn.Dispose();
+            }
         }
         #endregion
     }
