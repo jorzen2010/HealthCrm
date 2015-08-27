@@ -52,9 +52,7 @@
                                 <td>@item.UserClassName</td>
                            
                                 <td>
-                                    <a href="@Url.Action("UserClassEdit", "UserClass", new { UserClassId = @item.UserClassId })">
-                                        <button class="btn btn-sm btn-success"><i class="fa fa fa-edit"></i>  编辑</button>
-                                    </a>  
+                                    <a href="@Url.Action("UserClassEdit", "UserClass", new { UserClassId = @item.UserClassId })" class="btn btn-sm btn-success"><i class="fa fa fa-edit"></i>  编辑</a>  
                                     <button class="btn btn-sm btn-danger" onclick="DeleteUserClass(@item.UserClassId)"><i class="fa fa-trash-o"></i>  删除</button>
                                 </td>
                             </tr>

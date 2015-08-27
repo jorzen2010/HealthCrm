@@ -54,8 +54,7 @@
                                 <td>@item.DoctorRealName</td>
                                 <td>@item.DoctorRegTime</td>
                                 <td>
-                                    <a href="@Url.Action("DoctorEdit", "Doctor", new { DoctorId = @item.DoctorId })">
-                                        <button class="btn btn-sm btn-success"><i class="fa fa fa-edit"></i>  编辑</button>
+                                    <a href="@Url.Action("DoctorEdit", "Doctor", new { DoctorId = @item.DoctorId })" class="btn btn-sm btn-success"><i class="fa fa fa-edit"></i>  编辑
                                     </a>  
                                     <button class="btn btn-sm btn-danger" onclick="DeleteDoctor(@item.DoctorId)"><i class="fa fa-trash-o"></i>  删除</button>
                                 </td>

@@ -52,9 +52,7 @@
                                 <td>@item.GroupName</td>
                            
                                 <td>
-                                    <a href="@Url.Action("GroupEdit", "Group", new { GroupId = @item.GroupId })">
-                                        <button class="btn btn-sm btn-success"><i class="fa fa fa-edit"></i>  编辑</button>
-                                    </a>  
+                                    <a href="@Url.Action("GroupEdit", "Group", new { GroupId = @item.GroupId })" class="btn btn-sm btn-success"><i class="fa fa fa-edit"></i>  编辑</a>  
                                     <button class="btn btn-sm btn-danger" onclick="DeleteGroup(@item.GroupId)"><i class="fa fa-trash-o"></i>  删除</button>
                                 </td>
                             </tr>

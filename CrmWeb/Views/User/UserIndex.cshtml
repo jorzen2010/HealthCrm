@@ -44,20 +44,20 @@
                         <h5>
                             所在单位：
 
-                            <a href="/User/UserIndex?groupId=0&userClass=@Request["userClass"]&doctorId=@Request["doctorId"]"> <button class="btn btn-sm btn-info" name="BtngroupId" title="0">全部</button></a>
+                            <a href="/User/UserIndex?groupId=0&userClass=@Request["userClass"]&doctorId=@Request["doctorId"]" class="btn btn-sm btn-info" name="BtngroupId" title="0">全部</a>
                             @foreach (GroupDto group in ViewData["UserGroupList"] as IEnumerable<GroupDto>)
                             {
-                                <a href="/User/UserIndex?groupId=@group.GroupId&userClass=@Request["userClass"]&doctorId=@Request["doctorId"]"> <button class="btn btn-sm " name="BtngroupId" title="@group.GroupId">@group.GroupName</button></a>
+                                <a href="/User/UserIndex?groupId=@group.GroupId&userClass=@Request["userClass"]&doctorId=@Request["doctorId"]" class="btn btn-sm " name="BtngroupId" title="@group.GroupId">@group.GroupName</a>
 
                             }
                         </h5>
                         <h5>
                             用户归档：
 
-                            <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=0&doctorId=@Request["doctorId"]"> <button class="btn btn-sm" title="0" name="BtnuserClass">全部</button></a>
+                            <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=0&doctorId=@Request["doctorId"]" class="btn btn-sm" title="0" name="BtnuserClass">全部</a>
                             @foreach (UserClassDto userClass in ViewData["UserClass"] as IEnumerable<UserClassDto>)
                             {
-                                <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=@userClass.UserClassId&doctorId=@Request["doctorId"]"> <button class="btn btn-sm" title="@userClass.UserClassId" name="BtnuserClass">@userClass.UserClassName</button></a>
+                                <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=@userClass.UserClassId&doctorId=@Request["doctorId"]" class="btn btn-sm" title="@userClass.UserClassId" name="BtnuserClass">@userClass.UserClassName</a>
 
                             }
 
@@ -66,10 +66,10 @@
                             <h5>
                                 责任医生：
 
-                                <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=@Request["userClass"]&doctorId=0"> <button class="btn btn-sm btn-info" name="BtndoctorId" title="0">全部</button></a>
+                                <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=@Request["userClass"]&doctorId=0" class="btn btn-sm btn-info" name="BtndoctorId" title="0">全部</a>
                                 @foreach (DoctorDto doctor in ViewData["DoctorLIst"] as IEnumerable<DoctorDto>)
                                 {
-                                    <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=@Request["userClass"]&doctorId=@doctor.DoctorId"> <button class="btn btn-sm " name="BtndoctorId" title="@doctor.DoctorId">@doctor.DoctorRealName</button></a>
+                                    <a href="/User/UserIndex?groupId=@Request["groupId"]&userClass=@Request["userClass"]&doctorId=@doctor.DoctorId" class="btn btn-sm " name="BtndoctorId" title="@doctor.DoctorId">@doctor.DoctorRealName</a>
 
                                 }
                             </h5>
@@ -121,23 +121,19 @@
                                     {
                                         <td>
 
-                                            <a href="@Url.Action("UserEdit", "User", new { UserId = @item.UserId })">
-                                                <button class="btn btn-sm btn-success"><i class="fa fa fa-edit"></i>  编辑</button>
+                                            <a href="@Url.Action("UserEdit", "User", new { UserId = @item.UserId })" class="btn btn-sm btn-success"><i class="fa fa fa-edit"></i>  编辑
                                             </a>
                                             @if (String.IsNullOrEmpty(HealthDal.GetOneHealth("CrmHealth", "HealthUserId=" + item.UserId).HealthXuexing))
                                             {
-                                                <a href="@Url.Action("HealthAdd", "Health", new { userId = @item.UserId,userName=@item.UserName})">
-                                                    <button class="btn btn-sm btn-danger"><i class="fa fa fa-edit"></i> 新增身体指标信息</button>
+                                                <a href="@Url.Action("HealthAdd", "Health", new { userId = @item.UserId,userName=@item.UserName})" class="btn btn-sm btn-danger"><i class="fa fa fa-edit"></i> 新增身体指标信息
                                                 </a>
                                             }
                                             else
                                             {
-                                                <a href="@Url.Action("HealthEdit", "Health", new { userId = @item.UserId, userName = @item.UserName })">
-                                                    <button class="btn btn-sm btn-info"><i class="fa fa fa-edit"></i>  编辑身体指标信息</button>
+                                                <a href="@Url.Action("HealthEdit", "Health", new { userId = @item.UserId, userName = @item.UserName })" class="btn btn-sm btn-info"><i class="fa fa fa-edit"></i>  编辑身体指标信息
                                                 </a>
                                             }
-                                            <a href="@Url.Action("UserImport", "User", new { UserId = @item.UserId })">
-                                                <button class="btn btn-sm btn-success"><i class="fa fa fa-edit"></i> 导出</button>
+                                            <a href="@Url.Action("UserImport", "User", new { UserId = @item.UserId })" class="btn btn-sm btn-success"><i class="fa fa fa-edit"></i> 导出
                                             </a>
 
                                         </td>
